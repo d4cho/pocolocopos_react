@@ -1,0 +1,25 @@
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: 16% 42% 42%;
+  border: 1px solid lightgray;
+}
+
+.item-topbar {
+  display: flex;
+  padding: 0 20px;
+  grid-column: 1/-1;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+}
+
+.item-category-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: steelblue;
+  color: white;
+  border: 1px solid lightgray;
+}

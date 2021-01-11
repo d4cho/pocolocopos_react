@@ -22,6 +22,8 @@ const App = () => {
         return <CashierPage />;
       case 3:
         return <InvoicePage />;
+      default:
+        return <HomePage />;
     }
   };
 

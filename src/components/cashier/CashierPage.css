@@ -1,0 +1,18 @@
+.main-grid-container {
+  margin: 2.5vh 1vw;
+  display: grid;
+  grid-template-columns: 45vw 47vw;
+  column-gap: 1vw;
+}
+
+.sub-grid-container-left {
+  display: grid;
+  grid-template-rows: 72vh 22vh;
+  row-gap: 1vh;
+}
+
+.sub-grid-container-right {
+  display: grid;
+  grid-template-rows: 34vh 60vh;
+  row-gap: 1vh;
+}
