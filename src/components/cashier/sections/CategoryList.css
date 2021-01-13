@@ -1,8 +1,7 @@
 .grid-container {
   display: grid;
   height: 100%;
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: 16% 42% 42%;
+  grid-template-rows: 16% 84%;
   border: 1px solid lightgray;
 }
 
@@ -15,6 +14,25 @@
   background-color: lightgray;
 }
 
+.item-category-box-container {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: 50% 50%;
+  grid-auto-rows: 50%;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.item-category-box-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.item-category-box-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .item-category-box {
   display: flex;
   justify-content: center;
@@ -22,4 +40,5 @@
   background-color: steelblue;
   color: white;
   border: 1px solid lightgray;
+  cursor: pointer;
 }
