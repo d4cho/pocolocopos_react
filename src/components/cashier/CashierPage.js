@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './CashierPage.css';
 import productData from '../../assets/data';
+import { CategoryProvider } from '../../context/CategoryContext';
+import { ProductProvider } from '../../context/ProductContext';
 
 import CategoryList from './sections/CategoryList';
+import ProductList from './sections/ProductList';
 
 const CashierPage = () => {
-  const [invoiceList, setInvoiceList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [productList, setProductList] = useState([]);
 
   console.log(productData);
 
@@ -25,27 +25,21 @@ const CashierPage = () => {
     setCategoryList(uniqueCategoriesWithAll);
   };
 
-  const updateSelectedCategory = (category) => {
-    console.log(category);
-    setSelectedCategory(category);
-    // this component has selected category
-    // need to send to product list and render products
-  };
-
   return (
-    <div className='main-grid-container'>
-      <div className='sub-grid-container-left'>
-        <div>Invoice Box</div>
-        <div>Checkout Box</div>
-      </div>
-      <div className='sub-grid-container-right'>
-        <CategoryList
-          categoryList={categoryList}
-          updateSelectedCategory={updateSelectedCategory}
-        />
-        <div>Product List</div>
-      </div>
-    </div>
+    <CategoryProvider>
+      <ProductProvider>
+        <div className='main-grid-container'>
+          <div className='sub-grid-container-left'>
+            <div>Invoice Box</div>
+            <div>Checkout Box</div>
+          </div>
+          <div className='sub-grid-container-right'>
+            <CategoryList categoryList={categoryList} />
+            <ProductList />
+          </div>
+        </div>
+      </ProductProvider>
+    </CategoryProvider>
   );
 };
 

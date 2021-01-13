@@ -1,33 +1,43 @@
 import React, { useState } from 'react';
 import './CategoryList.css';
 
+import {
+  useCategory,
+  useCategoryUpdate
+} from '../../../context/CategoryContext';
 import Search from '../../search/Search';
 
 const CategoryList = (props) => {
   const [searchResult, setSearchResult] = useState('');
+
+  const selectedCategory = useCategory();
+  const updateCategory = useCategoryUpdate();
 
   const updateSearchResult = (result) => {
     setSearchResult(result);
     console.log(result);
   };
 
-  const sendSelectedCategory = (event) => {
-    props.updateSelectedCategory(event.target.id);
-    console.log(event.target.id);
-  };
-
   const renderCategoryBox = () => {
     return props.categoryList
       .filter((word) => word.includes(searchResult))
-      .map((category) => (
-        <div
-          key={category}
-          id={category}
-          className='item-category-box'
-          onClick={sendSelectedCategory}>
-          {category.toUpperCase()}
-        </div>
-      ));
+      .map((category) => {
+        const categorySelectedStyle = {
+          backgroundColor:
+            category === selectedCategory ? 'orange' : 'steelblue'
+        };
+
+        return (
+          <div
+            key={category}
+            id={category}
+            className='item-category-box'
+            style={categorySelectedStyle}
+            onClick={() => updateCategory(category)}>
+            {category.toUpperCase()}
+          </div>
+        );
+      });
   };
 
   return (
@@ -36,9 +46,12 @@ const CategoryList = (props) => {
         <div>
           <strong>CATEGORY LIST</strong>
         </div>
-        <Search sendSearch={updateSearchResult} />
+        <Search
+          sendSearch={updateSearchResult}
+          placeholder='SEARCH CATEGORY...'
+        />
       </div>
-      {renderCategoryBox()}
+      <div className='item-category-box-container'>{renderCategoryBox()}</div>
     </div>
   );
 };
