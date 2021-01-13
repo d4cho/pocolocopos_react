@@ -4,8 +4,8 @@ const Search = (props) => {
   const [searchResult, setSearchResult] = useState('');
 
   const searchHandler = (event) => {
-    setSearchResult(event.currentTarget.value);
-    props.sendSearch(event.currentTarget.value);
+    setSearchResult(event.currentTarget.value.toLowerCase());
+    props.sendSearch(event.currentTarget.value.toLowerCase());
   };
 
   return (
@@ -20,7 +20,7 @@ const Search = (props) => {
           height: '100%'
         }}
         type='text'
-        placeholder='SEARCH CATEGORY...'
+        placeholder={props.placeholder}
         value={searchResult}
         onChange={searchHandler}
       />
