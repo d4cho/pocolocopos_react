@@ -34,7 +34,7 @@ const ProductList = () => {
             src={product.image}
             alt={product.image}
           />
-          <div style={{ color: 'red', fontWeight: 'bold' }}>OUT OF STOCK</div>
+          <span style={{ color: 'red', fontWeight: 'bold' }}>OUT OF STOCK</span>
           <div style={{ textAlign: 'center' }}>{product.name}</div>
           <div style={{ color: 'grey' }}>{product.category.toUpperCase()}</div>
           <div style={{ color: 'orange' }}>${product.price}</div>

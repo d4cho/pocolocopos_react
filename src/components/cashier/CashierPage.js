@@ -6,6 +6,7 @@ import { ProductProvider } from '../../context/ProductContext';
 
 import CategoryList from './sections/CategoryList';
 import ProductList from './sections/ProductList';
+import InvoiceBox from './sections/InvoiceBox';
 
 const CashierPage = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -30,7 +31,7 @@ const CashierPage = () => {
       <ProductProvider>
         <div className='main-grid-container'>
           <div className='sub-grid-container-left'>
-            <div>Invoice Box</div>
+            <InvoiceBox />
             <div>Checkout Box</div>
           </div>
           <div className='sub-grid-container-right'>

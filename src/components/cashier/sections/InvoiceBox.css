@@ -1,0 +1,33 @@
+.grid-container-invoice {
+  display: grid;
+  grid-template-rows: 8% 8% 84%;
+  height: 100%;
+  border: 1px solid lightgray;
+}
+
+.invoice-topbar {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  align-content: center;
+  padding: 0 20px;
+  background-color: lightgray;
+}
+
+.invoice-topbar div {
+  font-weight: bold;
+}
+
+.invoice-midbar {
+  display: grid;
+  grid-template-columns: 10% 55% 10% 25%;
+  align-content: center;
+  justify-items: center;
+  background-color: rgb(240, 240, 240);
+}
+
+.invoice-body-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
