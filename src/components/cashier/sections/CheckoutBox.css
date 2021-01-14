@@ -1,0 +1,67 @@
+.checkout-container {
+  display: grid;
+  grid-template-columns: 69% 29%;
+  column-gap: 2%;
+}
+
+.checkout-total-container {
+  display: grid;
+  padding: 20px 40px;
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: repeat(4, 25%); */
+  grid-template-rows: 24% 24% 24% 4% 24%;
+  border: 1px solid lightgray;
+  align-items: center;
+  font-size: 1.5vw;
+}
+
+.hor-underline {
+  border-bottom: 1px solid black;
+  grid-column: 1/3;
+  grid-row: 4/5;
+}
+
+.checkout-btn {
+  cursor: pointer;
+  font-size: 1.5vw;
+}
+
+.subtotal-item {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.subtotal-value-item {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-self: flex-end;
+}
+
+.tax-item {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.tax-value-item {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  justify-self: flex-end;
+}
+
+.coupon-item {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+.coupon-value-item {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  justify-self: flex-end;
+}
+
+.total-item {
+  grid-column: 1/2;
+  grid-row: 5/6;
+}
+.total-value-item {
+  grid-column: 2/3;
+  grid-row: 5/6;
+  justify-self: flex-end;
+}

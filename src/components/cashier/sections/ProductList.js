@@ -28,7 +28,10 @@ const ProductList = () => {
   const productCard = (product) => {
     if (product.quantity === 0) {
       return (
-        <div key={product.name} className='outOfStock-product'>
+        <div
+          key={product.name}
+          className='outOfStock-product'
+          onClick={() => alert('This product is out of stock.')}>
           <img
             className='image-product'
             src={product.image}
