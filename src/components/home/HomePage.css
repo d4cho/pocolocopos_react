@@ -16,14 +16,22 @@
   grid-template-rows: repeat(5, auto);
   justify-items: center;
   align-items: center;
-  padding: 10vh 6vw 3vh;
+  padding: 10vh 4vw 3vh;
 }
 
 .home-menu-controls-container {
   display: grid;
-  grid-template-columns: repeat(2, 13vw);
+  grid-template-columns: repeat(2, 11vw);
   grid-template-rows: repeat(3, 16vh);
   gap: 3px 3px;
+}
+
+.home-menu-controls-container > button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 3vw;
 }
 
 .home-menu-controls-container > div {
