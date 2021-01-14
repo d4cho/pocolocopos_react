@@ -4,7 +4,8 @@ import './ProductList.css';
 import { useCategory } from '../../../context/CategoryContext';
 import {
   useProductData,
-  useProductUpdate
+  useProductUpdate,
+  useProductListUpdate
 } from '../../../context/ProductContext';
 
 import Search from '../../search/Search';
@@ -15,14 +16,16 @@ const ProductList = () => {
   const selectedCategory = useCategory();
   const productData = useProductData();
   const updateProductQuantity = useProductUpdate();
+  const updateProductList = useProductListUpdate();
 
   const updateSearchResult = (result) => {
     setSearchResult(result);
     console.log(result);
   };
 
-  const productClickedHandler = (productName) => {
+  const productClickedHandler = (productName, productPrice) => {
     updateProductQuantity(productName);
+    updateProductList(productName, productPrice);
   };
 
   const productCard = (product) => {
@@ -48,7 +51,7 @@ const ProductList = () => {
       <div
         key={product.name}
         className='item-category-box-product'
-        onClick={() => productClickedHandler(product.name)}>
+        onClick={() => productClickedHandler(product.name, product.price)}>
         <img
           className='image-product'
           src={product.image}
