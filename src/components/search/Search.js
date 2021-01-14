@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SearchIcon from '@material-ui/icons/Search';
 
 const Search = (props) => {
   const [searchResult, setSearchResult] = useState('');
@@ -10,7 +11,7 @@ const Search = (props) => {
 
   return (
     <div style={{ display: 'flex', height: '100%', alignItems: 'center' }}>
-      <div>ICON</div>
+      <SearchIcon />
       <input
         style={{
           border: 'none',
