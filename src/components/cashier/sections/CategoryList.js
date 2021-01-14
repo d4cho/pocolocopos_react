@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './CategoryList.css';
-
 import {
   useCategory,
   useCategoryUpdate
