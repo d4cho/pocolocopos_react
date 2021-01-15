@@ -4,7 +4,7 @@ import './ProductList.css';
 import { useCategory } from '../../../context/CategoryContext';
 import {
   useProductData,
-  useProductUpdate,
+  useProductQuantitySubtract,
   useProductListUpdate
 } from '../../../context/ProductContext';
 
@@ -15,7 +15,7 @@ const ProductList = () => {
 
   const selectedCategory = useCategory();
   const productData = useProductData();
-  const updateProductQuantity = useProductUpdate();
+  const subtractProductQuantity = useProductQuantitySubtract();
   const updateProductList = useProductListUpdate();
 
   const updateSearchResult = (result) => {
@@ -24,7 +24,7 @@ const ProductList = () => {
   };
 
   const productClickedHandler = (productName, productPrice) => {
-    updateProductQuantity(productName);
+    subtractProductQuantity(productName);
     updateProductList(productName, productPrice);
   };
 
