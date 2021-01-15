@@ -24,6 +24,8 @@
 .checkout-btn {
   cursor: pointer;
   font-size: 1.5vw;
+  background-color: rgb(255, 233, 191);
+  border: 1px solid orange;
 }
 
 .subtotal-item {
