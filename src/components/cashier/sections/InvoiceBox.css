@@ -10,7 +10,7 @@
   grid-template-columns: 50% 25% 25%;
   align-content: center;
   padding: 0 20px;
-  background-color: lightgray;
+  background-color: rgb(170, 170, 170);
 }
 
 .invoice-topbar div {
@@ -19,10 +19,10 @@
 
 .invoice-midbar {
   display: grid;
-  grid-template-columns: 10% 55% 10% 25%;
+  grid-template-columns: 10% 50% 10% 20% 10%;
   align-content: center;
   justify-items: center;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(213, 213, 213);
 }
 
 .invoice-body-empty {
@@ -32,4 +32,5 @@
   justify-content: center;
   color: grey;
   font-size: 6vw;
+  border: 1px solid gray;
 }
