@@ -5,9 +5,9 @@ import {
   useProductListClear
 } from '../../../context/ProductContext';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import InvoiceBoxItem from './InvoiceBoxItem';
+import GrossDiscountModal from './GrossDiscountModal';
 
 const InvoiceBox = () => {
   const clearProductList = useProductListClear();
@@ -23,11 +23,7 @@ const InvoiceBox = () => {
           <DeleteForeverIcon />
           &nbsp; CLEAR CART
         </div>
-        <div
-          style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-          <LoyaltyIcon />
-          &nbsp; GROSS DISCOUNT
-        </div>
+        <GrossDiscountModal />
       </div>
       <div className='invoice-midbar'>
         <div>#</div>

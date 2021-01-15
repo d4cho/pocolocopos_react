@@ -9,9 +9,11 @@ import {
 } from '../../../context/ProductContext';
 
 import Search from '../../search/Search';
+import AlertModal from '../../utility/AlertModal';
 
 const ProductList = () => {
   const [searchResult, setSearchResult] = useState('');
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const selectedCategory = useCategory();
   const productData = useProductData();
@@ -28,13 +30,17 @@ const ProductList = () => {
     updateProductList(productName, productPrice);
   };
 
+  const errorModalClosed = () => {
+    setShowErrorModal(false);
+  };
+
   const productCard = (product) => {
     if (product.quantity === 0) {
       return (
         <div
           key={product.name}
           className='outOfStock-product'
-          onClick={() => alert('This product is out of stock.')}>
+          onClick={() => setShowErrorModal(true)}>
           <img
             className='image-product'
             src={product.image}
@@ -98,6 +104,12 @@ const ProductList = () => {
       <div className='item-category-box-container-product'>
         {renderProductCards()}
       </div>
+      {showErrorModal && (
+        <AlertModal
+          errorModalClosed={errorModalClosed}
+          msg='This product is out of stock.'
+        />
+      )}
     </div>
   );
 };
