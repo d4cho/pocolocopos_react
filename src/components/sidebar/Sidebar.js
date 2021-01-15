@@ -39,7 +39,7 @@ const Sidebar = (props) => {
         className='sidebar-grid-item grid-item-home'
         style={menuClicked === 1 ? divStyle.selected : divStyle.notSelected}
         onClick={menuClickedHandler}>
-        <HomeIcon />
+        <HomeIcon fontSize='large' />
         HOME
       </div>
       <div
@@ -47,7 +47,7 @@ const Sidebar = (props) => {
         className='sidebar-grid-item grid-item'
         style={menuClicked === 2 ? divStyle.selected : divStyle.notSelected}
         onClick={menuClickedHandler}>
-        <MonetizationOnIcon />
+        <MonetizationOnIcon fontSize='large' />
         CASHIER
       </div>
       <div
@@ -55,7 +55,7 @@ const Sidebar = (props) => {
         className='sidebar-grid-item grid-item'
         style={menuClicked === 3 ? divStyle.selected : divStyle.notSelected}
         onClick={menuClickedHandler}>
-        <ReceiptIcon />
+        <ReceiptIcon fontSize='large' />
         INVOICE
       </div>
       <div className='sidebar-grid-item'></div>
