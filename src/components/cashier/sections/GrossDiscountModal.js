@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { usePin } from '../../../context/PinContext';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
@@ -38,7 +40,10 @@ export default function GrossDiscountModal() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
+  const [inputPin, setInputPin] = useState('');
+
+  const pin = usePin();
 
   const handleOpen = () => {
     setOpen(true);
@@ -49,15 +54,27 @@ export default function GrossDiscountModal() {
   };
 
   const submitDiscount = () => {
-    if (error) {
+    if (inputPin !== pin) {
+      console.log(inputPin, pin, 'pin error');
       setShowErrorModal(true);
+      setError(true);
+      setInputPin('');
     } else {
       console.log('data submitted!');
+      setOpen(false);
+      setShowErrorModal(false);
+      setError(false);
+      setInputPin('');
     }
   };
 
   const errorModalClosed = () => {
     setShowErrorModal(false);
+  };
+
+  const inputPinChangeHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setInputPin(e.currentTarget.value);
   };
 
   const body = (
@@ -82,7 +99,14 @@ export default function GrossDiscountModal() {
           variant='outlined'
         />
         <br />
-        <TextField type='password' label='MANAGER PIN' variant='outlined' />
+        <TextField
+          error={error}
+          type='password'
+          label='MANAGER PIN'
+          variant='outlined'
+          value={inputPin}
+          onChange={inputPinChangeHandler}
+        />
         <br />
         <div className={classes.root}>
           <Button variant='outlined' size='large' onClick={handleClose}>
