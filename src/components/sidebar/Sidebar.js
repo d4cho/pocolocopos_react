@@ -12,10 +12,10 @@ const Sidebar = (props) => {
     setMenuClicked(props.displayPage);
   }, [props.displayPage]);
 
-  const menuClickedHandler = (e) => {
-    console.log(e.target.id);
-    setMenuClicked(parseInt(e.target.id));
-    props.refreshFunction(parseInt(e.target.id));
+  const menuClickedHandler = (pageNumber) => {
+    console.log(pageNumber);
+    setMenuClicked(pageNumber);
+    props.refreshFunction(pageNumber);
   };
 
   const divStyle = {
@@ -38,7 +38,7 @@ const Sidebar = (props) => {
         id='1'
         className='sidebar-grid-item grid-item-home'
         style={menuClicked === 1 ? divStyle.selected : divStyle.notSelected}
-        onClick={menuClickedHandler}>
+        onClick={() => menuClickedHandler(1)}>
         <HomeIcon fontSize='large' />
         HOME
       </div>
@@ -46,7 +46,7 @@ const Sidebar = (props) => {
         id='2'
         className='sidebar-grid-item grid-item'
         style={menuClicked === 2 ? divStyle.selected : divStyle.notSelected}
-        onClick={menuClickedHandler}>
+        onClick={() => menuClickedHandler(2)}>
         <MonetizationOnIcon fontSize='large' />
         CASHIER
       </div>
@@ -54,7 +54,7 @@ const Sidebar = (props) => {
         id='3'
         className='sidebar-grid-item grid-item'
         style={menuClicked === 3 ? divStyle.selected : divStyle.notSelected}
-        onClick={menuClickedHandler}>
+        onClick={() => menuClickedHandler(3)}>
         <ReceiptIcon fontSize='large' />
         INVOICE
       </div>

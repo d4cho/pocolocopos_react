@@ -27,14 +27,19 @@ const App = () => {
     }
   };
 
-  if (displayPage === 1) {
-    return <HomePage refreshFunction={displayPageChooser} />;
-  }
-
   return (
-    <div style={{ display: 'flex', height: '100vh', width: '100vw' }}>
-      <Sidebar refreshFunction={displayPageChooser} displayPage={displayPage} />
-      {renderPage()}
+    <div>
+      {displayPage === 1 ? (
+        <HomePage refreshFunction={displayPageChooser} />
+      ) : (
+        <div style={{ display: 'flex', height: '100vh', width: '100vw' }}>
+          <Sidebar
+            refreshFunction={displayPageChooser}
+            displayPage={displayPage}
+          />
+          {renderPage()}
+        </div>
+      )}
     </div>
   );
 };
