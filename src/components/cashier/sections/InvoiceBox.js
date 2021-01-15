@@ -5,6 +5,8 @@ import {
   useProductListClear
 } from '../../../context/ProductContext';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import InvoiceBoxItem from './InvoiceBoxItem';
 
 const InvoiceBox = () => {
@@ -19,9 +21,13 @@ const InvoiceBox = () => {
           style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
           onClick={clearProductList}>
           <DeleteForeverIcon />
-          CLEAR CART
+          &nbsp; CLEAR CART
         </div>
-        <div>GROSS DISCOUNT</div>
+        <div
+          style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+          <LoyaltyIcon />
+          &nbsp; GROSS DISCOUNT
+        </div>
       </div>
       <div className='invoice-midbar'>
         <div>#</div>
@@ -31,8 +37,8 @@ const InvoiceBox = () => {
       </div>
       {productList.length === 0 ? (
         <div className='invoice-body-empty'>
-          <div>icon</div>
-          <div>Add Product To Cart.</div>
+          <AddShoppingCartIcon fontSize='inherit' />
+          <div style={{ fontSize: '2vw' }}>Add Product To Cart.</div>
         </div>
       ) : (
         <InvoiceBoxItem />
