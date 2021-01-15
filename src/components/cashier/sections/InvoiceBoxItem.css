@@ -1,0 +1,26 @@
+.invoiceBoxItem-main-container {
+  display: grid;
+  grid-template-rows: repeat(10, 10%);
+  grid-auto-rows: 10%;
+  overflow-y: scroll;
+  border: 1px solid gray;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.invoiceBoxItem-main-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.invoiceBoxItem-main-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.invoiceBoxItem-sub-container {
+  display: grid;
+  grid-template-columns: 10% 50% 10% 20% 10%;
+  align-content: center;
+  justify-items: center;
+  background-color: rgb(240, 240, 240);
+}
