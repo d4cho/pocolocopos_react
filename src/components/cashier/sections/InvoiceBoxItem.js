@@ -12,18 +12,22 @@ const InvoiceBoxItem = () => {
   const addProductQuantity = useProductQuantityAdd();
   const ProductListUpdate = useProductListUpdate();
 
+  const numberWithCommas = (x) => {
+    return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  const updateProductQtyAndList = (productId, productName, qty, clearItem) => {
+    addProductQuantity(productId, qty);
+    ProductListUpdate(productId, productName, null, clearItem);
+  };
+
   const renderProductList = () =>
     productList.map((item, idx) => {
-      const { productName, productPrice, qty } = item;
+      const { productId, productName, productPrice, qty } = item;
       const itemNumber = idx + 1;
       const backgroundColorDiv = {
         white: { backgroundColor: 'white' },
         gray: { backgroundColor: 'rgb(240, 240, 240)' }
-      };
-
-      const updateProductQtyAndList = (productName, qty, clearItem) => {
-        addProductQuantity(productName, qty);
-        ProductListUpdate(productName, null, clearItem);
       };
 
       return (
@@ -38,12 +42,18 @@ const InvoiceBoxItem = () => {
           <div>{itemNumber}</div>
           <div style={{ justifySelf: 'start' }}>
             {productName.toUpperCase()}
+            <span style={{ color: 'red' }}>
+              {item.discount && item.discount}
+            </span>
           </div>
           <div>{qty}</div>
-          <div>${Math.round(productPrice * 1e2) / 1e2}</div>
+          <div>{numberWithCommas(productPrice)}</div>
+          {/* <div>${Math.round(productPrice * 1e2) / 1e2}</div> */}
           <ClearIcon
             style={{ cursor: 'pointer' }}
-            onClick={() => updateProductQtyAndList(productName, qty, 'one')}
+            onClick={() =>
+              updateProductQtyAndList(productId, productName, qty, 'one')
+            }
           />
         </div>
       );

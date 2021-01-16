@@ -28,7 +28,7 @@ const CheckoutBox = () => {
       setTax(taxValueRounded);
 
       // calculate total value
-      const totalValue = subtotalValue + taxValue;
+      const totalValue = subTotalValueRounded + taxValueRounded;
       const totalValueRounded = Math.round(totalValue * 1e2) / 1e2;
       setTotal(totalValueRounded);
     } else {

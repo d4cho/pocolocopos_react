@@ -25,9 +25,9 @@ const ProductList = () => {
     console.log(result);
   };
 
-  const productClickedHandler = (productName, productPrice) => {
-    subtractProductQuantity(productName);
-    updateProductList(productName, productPrice);
+  const productClickedHandler = (productId, productName, productPrice) => {
+    subtractProductQuantity(productId);
+    updateProductList(productId, productName, productPrice);
   };
 
   const errorModalClosed = () => {
@@ -57,7 +57,9 @@ const ProductList = () => {
       <div
         key={product.name}
         className='item-category-box-product'
-        onClick={() => productClickedHandler(product.name, product.price)}>
+        onClick={() =>
+          productClickedHandler(product.id, product.name, product.price)
+        }>
         <img
           className='image-product'
           src={product.image}

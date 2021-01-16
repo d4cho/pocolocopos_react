@@ -46,10 +46,10 @@ export const ProductProvider = ({ children }) => {
   console.log('productList', productList);
 
   // function to subtract the quantity of a certain product
-  const subtractQuantity = (productName) => {
+  const subtractQuantity = (productId) => {
     const updatedProductData = [...productData];
     updatedProductData.forEach((product) => {
-      if (product.name === productName) {
+      if (product.id === productId) {
         product.quantity -= 1;
       }
     });
@@ -57,10 +57,10 @@ export const ProductProvider = ({ children }) => {
   };
 
   // function to add the quantity of a certain product
-  const addQuantity = (productName, qty) => {
+  const addQuantity = (productId, qty) => {
     const updatedProductData = [...productData];
     updatedProductData.forEach((product) => {
-      if (product.name === productName) {
+      if (product.id === productId) {
         product.quantity = product.quantity + qty;
       }
     });
@@ -69,17 +69,27 @@ export const ProductProvider = ({ children }) => {
 
   // add/remove items to/from product list
   // clearItem can be 'all' or 'one'
-  const updateProductList = (productName, productPrice, clearItem) => {
+  const updateProductList = (
+    productId,
+    productName,
+    productPrice,
+    clearItem
+  ) => {
     // index of product in array
     let indexInArray = productList.findIndex(
-      (item) => item.productName === productName
+      (item) => item.productId === productId
     );
     let updatedProductList = [...productList];
     let updatedItem = { ...productList[indexInArray] };
 
     if (productList.length === 0) {
       // if the list is empty, add product to list
-      let listItem = { productName, qty: 1, productPrice: productPrice };
+      let listItem = {
+        productId,
+        productName,
+        qty: 1,
+        productPrice: productPrice
+      };
       setProductList([...productList, listItem]);
     } else if (productList.length > 0 && indexInArray !== -1) {
       // if the list is not empty, and product is already in list
@@ -90,7 +100,7 @@ export const ProductProvider = ({ children }) => {
       setProductList(updatedProductList);
     } else {
       // if the list is not empty, and is not already in list, add to list
-      let listItem = { productName, qty: 1, productPrice };
+      let listItem = { productId, productName, qty: 1, productPrice };
       setProductList([...productList, listItem]);
     }
 
@@ -102,14 +112,16 @@ export const ProductProvider = ({ children }) => {
   };
 
   const clearProductList = () => {
-    productList.forEach((item) => addQuantity(item.productName, item.qty));
+    productList.forEach((item) => addQuantity(item.productId, item.qty));
     setProductList([]);
   };
 
   const applyDiscount = (discount) => {
     const discountedProductList = productList.map((item) => {
       return {
-        productName: item.productName + ` (${discount}% D/C)`,
+        ...item,
+        productName: item.productName,
+        discount: ` (${discount}% D/C)`,
         productPrice: item.productPrice * (1 - discount / 100),
         qty: item.qty
       };

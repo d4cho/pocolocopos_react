@@ -45,7 +45,7 @@ export default function GrossDiscountModal() {
   const [open, setOpen] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [error, setError] = useState(false);
-  const [discount, setDiscount] = useState(null);
+  const [discount, setDiscount] = useState(0);
   const [inputPin, setInputPin] = useState('');
   const [emptyCart, setEmptyCart] = useState(false);
 
