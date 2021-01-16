@@ -40,7 +40,7 @@ const InvoiceBoxItem = () => {
             {productName.toUpperCase()}
           </div>
           <div>{qty}</div>
-          <div>${productPrice.toLocaleString()}</div>
+          <div>${Math.round(productPrice * 1e2) / 1e2}</div>
           <ClearIcon
             style={{ cursor: 'pointer' }}
             onClick={() => updateProductQtyAndList(productName, qty, 'one')}
