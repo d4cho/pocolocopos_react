@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { usePin } from '../../../context/PinContext';
+import {
+  useProductList,
+  useApplyGrossDiscount
+} from '../../../context/ProductContext';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -41,12 +45,20 @@ export default function GrossDiscountModal() {
   const [open, setOpen] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [error, setError] = useState(false);
+  const [discount, setDiscount] = useState(null);
   const [inputPin, setInputPin] = useState('');
+  const [emptyCart, setEmptyCart] = useState(false);
 
   const pin = usePin();
+  const productList = useProductList();
+  const applyDiscount = useApplyGrossDiscount();
 
   const handleOpen = () => {
-    setOpen(true);
+    if (productList.length === 0) {
+      setEmptyCart(true);
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -60,21 +72,28 @@ export default function GrossDiscountModal() {
       setError(true);
       setInputPin('');
     } else {
-      console.log('data submitted!');
+      console.log('discount applied!');
+      applyDiscount(discount);
       setOpen(false);
       setShowErrorModal(false);
       setError(false);
+      setDiscount(null);
       setInputPin('');
     }
   };
 
   const errorModalClosed = () => {
+    setEmptyCart(false);
     setShowErrorModal(false);
   };
 
   const inputPinChangeHandler = (e) => {
     console.log(e.currentTarget.value);
     setInputPin(e.currentTarget.value);
+  };
+
+  const discountChangeHandler = (e) => {
+    setDiscount(e.currentTarget.value);
   };
 
   const body = (
@@ -97,6 +116,8 @@ export default function GrossDiscountModal() {
           type='number'
           label='DISCOUNT %'
           variant='outlined'
+          value={discount}
+          onChange={discountChangeHandler}
         />
         <br />
         <TextField
@@ -132,6 +153,12 @@ export default function GrossDiscountModal() {
         <LoyaltyIcon />
         &nbsp; GROSS DISCOUNT
       </div>
+      {emptyCart && (
+        <AlertModal
+          errorModalClosed={errorModalClosed}
+          msg='The cart is empty. Add product(s) to cart.'
+        />
+      )}
       <Modal open={open} onClose={handleClose}>
         {body}
       </Modal>

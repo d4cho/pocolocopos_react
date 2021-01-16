@@ -7,6 +7,7 @@ const ProductQuantityAdd = React.createContext();
 const ProductList = React.createContext();
 const ProductListUpdate = React.createContext();
 const ProductListClear = React.createContext();
+const ApplyGrossDiscount = React.createContext();
 
 export const useProductData = () => {
   return useContext(ProductContext);
@@ -30,6 +31,10 @@ export const useProductListUpdate = () => {
 
 export const useProductListClear = () => {
   return useContext(ProductListClear);
+};
+
+export const useApplyGrossDiscount = () => {
+  return useContext(ApplyGrossDiscount);
 };
 
 export const ProductProvider = ({ children }) => {
@@ -101,6 +106,17 @@ export const ProductProvider = ({ children }) => {
     setProductList([]);
   };
 
+  const applyDiscount = (discount) => {
+    const discountedProductList = productList.map((item) => {
+      return {
+        productName: item.productName + ` (${discount}% D/C)`,
+        productPrice: item.productPrice * (1 - discount / 100),
+        qty: item.qty
+      };
+    });
+    setProductList(discountedProductList);
+  };
+
   return (
     <ProductContext.Provider value={productData}>
       <ProductQuantitySubtract.Provider value={subtractQuantity}>
@@ -108,7 +124,9 @@ export const ProductProvider = ({ children }) => {
           <ProductList.Provider value={productList}>
             <ProductListUpdate.Provider value={updateProductList}>
               <ProductListClear.Provider value={clearProductList}>
-                {children}
+                <ApplyGrossDiscount.Provider value={applyDiscount}>
+                  {children}
+                </ApplyGrossDiscount.Provider>
               </ProductListClear.Provider>
             </ProductListUpdate.Provider>
           </ProductList.Provider>
