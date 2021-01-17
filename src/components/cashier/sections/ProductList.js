@@ -7,6 +7,7 @@ import {
   useProductQuantitySubtract,
   useProductListUpdate
 } from '../../../context/ProductContext';
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 
 import Search from '../../search/Search';
 import AlertModal from '../../utility/AlertModal';
@@ -34,13 +35,24 @@ const ProductList = () => {
     setShowErrorModal(false);
   };
 
+  const attributeProductClicked = () => {
+    console.log('attribute clicked');
+  };
+
   const productCard = (product) => {
+    console.log(product);
     if (product.quantity === 0) {
       return (
         <div
           key={product.name}
           className='outOfStock-product'
           onClick={() => setShowErrorModal(true)}>
+          {product.attribute && (
+            <AddToPhotosIcon
+              htmlColor='red'
+              style={{ alignSelf: 'flex-end', paddingRight: '4px' }}
+            />
+          )}
           <img
             className='image-product'
             src={product.image}
@@ -57,9 +69,18 @@ const ProductList = () => {
       <div
         key={product.name}
         className='item-category-box-product'
-        onClick={() =>
-          productClickedHandler(product.id, product.name, product.price)
+        onClick={
+          product.attribute
+            ? () => attributeProductClicked()
+            : () =>
+                productClickedHandler(product.id, product.name, product.price)
         }>
+        {product.attribute && (
+          <AddToPhotosIcon
+            htmlColor='red'
+            style={{ alignSelf: 'flex-end', padding: '2px 4px 0 0' }}
+          />
+        )}
         <img
           className='image-product'
           src={product.image}
