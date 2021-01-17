@@ -11,10 +11,12 @@ import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 
 import Search from '../../search/Search';
 import AlertModal from '../../utility/AlertModal';
+import AttributeModal from './AttributeModal';
 
 const ProductList = () => {
   const [searchResult, setSearchResult] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showAttributeModal, setShowAttributeModal] = useState(false);
 
   const selectedCategory = useCategory();
   const productData = useProductData();
@@ -35,8 +37,8 @@ const ProductList = () => {
     setShowErrorModal(false);
   };
 
-  const attributeProductClicked = () => {
-    console.log('attribute clicked');
+  const attributeModalClosed = () => {
+    setShowAttributeModal(false);
   };
 
   const productCard = (product) => {
@@ -71,7 +73,7 @@ const ProductList = () => {
         className='item-category-box-product'
         onClick={
           product.attribute
-            ? () => attributeProductClicked()
+            ? () => setShowAttributeModal(true)
             : () =>
                 productClickedHandler(product.id, product.name, product.price)
         }>
@@ -132,6 +134,9 @@ const ProductList = () => {
           errorModalClosed={errorModalClosed}
           msg='This product is out of stock.'
         />
+      )}
+      {showAttributeModal && (
+        <AttributeModal attributeModalClosed={attributeModalClosed} />
       )}
     </div>
   );
