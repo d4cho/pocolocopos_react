@@ -17,6 +17,7 @@ const ProductList = () => {
   const [searchResult, setSearchResult] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [showAttributeModal, setShowAttributeModal] = useState(false);
+  const [productWithAttributeData, setProductWithAttributeData] = useState({});
 
   const selectedCategory = useCategory();
   const productData = useProductData();
@@ -37,12 +38,16 @@ const ProductList = () => {
     setShowErrorModal(false);
   };
 
+  const productWithAttributeClicked = (product) => {
+    setProductWithAttributeData(product);
+    setShowAttributeModal(true);
+  };
+
   const attributeModalClosed = () => {
     setShowAttributeModal(false);
   };
 
   const productCard = (product) => {
-    console.log(product);
     if (product.quantity === 0) {
       return (
         <div
@@ -73,7 +78,7 @@ const ProductList = () => {
         className='item-category-box-product'
         onClick={
           product.attribute
-            ? () => setShowAttributeModal(true)
+            ? () => productWithAttributeClicked(product)
             : () =>
                 productClickedHandler(product.id, product.name, product.price)
         }>
@@ -136,7 +141,10 @@ const ProductList = () => {
         />
       )}
       {showAttributeModal && (
-        <AttributeModal attributeModalClosed={attributeModalClosed} />
+        <AttributeModal
+          attributeModalClosed={attributeModalClosed}
+          productWithAttributeData={productWithAttributeData}
+        />
       )}
     </div>
   );

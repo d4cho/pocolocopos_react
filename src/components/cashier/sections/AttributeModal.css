@@ -1,0 +1,61 @@
+.attribute-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.attribute-product-name {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 30px 0;
+}
+
+.attribute-subheading {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.attribute-container {
+  padding: 10px 10px;
+}
+
+.attribute-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border: 1px solid lightgray;
+  font-weight: bold;
+  background-color: rgb(237, 237, 237);
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.attribute-input-comment {
+  width: 95%;
+  border: 1px solid lightgray;
+  font-size: 1.2rem;
+  padding: 15px;
+}
+
+.attribute-input-quantity {
+  width: 65%;
+  border: 1px solid lightgray;
+  font-size: 1.2rem;
+  padding: 15px;
+  text-align: center;
+}
+
+.attribute-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 0;
+}
