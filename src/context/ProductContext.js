@@ -73,7 +73,8 @@ export const ProductProvider = ({ children }) => {
     productId,
     productName,
     productPrice,
-    clearItem
+    clearItem,
+    quantity
   ) => {
     // index of product in array
     let indexInArray = productList.findIndex(

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import './AttributeModal.css';
+import { useProductListUpdate } from '../../../context/ProductContext';
 
 const modalPositionStyle = {
   top: `50%`,
@@ -30,7 +31,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AttributeModal(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [optionOneChosen, setOptionOneChosen] = useState(false);
+  const [optionTwoChosen, setOptionTwoChosen] = useState(false);
+
+  const addItemToProductList = useProductListUpdate();
 
   console.log(props.productWithAttributeData);
   const {
@@ -49,6 +54,36 @@ export default function AttributeModal(props) {
     props.attributeModalClosed();
   };
 
+  const optionClickedHandler = (option, optionName, optionPrice) => {
+    console.log(option, optionName, optionPrice);
+
+    switch (option) {
+      case 0:
+        if (!optionOneChosen) {
+          setOptionOneChosen(true);
+        } else {
+          setOptionOneChosen(false);
+        }
+        break;
+
+      case 1:
+        if (!optionTwoChosen) {
+          setOptionTwoChosen(true);
+        } else {
+          setOptionTwoChosen(false);
+        }
+        break;
+
+      default:
+        return;
+    }
+  };
+
+  const submitData = () => {
+    handleClose();
+    console.log('added to cart');
+  };
+
   const body = (
     <div style={modalPositionStyle} className={classes.paper}>
       <div className={classes.content}>
@@ -59,14 +94,34 @@ export default function AttributeModal(props) {
           <div>(Choose multiple)</div>
         </div>
         <div className='attribute-container'>
-          {attribute.map((item) => (
-            <>
-              <div className='attribute-item'>
+          {attribute.map((item, idx) => (
+            <div key={idx}>
+              <div
+                className='attribute-item'
+                style={
+                  optionOneChosen && idx === 0
+                    ? { backgroundColor: 'orange' }
+                    : optionTwoChosen && idx === 1
+                    ? { backgroundColor: 'orange' }
+                    : { backgroundColor: 'rgb(237, 237, 237)' }
+                }
+                id={idx}
+                value={item.optionPrice}
+                onClick={() =>
+                  optionClickedHandler(idx, item.optionName, item.optionPrice)
+                }>
                 <div>{item.optionName}</div>
-                <div>+ ${item.optionPrice}</div>
+                <div>
+                  + ${item.optionPrice}
+                  {optionOneChosen && idx === 0 ? (
+                    <span style={{ paddingLeft: '10px' }}>&#10003;</span>
+                  ) : optionTwoChosen && idx === 1 ? (
+                    <span style={{ paddingLeft: '10px' }}>&#10003;</span>
+                  ) : null}
+                </div>
               </div>
               <br />
-            </>
+            </div>
           ))}
         </div>
         <div className='attribute-subheading'>COMMENT</div>
@@ -102,7 +157,11 @@ export default function AttributeModal(props) {
             onClick={handleClose}>
             DISMISS
           </Button>
-          <Button variant='contained' size='large' color='primary'>
+          <Button
+            variant='contained'
+            size='large'
+            color='primary'
+            onClick={submitData}>
             ADD TO CART
           </Button>
         </div>
