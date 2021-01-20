@@ -29,10 +29,6 @@ export default function AlertModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = () => {
     setOpen(false);
     props.errorModalClosed();

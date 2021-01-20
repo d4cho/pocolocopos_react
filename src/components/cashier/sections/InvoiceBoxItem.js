@@ -9,6 +9,9 @@ import ClearIcon from '@material-ui/icons/Clear';
 import CartItemModal from './CartItemModal';
 
 const InvoiceBoxItem = () => {
+  const [openCartItemModal, setOpenCartItemModal] = useState(false);
+  const [itemInfo, setItemInfo] = useState({});
+
   const productList = useProductList();
   const addProductQuantity = useProductQuantityAdd();
   const ProductListUpdate = useProductListUpdate();
@@ -22,7 +25,14 @@ const InvoiceBoxItem = () => {
     ProductListUpdate(productId, productName, null, clearItem, 1);
   };
 
-  const openCarItemModal = () => {};
+  const openCartItemModalHandler = (value) => {
+    setOpenCartItemModal(value);
+  };
+
+  const itemClickedHandler = (itemNumber, productName, quantity) => {
+    openCartItemModalHandler(true);
+    setItemInfo({ itemNumber, productName, quantity });
+  };
 
   const renderProductList = () =>
     productList.map((item, idx) => {
@@ -41,7 +51,8 @@ const InvoiceBoxItem = () => {
             itemNumber % 2 === 0
               ? backgroundColorDiv.gray
               : backgroundColorDiv.white
-          }>
+          }
+          onClick={() => itemClickedHandler(itemNumber, productName, qty)}>
           <div>{itemNumber}</div>
           <div style={{ justifySelf: 'start' }}>
             {productName.toUpperCase()}
@@ -64,7 +75,15 @@ const InvoiceBoxItem = () => {
     });
 
   return (
-    <div className='invoiceBoxItem-main-container'>{renderProductList()}</div>
+    <div className='invoiceBoxItem-main-container'>
+      {openCartItemModal && (
+        <CartItemModal
+          openCartItemModalHandler={openCartItemModalHandler}
+          itemInfo={itemInfo}
+        />
+      )}
+      {renderProductList()}
+    </div>
   );
 };
 
