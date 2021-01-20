@@ -46,11 +46,15 @@ export const ProductProvider = ({ children }) => {
   console.log('productList', productList);
 
   // function to subtract the quantity of a certain product
-  const subtractQuantity = (productId) => {
+  const subtractQuantity = (productId, qtyToSubtract) => {
     const updatedProductData = [...productData];
     updatedProductData.forEach((product) => {
       if (product.id === productId) {
-        product.quantity -= 1;
+        if (qtyToSubtract) {
+          product.quantity -= parseInt(qtyToSubtract);
+        } else {
+          product.quantity -= 1;
+        }
       }
     });
     setProductData(updatedProductData);
@@ -76,32 +80,39 @@ export const ProductProvider = ({ children }) => {
     clearItem,
     quantity
   ) => {
+    console.log('quantity', quantity);
     // index of product in array
     let indexInArray = productList.findIndex(
       (item) => item.productId === productId
     );
     let updatedProductList = [...productList];
     let updatedItem = { ...productList[indexInArray] };
+    let parsedQuantity = parseInt(quantity);
 
     if (productList.length === 0) {
       // if the list is empty, add product to list
       let listItem = {
         productId,
         productName,
-        qty: 1,
+        qty: parsedQuantity,
         productPrice: productPrice
       };
       setProductList([...productList, listItem]);
     } else if (productList.length > 0 && indexInArray !== -1) {
       // if the list is not empty, and product is already in list
       // then updated the qty and price
-      updatedItem.qty += 1;
+      updatedItem.qty += parsedQuantity;
       updatedItem.productPrice += productPrice;
       updatedProductList.splice(indexInArray, 1, updatedItem);
       setProductList(updatedProductList);
     } else {
       // if the list is not empty, and is not already in list, add to list
-      let listItem = { productId, productName, qty: 1, productPrice };
+      let listItem = {
+        productId,
+        productName,
+        qty: parsedQuantity,
+        productPrice
+      };
       setProductList([...productList, listItem]);
     }
 

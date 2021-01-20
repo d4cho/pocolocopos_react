@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import './AttributeModal.css';
-import { useProductListUpdate } from '../../../context/ProductContext';
+import {
+  useProductListUpdate,
+  useProductQuantitySubtract
+} from '../../../context/ProductContext';
 
 const modalPositionStyle = {
   top: `50%`,
@@ -34,10 +37,13 @@ export default function AttributeModal(props) {
   const [open, setOpen] = useState(true);
   const [optionOneChosen, setOptionOneChosen] = useState(false);
   const [optionTwoChosen, setOptionTwoChosen] = useState(false);
+  const [selectedQty, setSelectedQty] = useState(1);
+  const [selectedOptionPrice, setSelectedOptionPrice] = useState(0);
 
   const addItemToProductList = useProductListUpdate();
+  const subtractQuantity = useProductQuantitySubtract();
 
-  console.log(props.productWithAttributeData);
+  console.log(selectedOptionPrice);
   const {
     attribute,
     category,
@@ -55,22 +61,24 @@ export default function AttributeModal(props) {
   };
 
   const optionClickedHandler = (option, optionName, optionPrice) => {
-    console.log(option, optionName, optionPrice);
-
     switch (option) {
       case 0:
         if (!optionOneChosen) {
           setOptionOneChosen(true);
+          setSelectedOptionPrice(selectedOptionPrice + optionPrice);
         } else {
           setOptionOneChosen(false);
+          setSelectedOptionPrice(selectedOptionPrice - optionPrice);
         }
         break;
 
       case 1:
         if (!optionTwoChosen) {
           setOptionTwoChosen(true);
+          setSelectedOptionPrice(selectedOptionPrice + optionPrice);
         } else {
           setOptionTwoChosen(false);
+          setSelectedOptionPrice(selectedOptionPrice - optionPrice);
         }
         break;
 
@@ -79,9 +87,15 @@ export default function AttributeModal(props) {
     }
   };
 
+  const selectedQtyChangeHandler = (event) => {
+    setSelectedQty(event.currentTarget.value);
+  };
+
   const submitData = () => {
+    const totalPrice = selectedQty * (price + selectedOptionPrice);
     handleClose();
-    console.log('added to cart');
+    subtractQuantity(id, selectedQty);
+    addItemToProductList(id, name, totalPrice, null, selectedQty);
   };
 
   const body = (
@@ -147,6 +161,9 @@ export default function AttributeModal(props) {
             className='attribute-input-quantity'
             type='number'
             placeholder='1'
+            value={selectedQty}
+            onChange={selectedQtyChangeHandler}
+            max={quantity}
           />
         </div>
         <div className='attribute-buttons-container'>

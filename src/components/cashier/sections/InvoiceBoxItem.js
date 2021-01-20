@@ -18,7 +18,7 @@ const InvoiceBoxItem = () => {
 
   const updateProductQtyAndList = (productId, productName, qty, clearItem) => {
     addProductQuantity(productId, qty);
-    ProductListUpdate(productId, productName, null, clearItem);
+    ProductListUpdate(productId, productName, null, clearItem, 1);
   };
 
   const renderProductList = () =>

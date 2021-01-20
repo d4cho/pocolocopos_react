@@ -31,7 +31,7 @@ const ProductList = () => {
 
   const productClickedHandler = (productId, productName, productPrice) => {
     subtractProductQuantity(productId);
-    updateProductList(productId, productName, productPrice);
+    updateProductList(productId, productName, productPrice, null, 1);
   };
 
   const errorModalClosed = () => {
