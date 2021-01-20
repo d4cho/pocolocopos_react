@@ -157,7 +157,9 @@ export default function CartItemModal(props) {
               alignItems: 'center'
             }}>
             <div style={subtitleStyle}>MODIFY QUANTITY</div>
-            <Button color='secondary'>REMOVE ITEM</Button>
+            <Button color='secondary' onClick={handleSubmit}>
+              REMOVE ITEM
+            </Button>
           </div>
           <div style={boxStyle}>
             <div>Quantity</div>
