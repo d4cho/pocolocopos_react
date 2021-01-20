@@ -8,6 +8,7 @@ const ProductList = React.createContext();
 const ProductListUpdate = React.createContext();
 const ProductListClear = React.createContext();
 const ApplyGrossDiscount = React.createContext();
+// const ApplyAttributeName = React.createContext();
 
 export const useProductData = () => {
   return useContext(ProductContext);
@@ -36,6 +37,10 @@ export const useProductListClear = () => {
 export const useApplyGrossDiscount = () => {
   return useContext(ApplyGrossDiscount);
 };
+
+// export const useApplyAttributeName = () => {
+//   return useContext(ApplyAttributeName);
+// };
 
 export const ProductProvider = ({ children }) => {
   // state of all products
@@ -78,7 +83,8 @@ export const ProductProvider = ({ children }) => {
     productName,
     productPrice,
     clearItem,
-    quantity
+    quantity,
+    attributeName
   ) => {
     console.log('quantity', quantity);
     // index of product in array
@@ -89,29 +95,21 @@ export const ProductProvider = ({ children }) => {
     let updatedItem = { ...productList[indexInArray] };
     let parsedQuantity = parseInt(quantity);
 
-    if (productList.length === 0) {
-      // if the list is empty, add product to list
-      let listItem = {
-        productId,
-        productName,
-        qty: parsedQuantity,
-        productPrice: productPrice
-      };
-      setProductList([...productList, listItem]);
-    } else if (productList.length > 0 && indexInArray !== -1) {
-      // if the list is not empty, and product is already in list
+    if (productList.length > 0 && indexInArray !== -1) {
+      // if product is already in list
       // then updated the qty and price
       updatedItem.qty += parsedQuantity;
       updatedItem.productPrice += productPrice;
       updatedProductList.splice(indexInArray, 1, updatedItem);
       setProductList(updatedProductList);
     } else {
-      // if the list is not empty, and is not already in list, add to list
+      // if product is not already in list, add to list
       let listItem = {
         productId,
         productName,
         qty: parsedQuantity,
-        productPrice
+        productPrice,
+        attributeName
       };
       setProductList([...productList, listItem]);
     }
@@ -141,6 +139,10 @@ export const ProductProvider = ({ children }) => {
     setProductList(discountedProductList);
   };
 
+  // const applyAttribute = (attributeName) => {
+  //   const attributedProductList =
+  // }
+
   return (
     <ProductContext.Provider value={productData}>
       <ProductQuantitySubtract.Provider value={subtractQuantity}>
@@ -149,7 +151,9 @@ export const ProductProvider = ({ children }) => {
             <ProductListUpdate.Provider value={updateProductList}>
               <ProductListClear.Provider value={clearProductList}>
                 <ApplyGrossDiscount.Provider value={applyDiscount}>
+                  {/* <ApplyAttributeName.Provider value={applyAttribute}> */}
                   {children}
+                  {/* </ApplyAttributeName.Provider> */}
                 </ApplyGrossDiscount.Provider>
               </ProductListClear.Provider>
             </ProductListUpdate.Provider>
