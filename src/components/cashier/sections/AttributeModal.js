@@ -39,6 +39,7 @@ export default function AttributeModal(props) {
   const [optionTwoChosen, setOptionTwoChosen] = useState(false);
   const [selectedQty, setSelectedQty] = useState(1);
   const [selectedOptionPrice, setSelectedOptionPrice] = useState(0);
+  const [selectedOptionName, setSelectedOptionName] = useState('');
 
   const addItemToProductList = useProductListUpdate();
   const subtractQuantity = useProductQuantitySubtract();
@@ -66,9 +67,11 @@ export default function AttributeModal(props) {
         if (!optionOneChosen) {
           setOptionOneChosen(true);
           setSelectedOptionPrice(selectedOptionPrice + optionPrice);
+          setSelectedOptionName(optionName);
         } else {
           setOptionOneChosen(false);
           setSelectedOptionPrice(selectedOptionPrice - optionPrice);
+          setSelectedOptionName('');
         }
         break;
 
@@ -76,9 +79,11 @@ export default function AttributeModal(props) {
         if (!optionTwoChosen) {
           setOptionTwoChosen(true);
           setSelectedOptionPrice(selectedOptionPrice + optionPrice);
+          setSelectedOptionName(optionName);
         } else {
           setOptionTwoChosen(false);
           setSelectedOptionPrice(selectedOptionPrice - optionPrice);
+          setSelectedOptionName('');
         }
         break;
 
@@ -95,7 +100,14 @@ export default function AttributeModal(props) {
     const totalPrice = selectedQty * (price + selectedOptionPrice);
     handleClose();
     subtractQuantity(id, selectedQty);
-    addItemToProductList(id, name, totalPrice, null, selectedQty);
+    addItemToProductList(
+      id,
+      name,
+      totalPrice,
+      null,
+      selectedQty,
+      selectedOptionName
+    );
   };
 
   const body = (

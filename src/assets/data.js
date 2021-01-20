@@ -109,6 +109,7 @@ const productData = [
     price: 1234.99,
     discount: '',
     quantity: 5,
+    attributeName: '',
     attribute: [
       { optionName: '2G', optionPrice: 18.99 },
       { optionName: '4G', optionPrice: 24.99 }

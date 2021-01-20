@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InvoiceBoxItem.css';
 import {
   useProductList,
@@ -6,6 +6,7 @@ import {
   useProductListUpdate
 } from '../../../context/ProductContext';
 import ClearIcon from '@material-ui/icons/Clear';
+import CartItemModal from './CartItemModal';
 
 const InvoiceBoxItem = () => {
   const productList = useProductList();
@@ -20,6 +21,8 @@ const InvoiceBoxItem = () => {
     addProductQuantity(productId, qty);
     ProductListUpdate(productId, productName, null, clearItem, 1);
   };
+
+  const openCarItemModal = () => {};
 
   const renderProductList = () =>
     productList.map((item, idx) => {
@@ -42,6 +45,7 @@ const InvoiceBoxItem = () => {
           <div>{itemNumber}</div>
           <div style={{ justifySelf: 'start' }}>
             {productName.toUpperCase()}
+            <span>{item.attributeName && ` - ${item.attributeName}`}</span>
             <span style={{ color: 'red' }}>
               {item.discount && item.discount}
             </span>
