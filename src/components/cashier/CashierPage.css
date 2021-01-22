@@ -16,3 +16,8 @@
   grid-template-rows: 34vh 60vh;
   row-gap: 1vh;
 }
+
+.checkout-sub-grid-container-right {
+  display: grid;
+  grid-template-rows: 95vh;
+}

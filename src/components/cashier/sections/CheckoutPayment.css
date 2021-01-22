@@ -1,0 +1,33 @@
+.checkoutPayment-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+}
+
+.checkoutPayment-sub-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  border: 1px solid lightgray;
+  width: 30vw;
+  height: 85vh;
+}
+
+.checkoutPayment-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkoutPayment-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.checkoutPayment-methods {
+  display: flex;
+  justify-content: center;
+}

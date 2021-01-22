@@ -8,9 +8,11 @@ import CategoryList from './sections/CategoryList';
 import ProductList from './sections/ProductList';
 import InvoiceBox from './sections/InvoiceBox';
 import CheckoutBox from './sections/CheckoutBox';
+import CheckoutPayment from './sections/CheckoutPayment';
 
 const CashierPage = () => {
   const [categoryList, setCategoryList] = useState([]);
+  const [showCheckout, setShowCheckout] = useState(false);
 
   console.log(productData);
 
@@ -27,19 +29,35 @@ const CashierPage = () => {
     setCategoryList(uniqueCategoriesWithAll);
   };
 
+  const showCheckoutHandler = () => {
+    setShowCheckout(!showCheckout);
+  };
+
   return (
     <CategoryProvider>
       <ProductProvider>
-        <div className='main-grid-container'>
-          <div className='sub-grid-container-left'>
-            <InvoiceBox />
-            <CheckoutBox />
+        {showCheckout ? (
+          <div className='main-grid-container'>
+            <div className='sub-grid-container-left'>
+              <InvoiceBox />
+              <CheckoutBox showCheckoutHandler={showCheckoutHandler} />
+            </div>
+            <div className='checkout-sub-grid-container-right'>
+              <CheckoutPayment showCheckoutHandler={showCheckoutHandler} />
+            </div>
           </div>
-          <div className='sub-grid-container-right'>
-            <CategoryList categoryList={categoryList} />
-            <ProductList />
+        ) : (
+          <div className='main-grid-container'>
+            <div className='sub-grid-container-left'>
+              <InvoiceBox />
+              <CheckoutBox showCheckoutHandler={showCheckoutHandler} />
+            </div>
+            <div className='sub-grid-container-right'>
+              <CategoryList categoryList={categoryList} />
+              <ProductList />
+            </div>
           </div>
-        </div>
+        )}
       </ProductProvider>
     </CategoryProvider>
   );

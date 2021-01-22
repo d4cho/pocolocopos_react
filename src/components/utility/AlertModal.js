@@ -53,16 +53,8 @@ export default function AlertModal(props) {
   );
 
   return (
-    <div>
-      {/* <div
-        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-        onClick={handleOpen}>
-        <LoyaltyIcon />
-        &nbsp; GROSS DISCOUNT
-      </div> */}
-      <Modal open={open} onClose={handleClose}>
-        {body}
-      </Modal>
-    </div>
+    <Modal open={open} onClose={handleClose}>
+      {body}
+    </Modal>
   );
 }

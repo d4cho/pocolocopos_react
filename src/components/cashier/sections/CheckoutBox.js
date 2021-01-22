@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './CheckoutBox.css';
 import { useProductList } from '../../../context/ProductContext';
+import AlertModal from '../../utility/AlertModal';
 
-const CheckoutBox = () => {
+const CheckoutBox = (props) => {
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   const productList = useProductList();
 
@@ -38,6 +40,14 @@ const CheckoutBox = () => {
     }
   }, [productList]);
 
+  const showAlertHandler = () => {
+    setShowAlert(true);
+  };
+
+  const errorModalClosed = () => {
+    setShowAlert(false);
+  };
+
   return (
     <div className='checkout-container'>
       <div className='checkout-total-container'>
@@ -55,7 +65,25 @@ const CheckoutBox = () => {
           <strong>${numberWithCommas(total)}</strong>
         </div>
       </div>
-      <button className='checkout-btn'>CHECKOUT</button>
+
+      {productList.length > 0 ? (
+        <button className='checkout-btn' onClick={props.showCheckoutHandler}>
+          CHECKOUT
+        </button>
+      ) : (
+        <button
+          className='checkout-btn'
+          style={{ backgroundColor: 'lightgray', border: '1px solid gray' }}
+          onClick={showAlertHandler}>
+          CHECKOUT
+        </button>
+      )}
+      {showAlert && (
+        <AlertModal
+          errorModalClosed={errorModalClosed}
+          msg='The cart is empty. Add product(s) to cart.'
+        />
+      )}
     </div>
   );
 };
