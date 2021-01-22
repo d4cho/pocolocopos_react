@@ -22,12 +22,39 @@
   align-items: center;
 }
 
-.checkoutPayment-buttons {
+.checkoutPayment-price {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  height: 15vh;
+  font-size: 3vw;
+}
+
+.checkoutPayment-dollars {
+  display: grid;
+  grid-template-columns: repeat(6, 4.9vw);
+  column-gap: 0.1vw;
+  height: 4.9vw;
+}
+
+.checkoutPayment-dollars > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 4.9vw;
+  height: 4.9vw;
 }
 
 .checkoutPayment-methods {
   display: flex;
   justify-content: center;
+  border: 1px solid lightgray;
+  background-color: lightgray;
+}
+
+.checkoutPayment-buttons {
+  display: flex;
+  justify-content: space-evenly;
 }

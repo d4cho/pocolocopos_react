@@ -35,7 +35,7 @@ const CheckoutPayment = (props) => {
           />
         </div>
         <div>
-          <div>
+          <div className='checkoutPayment-methods'>
             <RadioGroup
               row
               aria-label='paymentMethod'
@@ -64,9 +64,24 @@ const CheckoutPayment = (props) => {
               />
             </RadioGroup>
           </div>
-          <div>$ 0.00</div>
-          <div>2, 5, 10, 20, 50, 100</div>
-          <div>7, 8, 9, C</div>
+          <div className='checkoutPayment-price'>
+            <div>$</div>
+            <div>0.00</div>
+          </div>
+          <div className='checkoutPayment-dollars'>
+            <div>$2</div>
+            <div>$5</div>
+            <div>$10</div>
+            <div>$20</div>
+            <div>$50</div>
+            <div>$100</div>
+          </div>
+          <div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>C</div>
+          </div>
           <div>4, 5, 6, arrow</div>
           <div>1, 2, 3, coupon icon</div>
           <div>00, 0, E/A</div>
