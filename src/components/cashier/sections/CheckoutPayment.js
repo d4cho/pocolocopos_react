@@ -76,15 +76,29 @@ const CheckoutPayment = (props) => {
             <div>$50</div>
             <div>$100</div>
           </div>
-          <div>
+          <div className='checkoutPayment-789'>
             <div>7</div>
             <div>8</div>
             <div>9</div>
-            <div>C</div>
+            <div style={{ border: '1px solid red' }}>C</div>
           </div>
-          <div>4, 5, 6, arrow</div>
-          <div>1, 2, 3, coupon icon</div>
-          <div>00, 0, E/A</div>
+          <div className='checkoutPayment-456'>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>arrow</div>
+          </div>
+          <div className='checkoutPayment-123'>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div style={{ border: '1px solid black' }}>coupon</div>
+          </div>
+          <div className='checkoutPayment-000'>
+            <span className='checkoutPayment-child-00'>00</span>
+            <div>0</div>
+            <div>E/A</div>
+          </div>
         </div>
         <div className='checkoutPayment-buttons'>
           <Button

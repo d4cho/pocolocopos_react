@@ -47,6 +47,84 @@
   height: 4.9vw;
 }
 
+.checkoutPayment-789 {
+  display: grid;
+  grid-template-columns: repeat(4, 7.5vw);
+  column-gap: 0.1vw;
+  height: 5vw;
+  padding-top: 5px;
+}
+
+.checkoutPayment-789 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 7.2vw;
+  height: 5vw;
+}
+
+.checkoutPayment-456 {
+  display: grid;
+  grid-template-columns: repeat(4, 7.5vw);
+  column-gap: 0.1vw;
+  height: 5vw;
+  padding-top: 5px;
+}
+
+.checkoutPayment-456 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 7.2vw;
+  height: 5vw;
+}
+
+.checkoutPayment-123 {
+  display: grid;
+  grid-template-columns: repeat(4, 7.5vw);
+  column-gap: 0.1vw;
+  height: 5vw;
+  padding-top: 5px;
+}
+
+.checkoutPayment-123 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 7.2vw;
+  height: 5vw;
+}
+
+.checkoutPayment-000 {
+  display: grid;
+  grid-template-columns: repeat(4, 7.5vw);
+  column-gap: 0.1vw;
+  height: 5vw;
+  padding-top: 5px;
+}
+
+.checkoutPayment-child-00 {
+  grid-column: 1/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 14.8vw;
+  height: 5vw;
+}
+
+.checkoutPayment-000 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: 7.2vw;
+  height: 5vw;
+}
+
 .checkoutPayment-methods {
   display: flex;
   justify-content: center;
@@ -57,4 +135,6 @@
 .checkoutPayment-buttons {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  padding-top: 4vh;
 }
