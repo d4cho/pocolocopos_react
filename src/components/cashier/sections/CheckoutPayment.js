@@ -5,10 +5,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import RedeemIcon from '@material-ui/icons/Redeem';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('cash');
+  console.log(multipaymentChecked, paymentMethod);
 
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
@@ -65,16 +68,16 @@ const CheckoutPayment = (props) => {
             </RadioGroup>
           </div>
           <div className='checkoutPayment-price'>
-            <div>$</div>
-            <div>0.00</div>
+            <div style={{ paddingLeft: '2vw' }}>$</div>
+            <div style={{ paddingRight: '2vw' }}>0.00</div>
           </div>
           <div className='checkoutPayment-dollars'>
-            <div>$2</div>
-            <div>$5</div>
-            <div>$10</div>
-            <div>$20</div>
-            <div>$50</div>
-            <div>$100</div>
+            <div style={{ border: '1px solid blue' }}>$2</div>
+            <div style={{ border: '1px solid purple' }}>$5</div>
+            <div style={{ border: '1px solid green' }}>$10</div>
+            <div style={{ border: '1px solid red' }}>$20</div>
+            <div style={{ border: '1px solid brown' }}>$50</div>
+            <div style={{ border: '1px solid orange' }}>$100</div>
           </div>
           <div className='checkoutPayment-789'>
             <div>7</div>
@@ -86,13 +89,17 @@ const CheckoutPayment = (props) => {
             <div>4</div>
             <div>5</div>
             <div>6</div>
-            <div>arrow</div>
+            <div>
+              <KeyboardBackspaceIcon />
+            </div>
           </div>
           <div className='checkoutPayment-123'>
             <div>1</div>
             <div>2</div>
             <div>3</div>
-            <div style={{ border: '1px solid black' }}>coupon</div>
+            <div style={{ border: '1px solid black' }}>
+              <RedeemIcon />
+            </div>
           </div>
           <div className='checkoutPayment-000'>
             <span className='checkoutPayment-child-00'>00</span>
@@ -104,10 +111,14 @@ const CheckoutPayment = (props) => {
           <Button
             variant='outlined'
             color='default'
+            style={{ height: '5vh', width: '7vw' }}
             onClick={props.showCheckoutHandler}>
             CANCEL
           </Button>
-          <Button variant='contained' color='secondary'>
+          <Button
+            variant='contained'
+            color='secondary'
+            style={{ height: '5vh', width: '7vw' }}>
             PAY
           </Button>
         </div>
