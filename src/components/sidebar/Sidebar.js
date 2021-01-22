@@ -13,7 +13,6 @@ const Sidebar = (props) => {
   }, [props.displayPage]);
 
   const menuClickedHandler = (pageNumber) => {
-    console.log(pageNumber);
     setMenuClicked(pageNumber);
     props.refreshFunction(pageNumber);
   };

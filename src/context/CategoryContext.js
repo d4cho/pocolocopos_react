@@ -14,8 +14,6 @@ export const useCategoryUpdate = () => {
 export const CategoryProvider = ({ children }) => {
   const [category, setCategory] = useState('all');
 
-  console.log('selected category', category);
-
   const categoryChangeHandler = (selectedCategory) => {
     setCategory(selectedCategory);
   };

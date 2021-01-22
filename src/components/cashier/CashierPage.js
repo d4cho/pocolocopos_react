@@ -14,8 +14,6 @@ const CashierPage = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [showCheckout, setShowCheckout] = useState(false);
 
-  console.log(productData);
-
   useEffect(() => {
     getUniqueCategories();
   }, []);
@@ -25,12 +23,15 @@ const CashierPage = () => {
       ...new Set(productData.map((product) => product.category))
     ];
     const uniqueCategoriesWithAll = ['all'].concat(uniqueCategories);
-    console.log(uniqueCategoriesWithAll);
     setCategoryList(uniqueCategoriesWithAll);
   };
 
-  const showCheckoutHandler = () => {
-    setShowCheckout(!showCheckout);
+  const openCheckoutPayment = () => {
+    setShowCheckout(true);
+  };
+
+  const closeCheckoutPayment = () => {
+    setShowCheckout(false);
   };
 
   return (
@@ -40,17 +41,23 @@ const CashierPage = () => {
           <div className='main-grid-container'>
             <div className='sub-grid-container-left'>
               <InvoiceBox />
-              <CheckoutBox showCheckoutHandler={showCheckoutHandler} />
+              <CheckoutBox
+                openCheckoutPayment={openCheckoutPayment}
+                showCheckout={showCheckout}
+              />
             </div>
             <div className='checkout-sub-grid-container-right'>
-              <CheckoutPayment showCheckoutHandler={showCheckoutHandler} />
+              <CheckoutPayment closeCheckoutPayment={closeCheckoutPayment} />
             </div>
           </div>
         ) : (
           <div className='main-grid-container'>
             <div className='sub-grid-container-left'>
               <InvoiceBox />
-              <CheckoutBox showCheckoutHandler={showCheckoutHandler} />
+              <CheckoutBox
+                openCheckoutPayment={openCheckoutPayment}
+                showCheckout={showCheckout}
+              />
             </div>
             <div className='sub-grid-container-right'>
               <CategoryList categoryList={categoryList} />

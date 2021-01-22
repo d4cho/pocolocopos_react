@@ -10,6 +10,7 @@ const CheckoutBox = (props) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const productList = useProductList();
+  console.log(productList);
 
   const numberWithCommas = (x) => {
     return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -48,6 +49,34 @@ const CheckoutBox = (props) => {
     setShowAlert(false);
   };
 
+  const renderButton = () => {
+    if (productList.length > 0) {
+      if (props.showCheckout) {
+        return (
+          <div className='remaining-btn'>
+            <div>-- REMAINING --</div>
+            <div>$ 99.99</div>
+          </div>
+        );
+      } else {
+        return (
+          <button className='checkout-btn' onClick={props.openCheckoutPayment}>
+            CHECKOUT
+          </button>
+        );
+      }
+    } else {
+      return (
+        <button
+          className='checkout-btn'
+          style={{ backgroundColor: 'lightgray', border: '1px solid gray' }}
+          onClick={showAlertHandler}>
+          CHECKOUT
+        </button>
+      );
+    }
+  };
+
   return (
     <div className='checkout-container'>
       <div className='checkout-total-container'>
@@ -65,19 +94,7 @@ const CheckoutBox = (props) => {
           <strong>${numberWithCommas(total)}</strong>
         </div>
       </div>
-
-      {productList.length > 0 ? (
-        <button className='checkout-btn' onClick={props.showCheckoutHandler}>
-          CHECKOUT
-        </button>
-      ) : (
-        <button
-          className='checkout-btn'
-          style={{ backgroundColor: 'lightgray', border: '1px solid gray' }}
-          onClick={showAlertHandler}>
-          CHECKOUT
-        </button>
-      )}
+      {renderButton()}
       {showAlert && (
         <AlertModal
           errorModalClosed={errorModalClosed}

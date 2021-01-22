@@ -14,7 +14,6 @@ const CategoryList = (props) => {
 
   const updateSearchResult = (result) => {
     setSearchResult(result);
-    console.log(result);
   };
 
   const renderCategoryBox = () => {

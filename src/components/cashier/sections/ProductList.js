@@ -26,7 +26,6 @@ const ProductList = () => {
 
   const updateSearchResult = (result) => {
     setSearchResult(result);
-    console.log(result);
   };
 
   const productClickedHandler = (productId, productName, productPrice) => {

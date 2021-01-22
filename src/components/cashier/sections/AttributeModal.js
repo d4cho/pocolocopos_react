@@ -44,7 +44,6 @@ export default function AttributeModal(props) {
   const addItemToProductList = useProductListUpdate();
   const subtractQuantity = useProductQuantitySubtract();
 
-  console.log(selectedOptionPrice);
   const {
     attribute,
     category,

@@ -67,12 +67,10 @@ export default function GrossDiscountModal() {
 
   const submitDiscount = () => {
     if (inputPin !== pin) {
-      console.log(inputPin, pin, 'pin error');
       setShowErrorModal(true);
       setError(true);
       setInputPin('');
     } else {
-      console.log('discount applied!');
       applyDiscount(discount);
       setOpen(false);
       setShowErrorModal(false);
@@ -88,7 +86,6 @@ export default function GrossDiscountModal() {
   };
 
   const inputPinChangeHandler = (e) => {
-    console.log(e.currentTarget.value);
     setInputPin(e.currentTarget.value);
   };
 

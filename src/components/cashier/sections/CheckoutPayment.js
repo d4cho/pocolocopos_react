@@ -11,7 +11,6 @@ import RedeemIcon from '@material-ui/icons/Redeem';
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('cash');
-  console.log(multipaymentChecked, paymentMethod);
 
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
@@ -112,7 +111,7 @@ const CheckoutPayment = (props) => {
             variant='outlined'
             color='default'
             style={{ height: '5vh', width: '7vw' }}
-            onClick={props.showCheckoutHandler}>
+            onClick={props.closeCheckoutPayment}>
             CANCEL
           </Button>
           <Button

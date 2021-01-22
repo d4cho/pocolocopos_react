@@ -69,7 +69,6 @@ export default function CartItemModal(props) {
   };
 
   const handleChange = (event) => {
-    console.log(event.currentTarget.value);
     setRadioValue(event.currentTarget.value);
   };
 

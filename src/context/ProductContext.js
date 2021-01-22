@@ -48,8 +48,6 @@ export const ProductProvider = ({ children }) => {
   // state of products in invoice list
   const [productList, setProductList] = useState([]);
 
-  console.log('productList', productList);
-
   // function to subtract the quantity of a certain product
   const subtractQuantity = (productId, qtyToSubtract) => {
     const updatedProductData = [...productData];
@@ -86,7 +84,6 @@ export const ProductProvider = ({ children }) => {
     quantity,
     attributeName
   ) => {
-    console.log('quantity', quantity);
     // index of product in array
     let indexInArray = productList.findIndex(
       (item) => item.productId === productId
