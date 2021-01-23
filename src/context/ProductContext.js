@@ -139,6 +139,7 @@ export const ProductProvider = ({ children }) => {
   const applyRoundingCents = (amount, paymentMethod) => {
     console.log('product list', productList);
     const roundingCents = {
+      productId: 'roundingCents',
       productName: '[ROUNDING CENTS]',
       qty: 1,
       productPrice: amount

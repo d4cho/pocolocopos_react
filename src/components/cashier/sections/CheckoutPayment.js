@@ -29,6 +29,10 @@ const CheckoutPayment = (props) => {
     applyRoundingCents(null, '');
   };
 
+  const handleCancelPayment = () => {
+    props.closeCheckoutPayment();
+  };
+
   return (
     <div className='checkoutPayment-main-container'>
       <div className='checkoutPayment-sub-container'>
@@ -120,7 +124,7 @@ const CheckoutPayment = (props) => {
             variant='outlined'
             color='default'
             style={{ height: '5vh', width: '7vw' }}
-            onClick={props.closeCheckoutPayment}>
+            onClick={handleCancelPayment}>
             CANCEL
           </Button>
           <Button

@@ -34,6 +34,8 @@ const InvoiceBoxItem = () => {
     setItemInfo({ itemNumber, productName, quantity });
   };
 
+  console.log(productList);
+
   const renderProductList = () =>
     productList.map((item, idx) => {
       const { productId, productName, productPrice, qty } = item;
@@ -42,6 +44,22 @@ const InvoiceBoxItem = () => {
         white: { backgroundColor: 'white' },
         gray: { backgroundColor: 'rgb(240, 240, 240)' }
       };
+
+      if (productId === 'roundingCents') {
+        return (
+          <div
+            key={productName}
+            className='invoiceBoxItem-sub-container'
+            style={{ backgroundColor: 'lightskyblue' }}>
+            <div>{itemNumber}</div>
+            <div style={{ justifySelf: 'start' }}>
+              {productName.toUpperCase()}
+            </div>
+            <div>{qty}</div>
+            <div>${numberWithCommas(productPrice)}</div>
+          </div>
+        );
+      }
 
       return (
         <div
@@ -64,7 +82,6 @@ const InvoiceBoxItem = () => {
           </div>
           <div>{qty}</div>
           <div>${numberWithCommas(productPrice)}</div>
-          {/* <div>${Math.round(productPrice * 1e2) / 1e2}</div> */}
           <ClearIcon
             style={{ cursor: 'pointer' }}
             onClick={() =>
