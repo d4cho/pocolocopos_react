@@ -12,9 +12,9 @@ const CheckoutBox = (props) => {
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
+  const [roundingCents, setRoundingCents] = useState(null);
 
   const productList = useProductList();
-  console.log(productList);
   const paymentMethod = usePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
 
@@ -45,7 +45,12 @@ const CheckoutBox = (props) => {
       setTax(0);
       setTotal(0);
     }
-  }, [productList]);
+
+    // set rounding cents back to null if checkout payment is closed
+    if (!props.showCheckout) {
+      setRoundingCents(null);
+    }
+  }, [productList, props.showCheckout]);
 
   const showAlertHandler = () => {
     setShowAlert(true);
@@ -62,7 +67,9 @@ const CheckoutBox = (props) => {
       const roundedToNickel = Math.round(total / factor) * factor;
       const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
       console.log(roundedTotal);
-      const roundingCentsAmount = roundedTotal - total;
+      const roundingCentsAmount =
+        Math.round((roundedTotal - total) * 1e2) / 1e2;
+      setRoundingCents(roundingCentsAmount);
       applyRoundingCents(roundingCentsAmount, paymentMethod);
     }
   };
@@ -109,6 +116,7 @@ const CheckoutBox = (props) => {
           <strong>Total</strong>
         </div>
         <div className='total-value-item'>
+          {roundingCents && `{$${roundingCents}} `}
           <strong>${numberWithCommas(total)}</strong>
         </div>
       </div>
