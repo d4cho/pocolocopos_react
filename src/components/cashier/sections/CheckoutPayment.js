@@ -11,12 +11,14 @@ import {
   usePaymentMethod,
   useChangePaymentMethod
 } from '../../../context/PaymentMethodContext';
+import { useApplyRoundingCents } from '../../../context/ProductContext';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
+  const applyRoundingCents = useApplyRoundingCents();
 
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
@@ -24,6 +26,7 @@ const CheckoutPayment = (props) => {
 
   const handlePaymentMethodChange = (event) => {
     changePaymentMethod(event.target.value);
+    applyRoundingCents(null, '');
   };
 
   return (

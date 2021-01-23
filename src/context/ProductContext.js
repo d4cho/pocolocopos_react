@@ -137,17 +137,24 @@ export const ProductProvider = ({ children }) => {
   };
 
   const applyRoundingCents = (amount, paymentMethod) => {
+    console.log('product list', productList);
     const roundingCents = {
       productName: '[ROUNDING CENTS]',
       qty: 1,
       productPrice: amount
     };
-    console.log(roundingCents);
+    const oldProductList = [...productList];
     if (paymentMethod !== 'cash') {
-      const newProductList = [...productList].pop();
-      setProductList(newProductList);
+      oldProductList.pop();
+      console.log(oldProductList);
+      setProductList(oldProductList);
+      //
+      //
+      // need to fix bug with radio button 'cash'
+      //
+      //
     } else {
-      setProductList([...productList, roundingCents]);
+      setProductList([...oldProductList, roundingCents]);
     }
   };
 

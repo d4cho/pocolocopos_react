@@ -64,8 +64,6 @@ const CheckoutBox = (props) => {
       console.log(roundedTotal);
       const roundingCentsAmount = roundedTotal - total;
       applyRoundingCents(roundingCentsAmount, paymentMethod);
-    } else {
-      applyRoundingCents(null, paymentMethod);
     }
   };
 
