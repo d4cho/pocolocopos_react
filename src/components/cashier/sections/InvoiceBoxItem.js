@@ -54,7 +54,9 @@ const InvoiceBoxItem = () => {
           }
           onClick={() => itemClickedHandler(itemNumber, productName, qty)}>
           <div>{itemNumber}</div>
-          <div style={{ justifySelf: 'start' }}>
+          <div
+            style={{ justifySelf: 'start' }}
+            onClick={() => itemClickedHandler(itemNumber, productName, qty)}>
             {productName.toUpperCase()}
             <span>{item.attributeName && ` - ${item.attributeName}`}</span>
             <span style={{ color: 'red' }}>
@@ -62,7 +64,7 @@ const InvoiceBoxItem = () => {
             </span>
           </div>
           <div>{qty}</div>
-          <div>{numberWithCommas(productPrice)}</div>
+          <div>${numberWithCommas(productPrice)}</div>
           {/* <div>${Math.round(productPrice * 1e2) / 1e2}</div> */}
           <ClearIcon
             style={{ cursor: 'pointer' }}

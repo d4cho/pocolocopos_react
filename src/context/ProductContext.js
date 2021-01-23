@@ -8,7 +8,7 @@ const ProductList = React.createContext();
 const ProductListUpdate = React.createContext();
 const ProductListClear = React.createContext();
 const ApplyGrossDiscount = React.createContext();
-// const ApplyAttributeName = React.createContext();
+const ApplyRoundingCents = React.createContext();
 
 export const useProductData = () => {
   return useContext(ProductContext);
@@ -38,9 +38,9 @@ export const useApplyGrossDiscount = () => {
   return useContext(ApplyGrossDiscount);
 };
 
-// export const useApplyAttributeName = () => {
-//   return useContext(ApplyAttributeName);
-// };
+export const useApplyRoundingCents = () => {
+  return useContext(ApplyRoundingCents);
+};
 
 export const ProductProvider = ({ children }) => {
   // state of all products
@@ -136,9 +136,20 @@ export const ProductProvider = ({ children }) => {
     setProductList(discountedProductList);
   };
 
-  // const applyAttribute = (attributeName) => {
-  //   const attributedProductList =
-  // }
+  const applyRoundingCents = (amount, paymentMethod) => {
+    const roundingCents = {
+      productName: '[ROUNDING CENTS]',
+      qty: 1,
+      productPrice: amount
+    };
+    console.log(roundingCents);
+    if (paymentMethod !== 'cash') {
+      const newProductList = [...productList].pop();
+      setProductList(newProductList);
+    } else {
+      setProductList([...productList, roundingCents]);
+    }
+  };
 
   return (
     <ProductContext.Provider value={productData}>
@@ -148,9 +159,9 @@ export const ProductProvider = ({ children }) => {
             <ProductListUpdate.Provider value={updateProductList}>
               <ProductListClear.Provider value={clearProductList}>
                 <ApplyGrossDiscount.Provider value={applyDiscount}>
-                  {/* <ApplyAttributeName.Provider value={applyAttribute}> */}
-                  {children}
-                  {/* </ApplyAttributeName.Provider> */}
+                  <ApplyRoundingCents.Provider value={applyRoundingCents}>
+                    {children}
+                  </ApplyRoundingCents.Provider>
                 </ApplyGrossDiscount.Provider>
               </ProductListClear.Provider>
             </ProductListUpdate.Provider>

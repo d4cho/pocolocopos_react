@@ -7,17 +7,23 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import RedeemIcon from '@material-ui/icons/Redeem';
+import {
+  usePaymentMethod,
+  useChangePaymentMethod
+} from '../../../context/PaymentMethodContext';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState('cash');
+
+  const paymentMethod = usePaymentMethod();
+  const changePaymentMethod = useChangePaymentMethod();
 
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
   };
 
   const handlePaymentMethodChange = (event) => {
-    setPaymentMethod(event.target.value);
+    changePaymentMethod(event.target.value);
   };
 
   return (

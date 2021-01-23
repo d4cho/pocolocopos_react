@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { PinProvider } from './context/PinContext';
+import { CategoryProvider } from './context/CategoryContext';
+import { ProductProvider } from './context/ProductContext';
+import { InvoiceListProvider } from './context/InvoiceContext';
+import { PaymentMethodProvider } from './context/PaymentMethodContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <PinProvider>
-      <App />
+      <CategoryProvider>
+        <ProductProvider>
+          <InvoiceListProvider>
+            <PaymentMethodProvider>
+              <App />
+            </PaymentMethodProvider>
+          </InvoiceListProvider>
+        </ProductProvider>
+      </CategoryProvider>
     </PinProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './CheckoutBox.css';
-import { useProductList } from '../../../context/ProductContext';
+import {
+  useProductList,
+  useApplyRoundingCents
+} from '../../../context/ProductContext';
+import { usePaymentMethod } from '../../../context/PaymentMethodContext';
 import AlertModal from '../../utility/AlertModal';
 
 const CheckoutBox = (props) => {
@@ -11,6 +15,8 @@ const CheckoutBox = (props) => {
 
   const productList = useProductList();
   console.log(productList);
+  const paymentMethod = usePaymentMethod();
+  const applyRoundingCents = useApplyRoundingCents();
 
   const numberWithCommas = (x) => {
     return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -49,18 +55,32 @@ const CheckoutBox = (props) => {
     setShowAlert(false);
   };
 
+  const checkoutPaymentClicked = () => {
+    props.openCheckoutPayment();
+    if (paymentMethod === 'cash') {
+      const factor = 0.05;
+      const roundedToNickel = Math.round(total / factor) * factor;
+      const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
+      console.log(roundedTotal);
+      const roundingCentsAmount = roundedTotal - total;
+      applyRoundingCents(roundingCentsAmount, paymentMethod);
+    } else {
+      applyRoundingCents(null, paymentMethod);
+    }
+  };
+
   const renderButton = () => {
     if (productList.length > 0) {
       if (props.showCheckout) {
         return (
           <div className='remaining-btn'>
             <div>-- REMAINING --</div>
-            <div>$ 99.99</div>
+            <div>${numberWithCommas(total)}</div>
           </div>
         );
       } else {
         return (
-          <button className='checkout-btn' onClick={props.openCheckoutPayment}>
+          <button className='checkout-btn' onClick={checkoutPaymentClicked}>
             CHECKOUT
           </button>
         );

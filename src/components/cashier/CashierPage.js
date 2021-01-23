@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CashierPage.css';
 import productData from '../../assets/data';
-import { CategoryProvider } from '../../context/CategoryContext';
-import { ProductProvider } from '../../context/ProductContext';
 
 import CategoryList from './sections/CategoryList';
 import ProductList from './sections/ProductList';
@@ -35,38 +33,36 @@ const CashierPage = () => {
   };
 
   return (
-    <CategoryProvider>
-      <ProductProvider>
-        {showCheckout ? (
-          <div className='main-grid-container'>
-            <div className='sub-grid-container-left'>
-              <InvoiceBox />
-              <CheckoutBox
-                openCheckoutPayment={openCheckoutPayment}
-                showCheckout={showCheckout}
-              />
-            </div>
-            <div className='checkout-sub-grid-container-right'>
-              <CheckoutPayment closeCheckoutPayment={closeCheckoutPayment} />
-            </div>
+    <>
+      {showCheckout ? (
+        <div className='main-grid-container'>
+          <div className='sub-grid-container-left'>
+            <InvoiceBox />
+            <CheckoutBox
+              openCheckoutPayment={openCheckoutPayment}
+              showCheckout={showCheckout}
+            />
           </div>
-        ) : (
-          <div className='main-grid-container'>
-            <div className='sub-grid-container-left'>
-              <InvoiceBox />
-              <CheckoutBox
-                openCheckoutPayment={openCheckoutPayment}
-                showCheckout={showCheckout}
-              />
-            </div>
-            <div className='sub-grid-container-right'>
-              <CategoryList categoryList={categoryList} />
-              <ProductList />
-            </div>
+          <div className='checkout-sub-grid-container-right'>
+            <CheckoutPayment closeCheckoutPayment={closeCheckoutPayment} />
           </div>
-        )}
-      </ProductProvider>
-    </CategoryProvider>
+        </div>
+      ) : (
+        <div className='main-grid-container'>
+          <div className='sub-grid-container-left'>
+            <InvoiceBox />
+            <CheckoutBox
+              openCheckoutPayment={openCheckoutPayment}
+              showCheckout={showCheckout}
+            />
+          </div>
+          <div className='sub-grid-container-right'>
+            <CategoryList categoryList={categoryList} />
+            <ProductList />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
