@@ -51,11 +51,10 @@ const InvoiceBoxItem = () => {
             itemNumber % 2 === 0
               ? backgroundColorDiv.gray
               : backgroundColorDiv.white
-          }
-          onClick={() => itemClickedHandler(itemNumber, productName, qty)}>
+          }>
           <div>{itemNumber}</div>
           <div
-            style={{ justifySelf: 'start' }}
+            style={{ justifySelf: 'start', cursor: 'pointer' }}
             onClick={() => itemClickedHandler(itemNumber, productName, qty)}>
             {productName.toUpperCase()}
             <span>{item.attributeName && ` - ${item.attributeName}`}</span>
