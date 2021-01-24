@@ -26,11 +26,18 @@ const CheckoutPayment = (props) => {
 
   const handlePaymentMethodChange = (event) => {
     changePaymentMethod(event.target.value);
-    applyRoundingCents(null, '');
+    if (event.target.value !== 'cash') {
+      // if payment method is NOT cash
+      applyRoundingCents(null, event.target.value);
+    } else {
+      // if payment method is changed to cash
+      // applyRoundingCents(null, event.target.value);
+    }
   };
 
   const handleCancelPayment = () => {
     props.closeCheckoutPayment();
+    changePaymentMethod('cash');
   };
 
   return (

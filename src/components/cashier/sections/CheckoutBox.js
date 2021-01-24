@@ -45,12 +45,15 @@ const CheckoutBox = (props) => {
       setTax(0);
       setTotal(0);
     }
+  }, [productList]);
 
-    // set rounding cents back to null if checkout payment is closed
-    if (!props.showCheckout) {
+  useEffect(() => {
+    if (props.showCheckout && paymentMethod === 'cash') {
+      calculateRoundingCents();
+    } else {
       setRoundingCents(null);
     }
-  }, [productList, props.showCheckout]);
+  }, [paymentMethod, props.showCheckout]);
 
   const showAlertHandler = () => {
     setShowAlert(true);
@@ -60,18 +63,19 @@ const CheckoutBox = (props) => {
     setShowAlert(false);
   };
 
+  // function to calculate and update rounding cents
+  const calculateRoundingCents = () => {
+    const factor = 0.05;
+    const roundedToNickel = Math.round(total / factor) * factor;
+    const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
+    const roundingCentsAmount = Math.round((roundedTotal - total) * 1e2) / 1e2;
+    setRoundingCents(roundingCentsAmount);
+    applyRoundingCents(roundingCentsAmount, paymentMethod);
+  };
+
   const checkoutPaymentClicked = () => {
     props.openCheckoutPayment();
-    if (paymentMethod === 'cash') {
-      const factor = 0.05;
-      const roundedToNickel = Math.round(total / factor) * factor;
-      const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
-      console.log(roundedTotal);
-      const roundingCentsAmount =
-        Math.round((roundedTotal - total) * 1e2) / 1e2;
-      setRoundingCents(roundingCentsAmount);
-      applyRoundingCents(roundingCentsAmount, paymentMethod);
-    }
+    calculateRoundingCents();
   };
 
   const renderButton = () => {

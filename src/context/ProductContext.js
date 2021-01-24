@@ -137,6 +137,8 @@ export const ProductProvider = ({ children }) => {
   };
 
   const applyRoundingCents = (amount, paymentMethod) => {
+    // calculate rounding cents
+
     console.log('product list', productList);
     const roundingCents = {
       productId: 'roundingCents',
@@ -145,13 +147,16 @@ export const ProductProvider = ({ children }) => {
       productPrice: amount
     };
     const oldProductList = [...productList];
-    if (paymentMethod !== 'cash') {
+    if (
+      paymentMethod !== 'cash' &&
+      oldProductList[oldProductList.length - 1].productId === 'roundingCents'
+    ) {
       oldProductList.pop();
       console.log(oldProductList);
       setProductList(oldProductList);
       //
       //
-      // need to fix bug with radio button 'cash'
+      // need to fix bug to NOT pop if no rounding cents
       //
       //
     } else {
