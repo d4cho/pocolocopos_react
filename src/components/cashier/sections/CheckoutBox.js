@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CheckoutBox.css';
 import {
   useProductList,
+  useRoundingCents,
   useApplyRoundingCents
 } from '../../../context/ProductContext';
 import { usePaymentMethod } from '../../../context/PaymentMethodContext';
@@ -12,10 +13,10 @@ const CheckoutBox = (props) => {
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
-  const [roundingCents, setRoundingCents] = useState(null);
 
   const productList = useProductList();
   const paymentMethod = usePaymentMethod();
+  const roundingCents = useRoundingCents();
   const applyRoundingCents = useApplyRoundingCents();
 
   const numberWithCommas = (x) => {
@@ -47,14 +48,6 @@ const CheckoutBox = (props) => {
     }
   }, [productList]);
 
-  useEffect(() => {
-    if (props.showCheckout && paymentMethod === 'cash') {
-      calculateRoundingCents();
-    } else {
-      setRoundingCents(null);
-    }
-  }, [paymentMethod, props.showCheckout]);
-
   const showAlertHandler = () => {
     setShowAlert(true);
   };
@@ -63,19 +56,9 @@ const CheckoutBox = (props) => {
     setShowAlert(false);
   };
 
-  // function to calculate and update rounding cents
-  const calculateRoundingCents = () => {
-    const factor = 0.05;
-    const roundedToNickel = Math.round(total / factor) * factor;
-    const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
-    const roundingCentsAmount = Math.round((roundedTotal - total) * 1e2) / 1e2;
-    setRoundingCents(roundingCentsAmount);
-    applyRoundingCents(roundingCentsAmount, paymentMethod);
-  };
-
   const checkoutPaymentClicked = () => {
     props.openCheckoutPayment();
-    calculateRoundingCents();
+    applyRoundingCents(total, paymentMethod);
   };
 
   const renderButton = () => {

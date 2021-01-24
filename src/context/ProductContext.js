@@ -9,6 +9,7 @@ const ProductListUpdate = React.createContext();
 const ProductListClear = React.createContext();
 const ApplyGrossDiscount = React.createContext();
 const ApplyRoundingCents = React.createContext();
+const RoundingCents = React.createContext();
 
 export const useProductData = () => {
   return useContext(ProductContext);
@@ -42,11 +43,17 @@ export const useApplyRoundingCents = () => {
   return useContext(ApplyRoundingCents);
 };
 
+export const useRoundingCents = () => {
+  return useContext(RoundingCents);
+};
+
 export const ProductProvider = ({ children }) => {
   // state of all products
   const [productData, setProductData] = useState(data);
   // state of products in invoice list
   const [productList, setProductList] = useState([]);
+  // state of rounding cents
+  const [roundingCents, setRoundingCents] = useState(null);
 
   // function to subtract the quantity of a certain product
   const subtractQuantity = (productId, qtyToSubtract) => {
@@ -136,29 +143,31 @@ export const ProductProvider = ({ children }) => {
     setProductList(discountedProductList);
   };
 
-  const applyRoundingCents = (amount, paymentMethod) => {
+  const applyRoundingCents = (total, paymentMethod) => {
     // calculate rounding cents
+    const factor = 0.05;
+    const roundedToNickel = Math.round(total / factor) * factor;
+    const roundedTotal = Math.round(roundedToNickel * 1e2) / 1e2;
+    const roundingCentsAmount = Math.round((roundedTotal - total) * 1e2) / 1e2;
+    setRoundingCents(roundingCentsAmount);
 
-    console.log('product list', productList);
     const roundingCents = {
       productId: 'roundingCents',
       productName: '[ROUNDING CENTS]',
       qty: 1,
-      productPrice: amount
+      productPrice: roundingCentsAmount
     };
+
     const oldProductList = [...productList];
-    if (
-      paymentMethod !== 'cash' &&
-      oldProductList[oldProductList.length - 1].productId === 'roundingCents'
-    ) {
-      oldProductList.pop();
-      console.log(oldProductList);
-      setProductList(oldProductList);
-      //
-      //
-      // need to fix bug to NOT pop if no rounding cents
-      //
-      //
+
+    if (paymentMethod !== 'cash') {
+      setRoundingCents(null);
+      if (
+        oldProductList[oldProductList.length - 1].productId === 'roundingCents'
+      ) {
+        oldProductList.pop();
+        setProductList(oldProductList);
+      }
     } else {
       setProductList([...oldProductList, roundingCents]);
     }
@@ -173,7 +182,9 @@ export const ProductProvider = ({ children }) => {
               <ProductListClear.Provider value={clearProductList}>
                 <ApplyGrossDiscount.Provider value={applyDiscount}>
                   <ApplyRoundingCents.Provider value={applyRoundingCents}>
-                    {children}
+                    <RoundingCents.Provider value={roundingCents}>
+                      {children}
+                    </RoundingCents.Provider>
                   </ApplyRoundingCents.Provider>
                 </ApplyGrossDiscount.Provider>
               </ProductListClear.Provider>
