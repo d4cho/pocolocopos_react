@@ -11,7 +11,6 @@ import AlertModal from '../../utility/AlertModal';
 const CheckoutBox = (props) => {
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
-  const [total, setTotal] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
 
   const productList = useProductList();
@@ -19,8 +18,9 @@ const CheckoutBox = (props) => {
   const roundingCents = useRoundingCents();
   const applyRoundingCents = useApplyRoundingCents();
 
-  const numberWithCommas = (x) => {
-    return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const numberWithCommas = (number) => {
+    console.log(number);
+    return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
   useEffect(() => {
@@ -40,13 +40,13 @@ const CheckoutBox = (props) => {
       // calculate total value
       const totalValue = subTotalValueRounded + taxValueRounded;
       const totalValueRounded = Math.round(totalValue * 1e2) / 1e2;
-      setTotal(totalValueRounded);
+      props.updateTotal(totalValueRounded);
     } else {
       setSubtotal(0);
       setTax(0);
-      setTotal(0);
+      props.updateTotal(0);
     }
-  }, [productList]);
+  }, [productList, props]);
 
   const showAlertHandler = () => {
     setShowAlert(true);
@@ -58,7 +58,7 @@ const CheckoutBox = (props) => {
 
   const checkoutPaymentClicked = () => {
     props.openCheckoutPayment();
-    applyRoundingCents(total, paymentMethod);
+    applyRoundingCents(props.total, paymentMethod);
   };
 
   const renderButton = () => {
@@ -67,7 +67,7 @@ const CheckoutBox = (props) => {
         return (
           <div className='remaining-btn'>
             <div>-- REMAINING --</div>
-            <div>${numberWithCommas(total)}</div>
+            <div>${numberWithCommas(props.total)}</div>
           </div>
         );
       } else {
@@ -104,7 +104,7 @@ const CheckoutBox = (props) => {
         </div>
         <div className='total-value-item'>
           {roundingCents && `{$${roundingCents}} `}
-          <strong>${numberWithCommas(total)}</strong>
+          <strong>${numberWithCommas(props.total)}</strong>
         </div>
       </div>
       {renderButton()}

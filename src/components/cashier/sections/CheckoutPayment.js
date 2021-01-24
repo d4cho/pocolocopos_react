@@ -26,10 +26,7 @@ const CheckoutPayment = (props) => {
 
   const handlePaymentMethodChange = (event) => {
     changePaymentMethod(event.target.value);
-    //
-    // need to send total when paymentMethod is 'cash'
-    //
-    applyRoundingCents(null, event.target.value);
+    applyRoundingCents(props.total, event.target.value);
   };
 
   const handleCancelPayment = () => {

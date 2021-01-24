@@ -11,6 +11,8 @@ import CheckoutPayment from './sections/CheckoutPayment';
 const CashierPage = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [total, setTotal] = useState(0);
+  console.log(total);
 
   useEffect(() => {
     getUniqueCategories();
@@ -41,10 +43,15 @@ const CashierPage = () => {
             <CheckoutBox
               openCheckoutPayment={openCheckoutPayment}
               showCheckout={showCheckout}
+              total={total}
+              updateTotal={(value) => setTotal(value)}
             />
           </div>
           <div className='checkout-sub-grid-container-right'>
-            <CheckoutPayment closeCheckoutPayment={closeCheckoutPayment} />
+            <CheckoutPayment
+              closeCheckoutPayment={closeCheckoutPayment}
+              total={total}
+            />
           </div>
         </div>
       ) : (
@@ -54,6 +61,8 @@ const CashierPage = () => {
             <CheckoutBox
               openCheckoutPayment={openCheckoutPayment}
               showCheckout={showCheckout}
+              total={total}
+              updateTotal={(value) => setTotal(value)}
             />
           </div>
           <div className='sub-grid-container-right'>
