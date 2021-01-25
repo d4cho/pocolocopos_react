@@ -21,3 +21,8 @@
   display: grid;
   grid-template-rows: 95vh;
 }
+
+.coupon-sub-grid-container-right {
+  display: grid;
+  grid-template-rows: 95vh;
+}

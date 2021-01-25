@@ -10,7 +10,6 @@ export const useInvoiceList = () => {
 export const InvoiceListProvider = ({ children }) => {
   const productList = useProductList();
   const [invoiceList, setInvoiceList] = useState(productList);
-  console.log(invoiceList);
 
   const updateInvoiceList = () => {};
 

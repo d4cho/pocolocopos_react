@@ -21,7 +21,6 @@ const CheckoutBox = (props) => {
 
   // changes number to have commas
   const numberWithCommas = (number) => {
-    console.log(number);
     return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
@@ -66,7 +65,7 @@ const CheckoutBox = (props) => {
 
   const renderButton = () => {
     if (productList.length > 0) {
-      if (props.showCheckout) {
+      if (props.showCheckout || props.showCouponPage) {
         return (
           <div className='remaining-btn'>
             <div>-- REMAINING --</div>

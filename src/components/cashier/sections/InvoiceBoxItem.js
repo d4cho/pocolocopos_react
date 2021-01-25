@@ -44,8 +44,6 @@ const InvoiceBoxItem = (props) => {
     }
   };
 
-  console.log(productList);
-
   const renderProductList = () =>
     productList.map((item, idx) => {
       const { productId, productName, productPrice, qty } = item;

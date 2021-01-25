@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import RedeemIcon from '@material-ui/icons/Redeem';
+import RedeemTwoToneIcon from '@material-ui/icons/RedeemTwoTone';
 import {
   usePaymentMethod,
   useChangePaymentMethod
@@ -39,6 +39,11 @@ const CheckoutPayment = (props) => {
   const handleCancelPayment = () => {
     props.closeCheckoutPayment();
     changePaymentMethod('cash');
+    applyRoundingCents(null, 'cancel');
+  };
+
+  const handleCouponOpen = () => {
+    props.toggleShowCouponPage(true);
     applyRoundingCents(null, 'cancel');
   };
 
@@ -120,8 +125,10 @@ const CheckoutPayment = (props) => {
             <div>1</div>
             <div>2</div>
             <div>3</div>
-            <div style={{ border: '1px solid black' }}>
-              <RedeemIcon />
+            <div
+              style={{ border: '1px solid black', cursor: 'pointer' }}
+              onClick={handleCouponOpen}>
+              <RedeemTwoToneIcon />
             </div>
           </div>
           <div className='checkoutPayment-000'>

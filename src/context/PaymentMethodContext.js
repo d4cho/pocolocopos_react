@@ -14,8 +14,6 @@ export const useChangePaymentMethod = () => {
 export const PaymentMethodProvider = ({ children }) => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
 
-  console.log(paymentMethod);
-
   const changePaymentMethod = (payload) => {
     setPaymentMethod(payload);
   };
