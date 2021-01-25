@@ -7,9 +7,11 @@ import {
 } from '../../../context/ProductContext';
 import ClearIcon from '@material-ui/icons/Clear';
 import CartItemModal from './CartItemModal';
+import AlertModal from '../../utility/AlertModal';
 
-const InvoiceBoxItem = () => {
+const InvoiceBoxItem = (props) => {
   const [openCartItemModal, setOpenCartItemModal] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
   const [itemInfo, setItemInfo] = useState({});
 
   const productList = useProductList();
@@ -25,13 +27,21 @@ const InvoiceBoxItem = () => {
     ProductListUpdate(productId, productName, null, clearItem, 1);
   };
 
-  const openCartItemModalHandler = (value) => {
+  const toggleOpenCartItemModal = (value) => {
     setOpenCartItemModal(value);
   };
 
+  const errorModalClosed = () => {
+    setOpenAlert(false);
+  };
+
   const itemClickedHandler = (itemNumber, productName, quantity) => {
-    openCartItemModalHandler(true);
-    setItemInfo({ itemNumber, productName, quantity });
+    if (props.showCheckout) {
+      setOpenAlert(true);
+    } else {
+      toggleOpenCartItemModal(true);
+      setItemInfo({ itemNumber, productName, quantity });
+    }
   };
 
   console.log(productList);
@@ -94,12 +104,17 @@ const InvoiceBoxItem = () => {
 
   return (
     <div className='invoiceBoxItem-main-container'>
-      {openCartItemModal && (
+      {openCartItemModal ? (
         <CartItemModal
-          openCartItemModalHandler={openCartItemModalHandler}
+          toggleOpenCartItemModal={toggleOpenCartItemModal}
           itemInfo={itemInfo}
         />
-      )}
+      ) : openAlert ? (
+        <AlertModal
+          errorModalClosed={errorModalClosed}
+          msg='Payment is in progress. Finish current transaction.'
+        />
+      ) : null}
       {renderProductList()}
     </div>
   );

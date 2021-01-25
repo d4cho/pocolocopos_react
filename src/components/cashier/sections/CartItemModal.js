@@ -65,7 +65,7 @@ export default function CartItemModal(props) {
 
   const handleClose = () => {
     setOpen(false);
-    props.openCartItemModalHandler(false);
+    props.toggleOpenCartItemModal(false);
   };
 
   const handleChange = (event) => {

@@ -9,7 +9,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import InvoiceBoxItem from './InvoiceBoxItem';
 import GrossDiscountModal from './GrossDiscountModal';
 
-const InvoiceBox = () => {
+const InvoiceBox = (props) => {
   const clearProductList = useProductListClear();
   const productList = useProductList();
 
@@ -37,7 +37,7 @@ const InvoiceBox = () => {
           <div style={{ fontSize: '2vw' }}>Add Product To Cart.</div>
         </div>
       ) : (
-        <InvoiceBoxItem />
+        <InvoiceBoxItem showCheckout={props.showCheckout} />
       )}
     </div>
   );

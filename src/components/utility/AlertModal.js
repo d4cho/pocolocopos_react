@@ -43,7 +43,7 @@ export default function AlertModal(props) {
         <br />
         <Button
           variant='contained'
-          size='large'
+          style={{ height: '6vh', width: '12vw', fontSize: '1.5vw' }}
           color='secondary'
           onClick={handleClose}>
           DISMISS

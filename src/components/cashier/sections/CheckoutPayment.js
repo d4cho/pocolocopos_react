@@ -15,10 +15,17 @@ import { useApplyRoundingCents } from '../../../context/ProductContext';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
+  const [paymentAmount, setPaymentAmount] = useState(0);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
+
+  // changes number to have commas and rounds to 2 decimal places
+  const numberWithCommas = (number) => {
+    let roundedNumber = Math.round(number * 1e2) / 1e2;
+    return roundedNumber.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
 
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
@@ -83,7 +90,9 @@ const CheckoutPayment = (props) => {
           </div>
           <div className='checkoutPayment-price'>
             <div style={{ paddingLeft: '2vw' }}>$</div>
-            <div style={{ paddingRight: '2vw' }}>0.00</div>
+            <div style={{ paddingRight: '2vw' }}>
+              {numberWithCommas(paymentAmount)}
+            </div>
           </div>
           <div className='checkoutPayment-dollars'>
             <div style={{ border: '1px solid blue' }}>$2</div>

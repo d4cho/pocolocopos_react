@@ -39,7 +39,7 @@ const CashierPage = () => {
       {showCheckout ? (
         <div className='main-grid-container'>
           <div className='sub-grid-container-left'>
-            <InvoiceBox />
+            <InvoiceBox showCheckout={showCheckout} />
             <CheckoutBox
               openCheckoutPayment={openCheckoutPayment}
               showCheckout={showCheckout}
