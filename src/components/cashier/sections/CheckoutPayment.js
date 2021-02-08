@@ -13,12 +13,14 @@ import {
 } from '../../../context/PaymentMethodContext';
 import { useApplyRoundingCents } from '../../../context/ProductContext';
 import AlertModal from '../../utility/AlertModal';
+import PaymentComplete from './PaymentComplete';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [presetAmount, setPresetAmount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
+  const [showPaymentComplete, setShowPaymentComplete] = useState(false);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
@@ -76,157 +78,176 @@ const CheckoutPayment = (props) => {
   };
 
   const handlePayClicked = () => {
-    if (paymentAmount === 0) {
+    if (paymentAmount === 0 || paymentAmount < props.total) {
       setShowAlert(true);
     } else {
-      console.log('pay clicked!');
+      setShowPaymentComplete(true);
     }
+  };
+
+  // reset all state when payment finished
+  const reset = () => {
+    setMultipaymentChecked(false);
+    setPaymentAmount(0);
+    setPresetAmount(0);
+    setShowAlert(false);
+    setShowPaymentComplete(false);
+
+    // add reset for invoice list
   };
 
   return (
     <div className='checkoutPayment-main-container'>
-      <div className='checkoutPayment-sub-container'>
-        <div className='checkoutPayment-title'>
-          <div style={{ fontSize: '28px' }}>CHECK-OUTS</div>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={multipaymentChecked}
-                onChange={handleCheckboxChange}
-                color='default'
-              />
-            }
-            label='MULTI-PAYMENT'
-          />
+      {showPaymentComplete ? (
+        <PaymentComplete />
+      ) : (
+        <div className='checkoutPayment-sub-container'>
+          <div className='checkoutPayment-title'>
+            <div style={{ fontSize: '28px' }}>CHECK-OUTS</div>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={multipaymentChecked}
+                  onChange={handleCheckboxChange}
+                  color='default'
+                />
+              }
+              label='MULTI-PAYMENT'
+            />
+          </div>
+          <div>
+            <div className='checkoutPayment-methods'>
+              <RadioGroup
+                row
+                aria-label='paymentMethod'
+                name='paymentMethod'
+                value={paymentMethod}
+                onChange={handlePaymentMethodChange}>
+                <FormControlLabel
+                  value='cash'
+                  control={<Radio color='default' />}
+                  label='Cash'
+                />
+                <FormControlLabel
+                  value='debit'
+                  control={<Radio color='default' />}
+                  label='Debit'
+                />
+                <FormControlLabel
+                  value='credit'
+                  control={<Radio color='default' />}
+                  label='Credit'
+                />
+                <FormControlLabel
+                  value='toAccount'
+                  control={<Radio color='default' />}
+                  label='To Account'
+                />
+              </RadioGroup>
+            </div>
+            <div className='checkoutPayment-price'>
+              <div style={{ paddingLeft: '2vw' }}>$</div>
+              <div style={{ paddingRight: '2vw' }}>
+                {numberWithCommas(paymentAmount)}
+              </div>
+            </div>
+            <div className='checkoutPayment-dollars'>
+              <div
+                style={{ border: '1px solid blue', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(2)}>
+                $2
+              </div>
+              <div
+                style={{ border: '1px solid purple', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(5)}>
+                $5
+              </div>
+              <div
+                style={{ border: '1px solid green', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(10)}>
+                $10
+              </div>
+              <div
+                style={{ border: '1px solid red', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(20)}>
+                $20
+              </div>
+              <div
+                style={{ border: '1px solid brown', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(50)}>
+                $50
+              </div>
+              <div
+                style={{ border: '1px solid orange', cursor: 'pointer' }}
+                onClick={() => handlePresetAmountClicked(100)}>
+                $100
+              </div>
+            </div>
+            <div className='checkoutPayment-789'>
+              <div>7</div>
+              <div>8</div>
+              <div>9</div>
+              <div
+                style={{ border: '1px solid red', cursor: 'pointer' }}
+                onClick={handleClearClicked}>
+                C
+              </div>
+            </div>
+            <div className='checkoutPayment-456'>
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+              <div>
+                <KeyboardBackspaceIcon />
+              </div>
+            </div>
+            <div className='checkoutPayment-123'>
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div
+                style={{ border: '1px solid black', cursor: 'pointer' }}
+                onClick={handleCouponOpen}>
+                <RedeemTwoToneIcon />
+              </div>
+            </div>
+            <div className='checkoutPayment-000'>
+              <span className='checkoutPayment-child-00'>00</span>
+              <div>0</div>
+              <div
+                style={{ cursor: 'pointer', border: '1px solid red' }}
+                onClick={handleEAClicked}>
+                E/A
+              </div>
+            </div>
+          </div>
+          <div className='checkoutPayment-buttons'>
+            <Button
+              variant='outlined'
+              color='default'
+              style={{ height: '5vh', width: '7vw' }}
+              onClick={handleCancelPayment}>
+              CANCEL
+            </Button>
+            <Button
+              variant='contained'
+              color='secondary'
+              style={{ height: '5vh', width: '7vw' }}
+              onClick={handlePayClicked}>
+              PAY
+            </Button>
+          </div>
+          {showAlert && (
+            <AlertModal
+              errorModalClosed={errorModalClosed}
+              msg={
+                paymentAmount === 0
+                  ? 'Enter payment amount.'
+                  : 'The payment amount must be either exact or greater than the total price.'
+              }
+            />
+          )}
         </div>
-        <div>
-          <div className='checkoutPayment-methods'>
-            <RadioGroup
-              row
-              aria-label='paymentMethod'
-              name='paymentMethod'
-              value={paymentMethod}
-              onChange={handlePaymentMethodChange}>
-              <FormControlLabel
-                value='cash'
-                control={<Radio color='default' />}
-                label='Cash'
-              />
-              <FormControlLabel
-                value='debit'
-                control={<Radio color='default' />}
-                label='Debit'
-              />
-              <FormControlLabel
-                value='credit'
-                control={<Radio color='default' />}
-                label='Credit'
-              />
-              <FormControlLabel
-                value='toAccount'
-                control={<Radio color='default' />}
-                label='To Account'
-              />
-            </RadioGroup>
-          </div>
-          <div className='checkoutPayment-price'>
-            <div style={{ paddingLeft: '2vw' }}>$</div>
-            <div style={{ paddingRight: '2vw' }}>
-              {numberWithCommas(paymentAmount)}
-            </div>
-          </div>
-          <div className='checkoutPayment-dollars'>
-            <div
-              style={{ border: '1px solid blue', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(2)}>
-              $2
-            </div>
-            <div
-              style={{ border: '1px solid purple', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(5)}>
-              $5
-            </div>
-            <div
-              style={{ border: '1px solid green', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(10)}>
-              $10
-            </div>
-            <div
-              style={{ border: '1px solid red', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(20)}>
-              $20
-            </div>
-            <div
-              style={{ border: '1px solid brown', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(50)}>
-              $50
-            </div>
-            <div
-              style={{ border: '1px solid orange', cursor: 'pointer' }}
-              onClick={() => handlePresetAmountClicked(100)}>
-              $100
-            </div>
-          </div>
-          <div className='checkoutPayment-789'>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div
-              style={{ border: '1px solid red', cursor: 'pointer' }}
-              onClick={handleClearClicked}>
-              C
-            </div>
-          </div>
-          <div className='checkoutPayment-456'>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>
-              <KeyboardBackspaceIcon />
-            </div>
-          </div>
-          <div className='checkoutPayment-123'>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div
-              style={{ border: '1px solid black', cursor: 'pointer' }}
-              onClick={handleCouponOpen}>
-              <RedeemTwoToneIcon />
-            </div>
-          </div>
-          <div className='checkoutPayment-000'>
-            <span className='checkoutPayment-child-00'>00</span>
-            <div>0</div>
-            <div
-              style={{ cursor: 'pointer', border: '1px solid red' }}
-              onClick={handleEAClicked}>
-              E/A
-            </div>
-          </div>
-        </div>
-        <div className='checkoutPayment-buttons'>
-          <Button
-            variant='outlined'
-            color='default'
-            style={{ height: '5vh', width: '7vw' }}
-            onClick={handleCancelPayment}>
-            CANCEL
-          </Button>
-          <Button
-            variant='contained'
-            color='secondary'
-            style={{ height: '5vh', width: '7vw' }}
-            onClick={handlePayClicked}>
-            PAY
-          </Button>
-        </div>
-      </div>
-      {showAlert && (
-        <AlertModal
-          errorModalClosed={errorModalClosed}
-          msg='Enter payment amount.'
-        />
       )}
     </div>
   );
