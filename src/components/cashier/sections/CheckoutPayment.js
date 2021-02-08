@@ -12,10 +12,13 @@ import {
   useChangePaymentMethod
 } from '../../../context/PaymentMethodContext';
 import { useApplyRoundingCents } from '../../../context/ProductContext';
+import AlertModal from '../../utility/AlertModal';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
+  const [presetAmount, setPresetAmount] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
@@ -27,6 +30,11 @@ const CheckoutPayment = (props) => {
     return roundedNumber.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  // close alert modal
+  const errorModalClosed = () => {
+    setShowAlert(false);
+  };
+
   const handleCheckboxChange = (event) => {
     setMultipaymentChecked(event.target.checked);
   };
@@ -34,6 +42,8 @@ const CheckoutPayment = (props) => {
   const handlePaymentMethodChange = (event) => {
     changePaymentMethod(event.target.value);
     applyRoundingCents(props.total, event.target.value);
+    setPresetAmount(0);
+    setPaymentAmount(0);
   };
 
   const handleCancelPayment = () => {
@@ -45,6 +55,32 @@ const CheckoutPayment = (props) => {
   const handleCouponOpen = () => {
     props.toggleShowCouponPage(true);
     applyRoundingCents(null, 'cancel');
+  };
+
+  const handleEAClicked = () => {
+    setPaymentAmount(props.total);
+  };
+
+  const handleClearClicked = () => {
+    setPaymentAmount(0);
+    setPresetAmount(0);
+  };
+
+  // updated payment amount when any pre-set dollar amount is clicked
+  const handlePresetAmountClicked = (amount) => {
+    let sum = presetAmount;
+    sum += amount;
+    // console.log(sum);
+    setPresetAmount(sum);
+    setPaymentAmount(sum);
+  };
+
+  const handlePayClicked = () => {
+    if (paymentAmount === 0) {
+      setShowAlert(true);
+    } else {
+      console.log('pay clicked!');
+    }
   };
 
   return (
@@ -100,18 +136,46 @@ const CheckoutPayment = (props) => {
             </div>
           </div>
           <div className='checkoutPayment-dollars'>
-            <div style={{ border: '1px solid blue' }}>$2</div>
-            <div style={{ border: '1px solid purple' }}>$5</div>
-            <div style={{ border: '1px solid green' }}>$10</div>
-            <div style={{ border: '1px solid red' }}>$20</div>
-            <div style={{ border: '1px solid brown' }}>$50</div>
-            <div style={{ border: '1px solid orange' }}>$100</div>
+            <div
+              style={{ border: '1px solid blue', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(2)}>
+              $2
+            </div>
+            <div
+              style={{ border: '1px solid purple', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(5)}>
+              $5
+            </div>
+            <div
+              style={{ border: '1px solid green', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(10)}>
+              $10
+            </div>
+            <div
+              style={{ border: '1px solid red', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(20)}>
+              $20
+            </div>
+            <div
+              style={{ border: '1px solid brown', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(50)}>
+              $50
+            </div>
+            <div
+              style={{ border: '1px solid orange', cursor: 'pointer' }}
+              onClick={() => handlePresetAmountClicked(100)}>
+              $100
+            </div>
           </div>
           <div className='checkoutPayment-789'>
             <div>7</div>
             <div>8</div>
             <div>9</div>
-            <div style={{ border: '1px solid red' }}>C</div>
+            <div
+              style={{ border: '1px solid red', cursor: 'pointer' }}
+              onClick={handleClearClicked}>
+              C
+            </div>
           </div>
           <div className='checkoutPayment-456'>
             <div>4</div>
@@ -134,7 +198,11 @@ const CheckoutPayment = (props) => {
           <div className='checkoutPayment-000'>
             <span className='checkoutPayment-child-00'>00</span>
             <div>0</div>
-            <div>E/A</div>
+            <div
+              style={{ cursor: 'pointer', border: '1px solid red' }}
+              onClick={handleEAClicked}>
+              E/A
+            </div>
           </div>
         </div>
         <div className='checkoutPayment-buttons'>
@@ -148,11 +216,18 @@ const CheckoutPayment = (props) => {
           <Button
             variant='contained'
             color='secondary'
-            style={{ height: '5vh', width: '7vw' }}>
+            style={{ height: '5vh', width: '7vw' }}
+            onClick={handlePayClicked}>
             PAY
           </Button>
         </div>
       </div>
+      {showAlert && (
+        <AlertModal
+          errorModalClosed={errorModalClosed}
+          msg='Enter payment amount.'
+        />
+      )}
     </div>
   );
 };
