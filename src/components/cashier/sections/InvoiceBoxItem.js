@@ -90,12 +90,14 @@ const InvoiceBoxItem = (props) => {
           </div>
           <div>{qty}</div>
           <div>${numberWithCommas(productPrice)}</div>
-          <ClearIcon
-            style={{ cursor: 'pointer' }}
-            onClick={() =>
-              updateProductQtyAndList(productId, productName, qty, 'one')
-            }
-          />
+          {props.showCheckout || (
+            <ClearIcon
+              style={{ cursor: 'pointer' }}
+              onClick={() =>
+                updateProductQtyAndList(productId, productName, qty, 'one')
+              }
+            />
+          )}
         </div>
       );
     });
