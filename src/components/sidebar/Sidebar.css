@@ -1,7 +1,7 @@
 .sidebar-grid-container {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 1fr 1fr 7fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 5fr;
   grid-auto-rows: minmax(auto, auto);
   justify-content: start;
   align-content: center;
