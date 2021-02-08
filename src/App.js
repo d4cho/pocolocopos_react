@@ -5,6 +5,8 @@ import Sidebar from './components/sidebar/Sidebar';
 import CashierPage from './components/cashier/CashierPage';
 import InvoicePage from './components/invoice/InvoicePage';
 import HomePage from './components/home/HomePage';
+import Account from './components/account/Account';
+import Special from './components/special/Special';
 
 const App = () => {
   // 1 = home, 2 = cashier, 3 = invoice
@@ -22,6 +24,10 @@ const App = () => {
         return <CashierPage />;
       case 3:
         return <InvoicePage />;
+      case 4:
+        return <Account />;
+      case 5:
+        return <Special />;
       default:
         return <HomePage />;
     }
