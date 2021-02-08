@@ -11,6 +11,7 @@ import {
   usePaymentMethod,
   useChangePaymentMethod
 } from '../../../context/PaymentMethodContext';
+import { useProductListClear } from '../../../context/ProductContext';
 import { useApplyRoundingCents } from '../../../context/ProductContext';
 import AlertModal from '../../utility/AlertModal';
 import PaymentComplete from './PaymentComplete';
@@ -25,6 +26,7 @@ const CheckoutPayment = (props) => {
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
+  const clearProductList = useProductListClear();
 
   // changes number to have commas and rounds to 2 decimal places
   const numberWithCommas = (number) => {
@@ -93,13 +95,17 @@ const CheckoutPayment = (props) => {
     setShowAlert(false);
     setShowPaymentComplete(false);
 
-    // add reset for invoice list
+    // after payment complete, closes payment section
+    handleCancelPayment();
+
+    // reset for invoice list
+    clearProductList();
   };
 
   return (
     <div className='checkoutPayment-main-container'>
       {showPaymentComplete ? (
-        <PaymentComplete />
+        <PaymentComplete reset={reset} />
       ) : (
         <div className='checkoutPayment-sub-container'>
           <div className='checkoutPayment-title'>

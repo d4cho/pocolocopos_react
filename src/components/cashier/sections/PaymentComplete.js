@@ -3,7 +3,11 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 import './PaymentComplete.css';
 
-const PaymentComplete = () => {
+const PaymentComplete = (props) => {
+  const handleClick = () => {
+    props.reset();
+  };
+
   return (
     <div className='container-paymentComplete'>
       <CheckCircleOutlineIcon
@@ -49,7 +53,7 @@ const PaymentComplete = () => {
         </div>
       </div>
       <div className='button-container-paymentComplete'>
-        <button>Finish</button>
+        <button onClick={handleClick}>Finish</button>
       </div>
     </div>
   );
