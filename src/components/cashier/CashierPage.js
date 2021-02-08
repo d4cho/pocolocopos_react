@@ -13,6 +13,7 @@ const CashierPage = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [showCheckout, setShowCheckout] = useState(false);
   const [showCouponPage, setShowCouponPage] = useState(false);
+  const [showPaymentComplete, setShowPaymentComplete] = useState(false);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -35,9 +36,13 @@ const CashierPage = () => {
     setShowCheckout(false);
   };
 
-  const toggleShowCouponPage = (value) => {
-    setShowCheckout(!value);
-    setShowCouponPage(value);
+  const toggleShowCouponPage = (booleanValue) => {
+    setShowCheckout(!booleanValue);
+    setShowCouponPage(booleanValue);
+  };
+
+  const handleShowPaymentComplete = (booleanValue) => {
+    setShowPaymentComplete(booleanValue);
   };
 
   return (
@@ -48,6 +53,7 @@ const CashierPage = () => {
           openCheckoutPayment={openCheckoutPayment}
           showCheckout={showCheckout}
           showCouponPage={showCouponPage}
+          showPaymentComplete={showPaymentComplete}
           total={total}
           updateTotal={(value) => setTotal(value)}
         />
@@ -58,6 +64,7 @@ const CashierPage = () => {
             closeCheckoutPayment={closeCheckoutPayment}
             total={total}
             toggleShowCouponPage={toggleShowCouponPage}
+            handleShowPaymentComplete={handleShowPaymentComplete}
           />
         </div>
       ) : showCouponPage ? (

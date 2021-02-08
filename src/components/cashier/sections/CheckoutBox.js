@@ -65,6 +65,15 @@ const CheckoutBox = (props) => {
 
   const renderButton = () => {
     if (productList.length > 0) {
+      if (props.showPaymentComplete) {
+        return (
+          <div className='payment-complete-button'>
+            <div>PAYMENT</div>
+            <div>COMPLETE</div>
+          </div>
+        );
+      }
+
       if (props.showCheckout || props.showCouponPage) {
         return (
           <div className='remaining-btn'>

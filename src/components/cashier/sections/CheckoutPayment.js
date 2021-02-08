@@ -84,6 +84,7 @@ const CheckoutPayment = (props) => {
       setShowAlert(true);
     } else {
       setShowPaymentComplete(true);
+      props.handleShowPaymentComplete(true);
     }
   };
 
@@ -94,6 +95,9 @@ const CheckoutPayment = (props) => {
     setPresetAmount(0);
     setShowAlert(false);
     setShowPaymentComplete(false);
+
+    // reset checkout button
+    props.handleShowPaymentComplete(false);
 
     // after payment complete, closes payment section
     handleCancelPayment();
