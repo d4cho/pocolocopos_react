@@ -4,6 +4,7 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import './PaymentComplete.css';
 
 const PaymentComplete = (props) => {
+  console.log(props.amountPaid);
   const handleClick = () => {
     props.reset();
   };
@@ -23,32 +24,34 @@ const PaymentComplete = (props) => {
         <div className='summary-paymentComplete'>
           <div className='item-paymentComplete'>
             <div>Sub Total</div>
-            <div>Sub Total value</div>
+            <div>${props.subtotal}</div>
           </div>
           <div className='item-paymentComplete'>
-            <div>Tax(5 Tax Rates)</div>
-            <div>Tax(5 Tax Rates) value</div>
+            <div>Tax (5 Tax Rates)</div>
+            <div>${props.tax}</div>
           </div>
           <div className='item-paymentComplete'>
             <div>Coupon</div>
-            <div>Coupon value</div>
+            <div>$0.00</div>
           </div>
           <div className='item-paymentComplete'>
             <div>Total</div>
-            <div>Total value</div>
+            <div>${props.total}</div>
           </div>
           <div className='hr-paymentComplete'></div>
           <div className='item-paymentComplete'>
             <div>Payment Method</div>
-            <div>Payment Method value</div>
+            <div style={{ textTransform: 'uppercase' }}>
+              {props.paymentMethod}
+            </div>
           </div>
           <div className='item-paymentComplete'>
             <div>Amount Paid</div>
-            <div>Amount Paid value</div>
+            <div>${props.amountPaid}</div>
           </div>
           <div className='item-paymentComplete'>
-            <div>Change</div>
-            <div>Change value</div>
+            <div style={{ fontWeight: 'bold' }}>Change</div>
+            <div style={{ color: 'red' }}>${props.change}</div>
           </div>
         </div>
       </div>

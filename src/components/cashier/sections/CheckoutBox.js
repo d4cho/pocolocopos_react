@@ -11,7 +11,6 @@ import AlertModal from '../../utility/AlertModal';
 const CheckoutBox = (props) => {
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
-  // const [remainingAmount, setRemainingAmount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
 
   const productList = useProductList();
@@ -32,11 +31,13 @@ const CheckoutBox = (props) => {
         .reduce((acc, currVal) => acc + currVal);
       const subTotalValueRounded = Math.round(subtotalValue * 1e2) / 1e2;
       setSubtotal(subTotalValueRounded);
+      props.updateSubtotal(subTotalValueRounded);
 
       // calculate tax value
-      const taxValue = subtotalValue * 0.05;
+      const taxValue = subtotalValue * 0.13;
       const taxValueRounded = Math.round(taxValue * 1e2) / 1e2;
       setTax(taxValueRounded);
+      props.updateTax(taxValueRounded);
 
       // calculate total value
       const totalValue = subTotalValueRounded + taxValueRounded;
@@ -47,6 +48,8 @@ const CheckoutBox = (props) => {
       setSubtotal(0);
       setTax(0);
       props.updateTotal(0);
+      props.updateSubtotal(0);
+      props.updateTax(0);
     }
   }, [productList, props]);
 

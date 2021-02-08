@@ -15,6 +15,8 @@ const CashierPage = () => {
   const [showCouponPage, setShowCouponPage] = useState(false);
   const [showPaymentComplete, setShowPaymentComplete] = useState(false);
   const [total, setTotal] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
 
   useEffect(() => {
     getUniqueCategories();
@@ -56,6 +58,8 @@ const CashierPage = () => {
           showPaymentComplete={showPaymentComplete}
           total={total}
           updateTotal={(value) => setTotal(value)}
+          updateSubtotal={(value) => setSubtotal(value)}
+          updateTax={(value) => setTax(value)}
         />
       </div>
       {showCheckout ? (
@@ -63,6 +67,8 @@ const CashierPage = () => {
           <CheckoutPayment
             closeCheckoutPayment={closeCheckoutPayment}
             total={total}
+            subtotal={subtotal}
+            tax={tax}
             toggleShowCouponPage={toggleShowCouponPage}
             handleShowPaymentComplete={handleShowPaymentComplete}
           />

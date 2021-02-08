@@ -19,14 +19,15 @@ import PaymentComplete from './PaymentComplete';
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
-  const [presetAmount, setPresetAmount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [showPaymentComplete, setShowPaymentComplete] = useState(false);
+  const [change, setChange] = useState(0);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
   const clearProductList = useProductListClear();
+  console.log(paymentAmount);
 
   // changes number to have commas and rounds to 2 decimal places
   const numberWithCommas = (number) => {
@@ -46,7 +47,6 @@ const CheckoutPayment = (props) => {
   const handlePaymentMethodChange = (event) => {
     changePaymentMethod(event.target.value);
     applyRoundingCents(props.total, event.target.value);
-    setPresetAmount(0);
     setPaymentAmount(0);
   };
 
@@ -67,22 +67,31 @@ const CheckoutPayment = (props) => {
 
   const handleClearClicked = () => {
     setPaymentAmount(0);
-    setPresetAmount(0);
   };
 
   // updated payment amount when any pre-set dollar amount is clicked
   const handlePresetAmountClicked = (amount) => {
-    let sum = presetAmount;
-    sum += amount;
-    // console.log(sum);
-    setPresetAmount(sum);
-    setPaymentAmount(sum);
+    if (paymentAmount === 0) {
+      setPaymentAmount(amount);
+    } else {
+      let sum = paymentAmount;
+      sum += amount;
+      setPaymentAmount(sum);
+    }
+  };
+
+  // calculate change
+  const calculateChange = () => {
+    let change = 0;
+    change = paymentAmount - props.total;
+    setChange(change);
   };
 
   const handlePayClicked = () => {
     if (paymentAmount === 0 || paymentAmount < props.total) {
       setShowAlert(true);
     } else {
+      calculateChange();
       setShowPaymentComplete(true);
       props.handleShowPaymentComplete(true);
     }
@@ -92,7 +101,6 @@ const CheckoutPayment = (props) => {
   const reset = () => {
     setMultipaymentChecked(false);
     setPaymentAmount(0);
-    setPresetAmount(0);
     setShowAlert(false);
     setShowPaymentComplete(false);
 
@@ -109,7 +117,15 @@ const CheckoutPayment = (props) => {
   return (
     <div className='checkoutPayment-main-container'>
       {showPaymentComplete ? (
-        <PaymentComplete reset={reset} />
+        <PaymentComplete
+          reset={reset}
+          paymentMethod={paymentMethod}
+          amountPaid={numberWithCommas(paymentAmount)}
+          change={numberWithCommas(change)}
+          total={numberWithCommas(props.total)}
+          subtotal={numberWithCommas(props.subtotal)}
+          tax={numberWithCommas(props.tax)}
+        />
       ) : (
         <div className='checkoutPayment-sub-container'>
           <div className='checkoutPayment-title'>
