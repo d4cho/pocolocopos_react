@@ -1,11 +1,12 @@
 import React from 'react';
+import './RightSection.css';
 
 const RightSection = () => {
   return (
-    <div>
+    <div className='section-container-RightSection'>
       <h1>search invoice</h1>
       <div>search section</div>
-      <div>line</div>
+      <div className='line-RightSection'></div>
       <div>Body</div>
     </div>
   );

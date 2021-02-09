@@ -1,0 +1,20 @@
+.section-container-RightSection {
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 4rem;
+}
+
+.section-container-RightSection h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.line-RightSection {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: black;
+}
