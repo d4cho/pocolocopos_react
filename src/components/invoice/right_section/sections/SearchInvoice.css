@@ -1,7 +1,8 @@
 .container-SearchInvoice {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding-bottom: 1rem;
 }
 
 .container-SearchInvoice span {
@@ -15,4 +16,18 @@
 
 .date-item-SearchInvoice {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+}
+
+.button-SearchInvoice {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  height: fit-content;
+  padding: 0 1rem;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LeftSectionTop from './left_section/top/LeftSectionTop';
 import './InvoicePage.css';
 import LeftSectionBot from './left_section/bottom/LeftSectionBot';

@@ -1,0 +1,39 @@
+.container-InvoiceList {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+
+.topbar-InvoiceList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem 0;
+  background: rgb(202, 202, 202);
+}
+
+.topbar-InvoiceList span {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.list-InvoiceList {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.list-item-InvoiceList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  cursor: pointer;
+}

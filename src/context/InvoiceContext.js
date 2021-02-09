@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useProductList } from '../context/ProductContext';
+import { invoiceData } from '../assets/invoice-data';
 
 const InvoiceListContext = React.createContext();
 
@@ -8,10 +8,7 @@ export const useInvoiceList = () => {
 };
 
 export const InvoiceListProvider = ({ children }) => {
-  const productList = useProductList();
-  const [invoiceList, setInvoiceList] = useState(productList);
-
-  const updateInvoiceList = () => {};
+  const [invoiceList, setInvoiceList] = useState(invoiceData);
 
   return (
     <InvoiceListContext.Provider value={invoiceList}>
