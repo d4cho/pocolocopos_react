@@ -1,0 +1,38 @@
+.container-LeftSectionTop {
+  display: grid;
+  grid-template-rows: 8% 8% 60% 24%;
+  height: 100%;
+  border: 1px solid lightgray;
+}
+
+.topbar-LeftSectionTop {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  padding: 0 20px;
+  background-color: rgb(170, 170, 170);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.midbar-LeftSectionTop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 8fr 2fr;
+  align-items: center;
+  justify-items: center;
+  background-color: rgb(213, 213, 213);
+  font-size: 1.1rem;
+}
+
+.icon-container-LeftSectionTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container-LeftSectionTop span {
+  font-size: 3rem;
+  color: lightgray;
+}

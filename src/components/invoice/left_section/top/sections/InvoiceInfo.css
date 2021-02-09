@@ -1,0 +1,44 @@
+.container-InvoiceInfo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-top: 1px solid lightgray;
+  padding: 1rem;
+}
+.container-InvoiceInfo span {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.container-InvoiceInfo div {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.container-invoice-time {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  border-left: 1px solid black;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.container-paid-method {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-left: 1px solid black;
+  margin-top: 1rem;
+}
+
+.column-paid-method {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  padding-left: 1rem;
+}
+
+.item-paid-method {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

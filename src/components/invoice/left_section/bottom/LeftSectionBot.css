@@ -1,0 +1,36 @@
+.container-LeftSectionBot {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 0.5rem;
+}
+
+.column-LeftSectionBot {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  border: 1px solid lightgray;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.column-item-LeftSectionBot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.line-LeftSectionBot {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: black;
+  align-self: center;
+}
+
+.button-LeftSectionBot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid darkgray;
+  font-size: 2rem;
+  background-color: lightgray;
+}

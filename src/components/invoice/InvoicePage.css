@@ -1,0 +1,17 @@
+.main-container-Invoice {
+  margin: 2.5vh 1vw;
+  display: grid;
+  grid-template-columns: 45vw 47vw;
+  column-gap: 1vw;
+}
+
+.left-sub-container-Invoice {
+  display: grid;
+  grid-template-rows: 72vh 22vh;
+  row-gap: 1vh;
+}
+
+.right-sub-container-Invoice {
+  display: grid;
+  grid-template-rows: 95vh;
+}

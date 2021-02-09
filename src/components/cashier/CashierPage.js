@@ -88,47 +88,6 @@ const CashierPage = () => {
       )}
     </div>
   );
-
-  // return (
-  //   <>
-  //     {showCheckout ? (
-  //       <div className='main-grid-container'>
-  //         <div className='sub-grid-container-left'>
-  //           <InvoiceBox showCheckout={showCheckout} />
-  //           <CheckoutBox
-  //             openCheckoutPayment={openCheckoutPayment}
-  //             showCheckout={showCheckout}
-  //             total={total}
-  //             updateTotal={(value) => setTotal(value)}
-  //           />
-  //         </div>
-  //         <div className='checkout-sub-grid-container-right'>
-  //           <CheckoutPayment
-  //             closeCheckoutPayment={closeCheckoutPayment}
-  //             total={total}
-  //             toggleShowCouponPage={toggleShowCouponPage}
-  //           />
-  //         </div>
-  //       </div>
-  //     ) : (
-  //       <div className='main-grid-container'>
-  //         <div className='sub-grid-container-left'>
-  //           <InvoiceBox showCheckout={showCheckout} />
-  //           <CheckoutBox
-  //             openCheckoutPayment={openCheckoutPayment}
-  //             showCheckout={showCheckout}
-  //             total={total}
-  //             updateTotal={(value) => setTotal(value)}
-  //           />
-  //         </div>
-  //         <div className='sub-grid-container-right'>
-  //           <CategoryList categoryList={categoryList} />
-  //           <ProductList />
-  //         </div>
-  //       </div>
-  //     )}
-  //   </>
-  // );
 };
 
 export default CashierPage;
