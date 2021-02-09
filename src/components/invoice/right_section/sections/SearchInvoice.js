@@ -6,7 +6,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import DatePicker from './DatePicker';
 
-const SearchInvoice = () => {
+const SearchInvoice = (props) => {
+  const handleChange = (e) => {
+    props.setInvoiceSearch(e.target.value);
+  };
+
   return (
     <div className='container-SearchInvoice'>
       <div className='item-SearchInvoice'>
@@ -14,6 +18,8 @@ const SearchInvoice = () => {
 
         <TextField
           label=''
+          value={props.invoiceSearch}
+          onChange={handleChange}
           type='number'
           variant='outlined'
           InputProps={{

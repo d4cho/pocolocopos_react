@@ -3,24 +3,48 @@ import './InvoiceList.css';
 
 import { useInvoiceList } from '../../../../context/InvoiceContext';
 
-const InvoiceList = () => {
+const InvoiceList = ({ invoiceSearch }) => {
   const invoiceList = useInvoiceList();
 
-  const renderList = () =>
-    invoiceList.map((item, idx) => {
-      const { invoice, date, time, totalPrice } = item;
-      const isEven = (idx + 1) % 2 === 0 ? true : false;
-      return (
-        <div
-          className='list-item-InvoiceList'
-          style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
-          <div>{idx + 1}</div>
-          <div>{invoice}</div>
-          <div>{`${date} ${time}`}</div>
-          <div style={{ color: '#DAA520' }}>${totalPrice}</div>
-        </div>
-      );
-    });
+  const renderList = () => {
+    if (invoiceSearch) {
+      return invoiceList
+        .filter((item) => item.invoice === parseInt(invoiceSearch))
+        .map((item, idx) => {
+          const { invoice, date, time, totalPrice } = item;
+          const isEven = (idx + 1) % 2 === 0 ? true : false;
+          return (
+            <div
+              key={idx}
+              className='list-item-InvoiceList'
+              style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
+              <div>{idx + 1}</div>
+              <div>{invoice}</div>
+              <div>{`${date} ${time}`}</div>
+              <div style={{ color: '#DAA520' }}>${totalPrice}</div>
+            </div>
+          );
+        });
+    } else {
+      return invoiceList.map((item, idx) => {
+        const { invoice, date, time, totalPrice } = item;
+        const isEven = (idx + 1) % 2 === 0 ? true : false;
+        return (
+          <div
+            key={idx}
+            className='list-item-InvoiceList'
+            style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
+            <div>{idx + 1}</div>
+            <div>{invoice}</div>
+            <div>{`${date} ${time}`}</div>
+            <div style={{ color: '#DAA520' }}>${totalPrice}</div>
+          </div>
+        );
+      });
+    }
+  };
+
+  console.log(renderList().length);
 
   return (
     <div className='container-InvoiceList'>
@@ -30,7 +54,11 @@ const InvoiceList = () => {
         <span>Invoice Date & Time</span>
         <span>Total Price</span>
       </div>
-      <div className='list-InvoiceList'>{renderList()}</div>
+      {renderList().length > 0 ? (
+        <div className='list-InvoiceList'>{renderList()}</div>
+      ) : (
+        <div className='noInvoice-InvoiceList'>There is no invoice</div>
+      )}
     </div>
   );
 };

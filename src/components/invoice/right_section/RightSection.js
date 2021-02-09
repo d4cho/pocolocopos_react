@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RightSection.css';
 import InvoiceList from './sections/InvoiceList';
 import SearchInvoice from './sections/SearchInvoice';
 
 const RightSection = (props) => {
+  const [invoiceSearch, setInvoiceSearch] = useState('');
+
+  console.log(invoiceSearch);
+
   return (
     <div className='section-container-RightSection'>
       <h1>search invoice</h1>
-      <SearchInvoice />
+      <SearchInvoice
+        invoiceSearch={invoiceSearch}
+        setInvoiceSearch={setInvoiceSearch}
+      />
       <div className='line-RightSection'></div>
-      <InvoiceList />
+      <InvoiceList invoiceSearch={invoiceSearch} />
     </div>
   );
 };
