@@ -1,0 +1,18 @@
+.container-SearchInvoice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-SearchInvoice span {
+  font-size: 1.5rem;
+}
+
+.item-SearchInvoice {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-item-SearchInvoice {
+  display: flex;
+}
