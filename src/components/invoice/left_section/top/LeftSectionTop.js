@@ -4,6 +4,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 
 import InvoiceInfo from './sections/InvoiceInfo';
 import AlertModal from '../../../utility/AlertModal';
+import InvoiceItems from './sections/InvoiceItems';
 
 const LeftSection = ({ invoiceInfo }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -29,12 +30,17 @@ const LeftSection = ({ invoiceInfo }) => {
         <div>Product Name</div>
         <div>Price</div>
       </div>
-      <div className='icon-container-LeftSectionTop'>
-        <div>
-          <ReceiptIcon style={{ color: 'lightgray', fontSize: '6rem' }} />
+      {invoiceInfo ? (
+        <InvoiceItems invoiceInfo={invoiceInfo} />
+      ) : (
+        <div className='icon-container-LeftSectionTop'>
+          <div>
+            <ReceiptIcon style={{ color: 'lightgray', fontSize: '6rem' }} />
+          </div>
+          <span>Select an Invoice</span>
         </div>
-        <span>Select an Invoice</span>
-      </div>
+      )}
+
       {invoiceInfo ? (
         <InvoiceInfo invoiceInfo={invoiceInfo} />
       ) : (

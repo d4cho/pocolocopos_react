@@ -1,0 +1,25 @@
+.main-container-InvoiceItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item-InvoiceItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr 8fr 2fr;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+input[type='checkbox'] {
+  transform: scale(2);
+}
+
+.item-InvoiceItem span {
+  font-size: 1.3rem;
+}
+
+.start-item-InvoiceItem {
+  justify-self: flex-start;
+}
