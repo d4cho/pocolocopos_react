@@ -3,7 +3,7 @@ export const invoiceData = [
     invoice: 1,
     date: '01/16/21',
     time: '03:00 PM',
-    totalPrice: 123,
+    totalPrice: 113,
     products: [{ name: 'Example Item 1', price: 100 }],
     paymentMethod: 'cash',
     coupon: false
@@ -12,7 +12,7 @@ export const invoiceData = [
     invoice: 2,
     date: '01/17/21',
     time: '03:15 PM',
-    totalPrice: 234,
+    totalPrice: 339,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 }
@@ -24,7 +24,7 @@ export const invoiceData = [
     invoice: 3,
     date: '01/18/21',
     time: '03:30 PM',
-    totalPrice: 345,
+    totalPrice: 678,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -37,7 +37,7 @@ export const invoiceData = [
     invoice: 4,
     date: '01/19/21',
     time: '03:45 PM',
-    totalPrice: 456,
+    totalPrice: 1130,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -51,7 +51,7 @@ export const invoiceData = [
     invoice: 5,
     date: '01/20/21',
     time: '04:00 PM',
-    totalPrice: 567,
+    totalPrice: 1695,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },

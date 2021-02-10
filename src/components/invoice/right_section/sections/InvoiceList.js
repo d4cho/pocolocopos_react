@@ -5,6 +5,7 @@ import {
   useInvoiceList,
   useSelectedInvoice
 } from '../../../../context/InvoiceContext';
+import { numberWithCommas } from '../../../utility/numberWithCommas';
 
 const InvoiceList = ({ invoiceSearch }) => {
   const invoiceList = useInvoiceList();
@@ -31,7 +32,9 @@ const InvoiceList = ({ invoiceSearch }) => {
               <div>{idx + 1}</div>
               <div>{invoice}</div>
               <div>{`${date} ${time}`}</div>
-              <div style={{ color: '#DAA520' }}>${totalPrice}</div>
+              <div style={{ color: '#DAA520' }}>
+                ${numberWithCommas(totalPrice)}
+              </div>
             </div>
           );
         });
@@ -48,7 +51,9 @@ const InvoiceList = ({ invoiceSearch }) => {
             <div>{idx + 1}</div>
             <div>{invoice}</div>
             <div>{`${date} ${time}`}</div>
-            <div style={{ color: '#DAA520' }}>${totalPrice}</div>
+            <div style={{ color: '#DAA520' }}>
+              ${numberWithCommas(totalPrice)}
+            </div>
           </div>
         );
       });

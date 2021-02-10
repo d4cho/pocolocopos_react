@@ -45,7 +45,14 @@ const LeftSectionBot = (props) => {
           <div>${total ? numberWithCommas(total) : '0.00'}</div>
         </div>
       </div>
-      <div className='button-LeftSectionBot'>placeholder</div>
+      <div className='button-LeftSectionBot'>
+        {props.invoiceInfo && (
+          <>
+            <span>RETURN</span>
+            <span>$0.00</span>
+          </>
+        )}
+      </div>
     </div>
   );
 };
