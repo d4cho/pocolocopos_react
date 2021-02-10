@@ -27,6 +27,17 @@
   overflow-y: scroll;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.list-InvoiceList::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.list-InvoiceList {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .list-item-InvoiceList {
   display: grid;
   grid-template-columns: 1fr 1fr 5fr 2fr;

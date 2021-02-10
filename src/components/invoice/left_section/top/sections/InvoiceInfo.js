@@ -4,6 +4,11 @@ import './InvoiceInfo.css';
 const InvoiceInfo = ({ invoiceInfo }) => {
   const { date, time, paymentMethod, totalPrice } = invoiceInfo;
 
+  // changes number to have commas & 2 decimal place
+  const numberWithCommas = (number) => {
+    return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   return (
     <div className='container-InvoiceInfo'>
       <div>
@@ -18,29 +23,59 @@ const InvoiceInfo = ({ invoiceInfo }) => {
           <div className='column-paid-method'>
             <div className='item-paid-method'>
               <div>CASH</div>
-              <div>${paymentMethod === 'cash' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'cash'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
             <div className='item-paid-method'>
               <div>CREDIT</div>
-              <div>${paymentMethod === 'credit' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'credit'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
             <div className='item-paid-method'>
               <div>COUPON</div>
-              <div>${paymentMethod === 'coupon' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'coupon'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
           </div>
           <div className='column-paid-method'>
             <div className='item-paid-method'>
               <div>DEBIT</div>
-              <div>${paymentMethod === 'debit' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'debit'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
             <div className='item-paid-method'>
               <div>ACCOUNT</div>
-              <div>${paymentMethod === 'account' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'account'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
             <div className='item-paid-method'>
               <div>GIFT</div>
-              <div>${paymentMethod === 'gift' ? totalPrice : '0.00'}</div>
+              <div>
+                $
+                {paymentMethod === 'gift'
+                  ? numberWithCommas(totalPrice)
+                  : '0.00'}
+              </div>
             </div>
           </div>
         </div>

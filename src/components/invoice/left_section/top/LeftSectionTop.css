@@ -7,13 +7,20 @@
 
 .topbar-LeftSectionTop {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
   padding: 0 20px;
   background-color: rgb(170, 170, 170);
   font-size: 1.2rem;
   text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.print-LeftSectionTop {
+  color: rgb(45, 85, 118);
+  text-decoration: underline;
 }
 
 .midbar-LeftSectionTop {
