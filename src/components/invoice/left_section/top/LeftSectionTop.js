@@ -4,8 +4,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 
 import InvoiceInfo from './sections/InvoiceInfo';
 
-const LeftSection = (props) => {
-  const { invoiceInfo } = props;
+const LeftSection = ({ invoiceInfo }) => {
   console.log(invoiceInfo);
 
   return (
@@ -30,8 +29,7 @@ const LeftSection = (props) => {
         </div>
         <span>Select an Invoice</span>
       </div>
-      {/* WHY DOES THIS NOT WORK!!!! */}
-      {invoiceInfo.length > 0 ? (
+      {invoiceInfo ? (
         <InvoiceInfo />
       ) : (
         <div className='empty-div-LeftSectionTop'></div>

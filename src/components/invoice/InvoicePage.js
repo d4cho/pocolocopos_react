@@ -13,7 +13,7 @@ const InvoicePage = () => {
   const invoiceList = useInvoiceList();
   const { selectedInvoice } = useSelectedInvoice();
 
-  let invoiceInfo = [];
+  let invoiceInfo = '';
 
   if (selectedInvoice) {
     invoiceInfo = invoiceList.find((item) => item.invoice === selectedInvoice);
