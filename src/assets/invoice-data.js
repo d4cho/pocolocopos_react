@@ -17,7 +17,7 @@ export const invoiceData = [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 }
     ],
-    paymentMethod: 'cash',
+    paymentMethod: 'credit',
     coupon: false
   },
   {
@@ -30,7 +30,7 @@ export const invoiceData = [
       { name: 'Example Item 2', price: 200 },
       { name: 'Example Item 3', price: 300 }
     ],
-    paymentMethod: 'cash',
+    paymentMethod: 'debit',
     coupon: false
   },
   {
@@ -59,7 +59,7 @@ export const invoiceData = [
       { name: 'Example Item 4', price: 400 },
       { name: 'Example Item 5', price: 500 }
     ],
-    paymentMethod: 'cash',
+    paymentMethod: 'credit',
     coupon: false
   },
   {
