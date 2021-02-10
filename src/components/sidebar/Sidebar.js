@@ -5,10 +5,13 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import PersonIcon from '@material-ui/icons/Person';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import { useSelectedInvoice } from '../../context/InvoiceContext';
 
 const Sidebar = (props) => {
   // 1 = home, 2 = cashier, 3 = invoice, 4 = account, 5 = special
   const [menuClicked, setMenuClicked] = useState(props.displayPage);
+
+  const { setSelectedInvoice } = useSelectedInvoice();
 
   useEffect(() => {
     setMenuClicked(props.displayPage);
@@ -17,6 +20,9 @@ const Sidebar = (props) => {
   const menuClickedHandler = (pageNumber) => {
     setMenuClicked(pageNumber);
     props.refreshFunction(pageNumber);
+
+    // reset selected invoice
+    setSelectedInvoice('');
   };
 
   const divStyle = {

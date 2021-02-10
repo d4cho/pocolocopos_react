@@ -12,7 +12,6 @@ export default function MaterialUIPickers() {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    console.log(date);
   };
 
   return (

@@ -1,10 +1,19 @@
 import React from 'react';
 import './InvoiceList.css';
 
-import { useInvoiceList } from '../../../../context/InvoiceContext';
+import {
+  useInvoiceList,
+  useSelectedInvoice
+} from '../../../../context/InvoiceContext';
 
 const InvoiceList = ({ invoiceSearch }) => {
   const invoiceList = useInvoiceList();
+  const { selectedInvoice, setSelectedInvoice } = useSelectedInvoice();
+
+  const handleInvoiceClicked = (invoiceNumber) => {
+    setSelectedInvoice(invoiceNumber);
+  };
+  console.log(selectedInvoice);
 
   const renderList = () => {
     if (invoiceSearch) {
@@ -16,6 +25,7 @@ const InvoiceList = ({ invoiceSearch }) => {
           return (
             <div
               key={idx}
+              onClick={() => handleInvoiceClicked(invoice)}
               className='list-item-InvoiceList'
               style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
               <div>{idx + 1}</div>
@@ -32,6 +42,7 @@ const InvoiceList = ({ invoiceSearch }) => {
         return (
           <div
             key={idx}
+            onClick={() => handleInvoiceClicked(invoice)}
             className='list-item-InvoiceList'
             style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
             <div>{idx + 1}</div>
@@ -43,8 +54,6 @@ const InvoiceList = ({ invoiceSearch }) => {
       });
     }
   };
-
-  console.log(renderList().length);
 
   return (
     <div className='container-InvoiceList'>

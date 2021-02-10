@@ -6,8 +6,6 @@ import SearchInvoice from './sections/SearchInvoice';
 const RightSection = (props) => {
   const [invoiceSearch, setInvoiceSearch] = useState('');
 
-  console.log(invoiceSearch);
-
   return (
     <div className='section-container-RightSection'>
       <h1>search invoice</h1>

@@ -27,7 +27,6 @@ const CheckoutPayment = (props) => {
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
   const clearProductList = useProductListClear();
-  console.log(paymentAmount);
 
   // changes number to have commas and rounds to 2 decimal places
   const numberWithCommas = (number) => {

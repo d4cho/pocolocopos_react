@@ -4,7 +4,6 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import './PaymentComplete.css';
 
 const PaymentComplete = (props) => {
-  console.log(props.amountPaid);
   const handleClick = () => {
     props.reset();
   };
