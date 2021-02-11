@@ -1,8 +1,6 @@
 import React from 'react';
 import './SearchInvoice.css';
 
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import DatePicker from './DatePicker';
 
@@ -15,21 +13,12 @@ const SearchInvoice = (props) => {
     <div className='container-SearchInvoice'>
       <div className='item-SearchInvoice'>
         <span>Invoice #</span>
-
-        <TextField
-          label=''
+        <input
+          className='input-SearchInvoice'
+          type='number'
+          name='invoiceNumber'
           value={props.invoiceSearch}
           onChange={handleChange}
-          type='number'
-          variant='outlined'
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            style: { fontSize: '1.5rem', width: '15vw', marginRight: '1rem' }
-          }}
         />
       </div>
       <div className='item-SearchInvoice'>

@@ -2,9 +2,12 @@ import React from 'react';
 
 import './PaybackModal.css';
 
-const PayBackMethod = ({ closePaybackModal }) => {
+const PaybackModal = ({ closePaybackModal }) => {
   return (
-    <div className='backdrop-PaybackModal' onClick={() => closePaybackModal()}>
+    <div className='main-container-PaybackModal'>
+      <div
+        className='backdrop-PaybackModal'
+        onClick={() => closePaybackModal()}></div>
       <div className='container-PaybackModal'>
         <div>pay back method</div>
         <div>line</div>
@@ -26,4 +29,4 @@ const PayBackMethod = ({ closePaybackModal }) => {
   );
 };
 
-export default PayBackMethod;
+export default PaybackModal;

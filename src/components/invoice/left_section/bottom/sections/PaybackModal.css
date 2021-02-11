@@ -1,6 +1,5 @@
-.backdrop-PaybackModal {
+.main-container-PaybackModal {
   font-size: 2rem;
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,14 +9,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.backdrop-PaybackModal {
+  position: relative;
+  z-index: 100;
   background-color: rgba(211, 211, 211, 0.474);
-  z-index: 10;
+  height: 100%;
+  width: 100%;
 }
 
 .container-PaybackModal {
-  z-index: 200;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   border: 1px solid red;
   background-color: lightgreen;
+  padding: 6rem;
 }
