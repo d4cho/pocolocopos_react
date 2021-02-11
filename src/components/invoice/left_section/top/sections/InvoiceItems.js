@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InvoiceItems.css';
 
 import { numberWithCommas } from '../../../../utility/numberWithCommas';
 import { useReturnInvoice } from '../../../../../context/InvoiceContext';
 
 const InvoiceItems = ({ invoiceInfo }) => {
-  let array = [];
+  const [array, setArray] = useState([]);
+  const { setReturnInvoice } = useReturnInvoice();
 
   const renderItems = () =>
     invoiceInfo.products.map((item, idx) => {
@@ -20,7 +21,8 @@ const InvoiceItems = ({ invoiceInfo }) => {
           let index = array.indexOf(e.target.value);
           array.splice(index, 1);
         }
-        console.log('array', array);
+        setArray([...array]);
+        setReturnInvoice([...array]);
       };
 
       return (

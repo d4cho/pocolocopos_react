@@ -1,7 +1,10 @@
 import React from 'react';
 import './LeftSectionBot.css';
 
+import { useReturnInvoice } from '../../../../context/InvoiceContext';
+
 const LeftSectionBot = (props) => {
+  const { returnInvoice } = useReturnInvoice();
   const { products } = props.invoiceInfo;
 
   // changes number to have commas & 2 decimal place
@@ -9,6 +12,7 @@ const LeftSectionBot = (props) => {
     return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  // calculation for summary
   let subtotal;
   let tax;
   let total;
@@ -20,6 +24,21 @@ const LeftSectionBot = (props) => {
     subtotal = array.reduce((a, b) => a + b, 0);
     tax = subtotal * 0.13;
     total = subtotal + tax;
+  }
+
+  // calculation for return amount
+  let returnAmount;
+  if (returnInvoice) {
+    let array = [];
+    returnInvoice.forEach((itemName) =>
+      products.forEach((product) => {
+        if (product.name === itemName) {
+          array.push(product.price);
+        }
+      })
+    );
+
+    returnAmount = array.reduce((a, b) => a + b, 0);
   }
 
   return (
@@ -49,7 +68,9 @@ const LeftSectionBot = (props) => {
         {props.invoiceInfo && (
           <>
             <span>RETURN</span>
-            <span>$0.00</span>
+            <span>
+              ${returnAmount ? numberWithCommas(returnAmount) : '0.00'}
+            </span>
           </>
         )}
       </div>
