@@ -5,6 +5,12 @@ import SearchInvoice from './sections/SearchInvoice';
 
 const RightSection = (props) => {
   const [invoiceSearch, setInvoiceSearch] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  console.log(invoiceSearch, selectedDate.length);
+
+  const resetDate = () => {
+    setSelectedDate(new Date());
+  };
 
   return (
     <div className='section-container-RightSection'>
@@ -12,9 +18,12 @@ const RightSection = (props) => {
       <SearchInvoice
         invoiceSearch={invoiceSearch}
         setInvoiceSearch={setInvoiceSearch}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        resetDate={resetDate}
       />
       <div className='line-RightSection'></div>
-      <InvoiceList invoiceSearch={invoiceSearch} />
+      <InvoiceList invoiceSearch={invoiceSearch} selectedDate={selectedDate} />
     </div>
   );
 };

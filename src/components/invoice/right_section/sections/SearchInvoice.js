@@ -1,12 +1,12 @@
 import React from 'react';
 import './SearchInvoice.css';
 
-import SearchIcon from '@material-ui/icons/Search';
 import DatePicker from './DatePicker';
 
 const SearchInvoice = (props) => {
   const handleChange = (e) => {
     props.setInvoiceSearch(e.target.value);
+    props.setSelectedDate(new Date());
   };
 
   return (
@@ -24,9 +24,15 @@ const SearchInvoice = (props) => {
       <div className='item-SearchInvoice'>
         <span>Date</span>
         <div className='date-item-SearchInvoice'>
-          <DatePicker />
+          <DatePicker
+            setInvoiceSearch={props.setInvoiceSearch}
+            selectedDate={props.selectedDate}
+            setSelectedDate={props.setSelectedDate}
+          />
           <button className='button-SearchInvoice'>search</button>
-          <button className='button-SearchInvoice'>today</button>
+          <button className='button-SearchInvoice' onClick={props.resetDate}>
+            today
+          </button>
         </div>
       </div>
     </div>

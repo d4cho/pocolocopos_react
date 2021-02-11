@@ -1,4 +1,5 @@
 import 'date-fns';
+import { format } from 'date-fns';
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -6,12 +7,11 @@ import {
   KeyboardDatePicker
 } from '@material-ui/pickers';
 
-export default function MaterialUIPickers() {
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
-
+export default function MaterialUIPickers(props) {
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    const formattedDate = format(date, 'MM/dd/yy');
+    props.setSelectedDate(formattedDate);
+    props.setInvoiceSearch('');
   };
 
   return (
@@ -22,7 +22,7 @@ export default function MaterialUIPickers() {
         id='date-picker-dialog'
         // label='Date picker dialog'
         format='MM/dd/yyyy'
-        value={selectedDate}
+        value={props.selectedDate}
         onChange={handleDateChange}
         KeyboardButtonProps={{
           'aria-label': 'change date'

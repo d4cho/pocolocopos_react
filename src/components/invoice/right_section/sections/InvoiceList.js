@@ -7,7 +7,7 @@ import {
 } from '../../../../context/InvoiceContext';
 import { numberWithCommas } from '../../../utility/numberWithCommas';
 
-const InvoiceList = ({ invoiceSearch }) => {
+const InvoiceList = ({ invoiceSearch, selectedDate }) => {
   const invoiceList = useInvoiceList();
   const { selectedInvoice, setSelectedInvoice } = useSelectedInvoice();
 
@@ -19,6 +19,27 @@ const InvoiceList = ({ invoiceSearch }) => {
     if (invoiceSearch) {
       return invoiceList
         .filter((item) => item.invoice === parseInt(invoiceSearch))
+        .map((item, idx) => {
+          const { invoice, date, time, totalPrice } = item;
+          const isEven = (idx + 1) % 2 === 0 ? true : false;
+          return (
+            <div
+              key={idx}
+              onClick={() => handleInvoiceClicked(invoice)}
+              className='list-item-InvoiceList'
+              style={{ background: `${isEven ? 'lightgray' : 'white'}` }}>
+              <div>{idx + 1}</div>
+              <div>{invoice}</div>
+              <div>{`${date} ${time}`}</div>
+              <div style={{ color: '#DAA520' }}>
+                ${numberWithCommas(totalPrice)}
+              </div>
+            </div>
+          );
+        });
+    } else if (selectedDate && selectedDate.length === 8) {
+      return invoiceList
+        .filter((item) => item.date === selectedDate)
         .map((item, idx) => {
           const { invoice, date, time, totalPrice } = item;
           const isEven = (idx + 1) % 2 === 0 ? true : false;
