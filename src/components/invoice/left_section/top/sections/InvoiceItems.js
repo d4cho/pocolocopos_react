@@ -10,6 +10,7 @@ const InvoiceItems = ({ invoiceInfo }) => {
 
   useEffect(() => {
     setReturnInvoice([]);
+    setArray([]);
   }, [invoiceInfo, setReturnInvoice]);
 
   const renderItems = () =>
@@ -31,7 +32,7 @@ const InvoiceItems = ({ invoiceInfo }) => {
 
       return (
         <div
-          key={idx}
+          key={idx + invoiceInfo.invoice + invoiceInfo.date + invoiceInfo.time}
           className='item-InvoiceItem'
           style={{
             background: `${isEven ? 'rgb(213, 213, 213)' : 'white'}`
