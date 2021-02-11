@@ -3,9 +3,11 @@ import './LeftSectionBot.css';
 
 import { useReturnInvoice } from '../../../../context/InvoiceContext';
 import AlertModal from '../../../utility/AlertModal';
+import PaybackModal from './sections/PaybackModal';
 
 const LeftSectionBot = (props) => {
   const [showAlert, setShowAlert] = useState(false);
+  const [showPayback, setShowPayback] = useState(false);
   const { returnInvoice } = useReturnInvoice();
 
   const { products } = props.invoiceInfo;
@@ -46,7 +48,7 @@ const LeftSectionBot = (props) => {
 
   const handleClicked = () => {
     if (returnAmount) {
-      console.log('return options modal');
+      setShowPayback(true);
     } else {
       setShowAlert(true);
     }
@@ -54,6 +56,10 @@ const LeftSectionBot = (props) => {
 
   const closeAlertModal = () => {
     setShowAlert(false);
+  };
+
+  const closePaybackModal = () => {
+    setShowPayback(false);
   };
 
   return (
@@ -98,6 +104,7 @@ const LeftSectionBot = (props) => {
           msg='No invoice item is selected. Please select item(s).'
         />
       )}
+      {showPayback && <PaybackModal closePaybackModal={closePaybackModal} />}
     </div>
   );
 };
