@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './InvoicePage.css';
 import LeftSectionTop from './left_section/top/LeftSectionTop';
@@ -18,8 +18,6 @@ const InvoicePage = () => {
   if (selectedInvoice) {
     invoiceInfo = invoiceList.find((item) => item.invoice === selectedInvoice);
   }
-
-  console.log(invoiceInfo);
 
   return (
     <div className='main-container-Invoice'>

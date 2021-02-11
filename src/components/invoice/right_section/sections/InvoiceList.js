@@ -14,7 +14,6 @@ const InvoiceList = ({ invoiceSearch }) => {
   const handleInvoiceClicked = (invoiceNumber) => {
     setSelectedInvoice(invoiceNumber);
   };
-  console.log(selectedInvoice);
 
   const renderList = () => {
     if (invoiceSearch) {
