@@ -34,4 +34,5 @@
   border: 1px solid darkgray;
   font-size: 2rem;
   background-color: lightgray;
+  cursor: pointer;
 }

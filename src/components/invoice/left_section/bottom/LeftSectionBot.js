@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LeftSectionBot.css';
 
 import { useReturnInvoice } from '../../../../context/InvoiceContext';
+import AlertModal from '../../../utility/AlertModal';
 
 const LeftSectionBot = (props) => {
+  const [showAlert, setShowAlert] = useState(false);
   const { returnInvoice } = useReturnInvoice();
+
   const { products } = props.invoiceInfo;
 
   // changes number to have commas & 2 decimal place
@@ -41,6 +44,18 @@ const LeftSectionBot = (props) => {
     returnAmount = array.reduce((a, b) => a + b, 0);
   }
 
+  const handleClicked = () => {
+    if (returnAmount) {
+      console.log('return options modal');
+    } else {
+      setShowAlert(true);
+    }
+  };
+
+  const closeAlertModal = () => {
+    setShowAlert(false);
+  };
+
   return (
     <div className='container-LeftSectionBot'>
       <div className='column-LeftSectionBot'>
@@ -66,7 +81,8 @@ const LeftSectionBot = (props) => {
       </div>
       <div
         className='button-LeftSectionBot'
-        style={returnAmount ? { backgroundColor: 'rgb(255, 233, 191)' } : null}>
+        style={returnAmount ? { backgroundColor: 'rgb(255, 233, 191)' } : null}
+        onClick={handleClicked}>
         {props.invoiceInfo && (
           <>
             <span>RETURN</span>
@@ -76,6 +92,12 @@ const LeftSectionBot = (props) => {
           </>
         )}
       </div>
+      {showAlert && (
+        <AlertModal
+          errorModalClosed={closeAlertModal}
+          msg='No invoice item is selected. Please select item(s).'
+        />
+      )}
     </div>
   );
 };
