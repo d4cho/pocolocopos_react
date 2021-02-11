@@ -64,7 +64,9 @@ const LeftSectionBot = (props) => {
           <div>${total ? numberWithCommas(total) : '0.00'}</div>
         </div>
       </div>
-      <div className='button-LeftSectionBot'>
+      <div
+        className='button-LeftSectionBot'
+        style={returnAmount ? { backgroundColor: 'rgb(255, 233, 191)' } : null}>
         {props.invoiceInfo && (
           <>
             <span>RETURN</span>
