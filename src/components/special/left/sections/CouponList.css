@@ -1,0 +1,44 @@
+.container-CouponList {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar-CouponList {
+  display: grid;
+  grid-template-columns: 1fr 2fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid darkgray;
+  height: 5vh;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: darkgray;
+}
+
+.list-container-CouponList {
+  border: 1px solid red;
+  overflow-y: scroll;
+  height: 69vh;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.list-container-CouponList::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.list-container-CouponList {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.list-item-CouponList {
+  display: grid;
+  grid-template-columns: 1fr 2fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  height: 5vh;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

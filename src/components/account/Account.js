@@ -18,6 +18,7 @@ const Account = () => {
     <div className='container-Account'>
       <LeftSection
         accountData={accountData}
+        displaySection={displaySection}
         setDisplaySection={setDisplaySection}
         setSelectedAccount={setSelectedAccount}
       />

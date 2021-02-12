@@ -1,0 +1,4 @@
+.container-Special {
+  display: grid;
+  grid-template-columns: 47vw 48vw;
+}

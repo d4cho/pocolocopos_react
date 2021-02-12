@@ -1,23 +1,23 @@
-.container-LeftSection-Account {
+.container-LeftSection-Special {
   margin: 2rem 1rem 2rem 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.search-container-LeftSection-Account {
+.search-container-LeftSection-Special {
   display: flex;
   align-items: center;
   padding-bottom: 1rem;
   height: 4rem;
 }
 
-.search-container-LeftSection-Account span {
+.search-container-LeftSection-Special span {
   font-size: 3rem;
   text-transform: uppercase;
   padding-right: 2rem;
 }
 
-.search-container-LeftSection-Account input {
+.search-container-LeftSection-Special input {
   width: 20vw;
   box-sizing: border-box;
   border: 1px solid lightgray;
@@ -32,7 +32,7 @@
   padding: 18px 20px 18px 60px;
 }
 
-.line-LeftSection-Account {
+.line-LeftSection-Special {
   border: 0;
   height: 1px;
   width: 100%;
@@ -40,22 +40,22 @@
   align-self: center;
 }
 
-.btn-container-LeftSection-Account {
+.btn-container-LeftSection-Special {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
 }
 
-.btn1-LeftSection-Account {
+.btn1-LeftSection-Special {
   font-size: 2rem;
   padding: 0.5rem 1.5rem;
-  border: none;
+  border: 1px solid lightgray;
   background-color: darkgray;
   cursor: pointer;
 }
 
-.btn2-LeftSection-Account {
+.btn2-LeftSection-Special {
   font-size: 2rem;
   text-transform: uppercase;
   font-stretch: condensed;

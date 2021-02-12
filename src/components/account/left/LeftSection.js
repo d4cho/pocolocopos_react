@@ -14,13 +14,15 @@ const LeftSection = (props) => {
     <div className='container-LeftSection-Account'>
       <div className='search-container-LeftSection-Account'>
         <span>Account</span>
-        <input
-          type='text'
-          name='accountName'
-          placeholder='Search Account'
-          value={searchResult}
-          onChange={handleSearchChange}
-        />
+        {props.displaySection !== 'create' && (
+          <input
+            type='text'
+            name='accountName'
+            placeholder='Search Account'
+            value={searchResult}
+            onChange={handleSearchChange}
+          />
+        )}
       </div>
       <div className='line-LeftSection-Account'></div>
       <div className='btn-container-LeftSection-Account'>
