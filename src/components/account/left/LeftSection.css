@@ -1,0 +1,64 @@
+.container-LeftSection-Account {
+  border: 1px solid red;
+  margin: 2rem 1rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container-LeftSection-Account {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.search-container-LeftSection-Account span {
+  font-size: 3rem;
+  text-transform: uppercase;
+  padding-right: 2rem;
+}
+
+.search-container-LeftSection-Account input {
+  width: 20vw;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  font-size: 1.5rem;
+  background-color: white;
+  margin-right: 1rem;
+
+  background-image: url(/src/assets/images/search.png);
+  background-size: 25px 25px;
+  background-position: 20px 20px;
+  background-repeat: no-repeat;
+  padding: 18px 20px 18px 60px;
+}
+
+.line-LeftSection-Account {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: black;
+  align-self: center;
+}
+
+.btn-container-LeftSection-Account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.btn1-LeftSection-Account {
+  font-size: 2rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: darkgray;
+}
+
+.btn2-LeftSection-Account {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-stretch: condensed;
+  padding: 0.5rem 0rem;
+  border: none;
+  background-color: white;
+}
