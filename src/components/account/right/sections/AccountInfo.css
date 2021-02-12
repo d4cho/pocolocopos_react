@@ -1,0 +1,44 @@
+.container-AccountInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 4rem;
+}
+
+.top-AccountInfo {
+  display: grid;
+  grid-template-columns: 5fr 3fr 1fr 1fr;
+  width: 40vw;
+  font-size: 3rem;
+  text-transform: uppercase;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.top-AccountInfo span {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.items-AccountInfo {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.items-AccountInfo p {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.line-AccountInfo {
+  border: 0;
+  height: 1px;
+  width: 90%;
+  background: lightgray;
+  align-self: center;
+}

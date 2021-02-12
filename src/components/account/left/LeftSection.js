@@ -24,12 +24,22 @@ const LeftSection = (props) => {
       </div>
       <div className='line-LeftSection-Account'></div>
       <div className='btn-container-LeftSection-Account'>
-        <button className='btn1-LeftSection-Account'>Account</button>
-        <button className='btn2-LeftSection-Account'>+ create account</button>
+        <button
+          className='btn1-LeftSection-Account'
+          onClick={() => props.setDisplaySection('choose')}>
+          Account
+        </button>
+        <button
+          className='btn2-LeftSection-Account'
+          onClick={() => props.setDisplaySection('create')}>
+          + create account
+        </button>
       </div>
       <AccountList
         accountData={props.accountData}
         searchResult={searchResult}
+        setDisplaySection={props.setDisplaySection}
+        setSelectedAccount={props.setSelectedAccount}
       />
     </div>
   );

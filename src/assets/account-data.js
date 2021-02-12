@@ -33,130 +33,130 @@ export const accountData = [
     id: 4,
     name: 'Peter',
     phone: '416-444-4444',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
     id: 5,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 6,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 7,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 8,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 9,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 10,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 11,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 12,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 13,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 14,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 15,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   },
   {
-    id: 5,
+    id: 16,
     name: 'Chris',
     phone: '416-111-1111',
-    address: '',
-    email: '',
-    card: '',
-    emergency: '',
-    owing: '0'
+    address: '-',
+    email: '-',
+    card: '-',
+    emergency: '-',
+    owing: 0
   }
 ];
