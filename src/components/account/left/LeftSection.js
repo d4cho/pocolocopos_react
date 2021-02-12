@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './LeftSection.css';
+import AccountList from './sections/AccountList';
 
-const LeftSection = () => {
+const LeftSection = (props) => {
+  const [searchResult, setSearchResult] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchResult(e.target.value);
+  };
+
   return (
     <div className='container-LeftSection-Account'>
       <div className='search-container-LeftSection-Account'>
         <span>Account</span>
-        <input type='text' name='accountName' placeholder='Search Account' />
+        <input
+          type='text'
+          name='accountName'
+          placeholder='Search Account'
+          value={searchResult}
+          onChange={handleSearchChange}
+        />
       </div>
       <div className='line-LeftSection-Account'></div>
       <div className='btn-container-LeftSection-Account'>
         <button className='btn1-LeftSection-Account'>Account</button>
         <button className='btn2-LeftSection-Account'>+ create account</button>
       </div>
-      <div>list</div>
+      <AccountList
+        accountData={props.accountData}
+        searchResult={searchResult}
+      />
     </div>
   );
 };

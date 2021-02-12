@@ -1,0 +1,43 @@
+.container-AccountList {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar-AccountList {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid darkgray;
+  height: 5vh;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: darkgray;
+}
+
+.list-container-AccountList {
+  overflow-y: scroll;
+  height: 72vh;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.list-container-AccountList::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.list-container-AccountList {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.list-item-AccountList {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  height: 5vh;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
