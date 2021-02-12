@@ -1,14 +1,14 @@
 .choose-RightSection-Account {
-  border: 1px solid red;
   margin: 2rem 2rem 2rem 1rem;
   display: grid;
   place-items: center;
+  border: 1px solid lightgray;
 }
 
 .info-RightSection-Account {
-  border: 1px solid red;
   margin: 2rem 2rem 2rem 1rem;
   display: flex;
+  border: 1px solid lightgray;
 }
 
 .icon-RightSection-Account {
