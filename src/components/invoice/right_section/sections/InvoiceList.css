@@ -23,7 +23,7 @@
 .list-InvoiceList {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 50vh;
   overflow-y: scroll;
 }
 
