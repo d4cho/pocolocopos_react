@@ -48,5 +48,15 @@ export const couponData = [
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: true
+  },
+  {
+    id: 6,
+    name: 'Katherine',
+    type: 'Coupon',
+    number: '0006',
+    amount: 500,
+    issueDate: '02/12/2021',
+    expDate: '02/12/2022',
+    valid: false
   }
 ];

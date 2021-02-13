@@ -64,7 +64,7 @@ const SpecialInfo = (props) => {
       </div>
       <div className='items-SpecialInfo'>
         <span></span>
-        <p>
+        <p style={valid ? { color: 'black' } : { color: 'red' }}>
           {valid
             ? `This ${props.isCoupon ? 'coupon' : 'gift card'} is valid`
             : `This ${props.isCoupon ? 'coupon' : 'gift card'} is expired`}

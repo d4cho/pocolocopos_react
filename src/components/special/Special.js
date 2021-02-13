@@ -31,6 +31,7 @@ const Special = () => {
         displaySection={displaySection}
         isCoupon={isCoupon}
         selectedData={selectedData}
+        setDisplaySection={setDisplaySection}
       />
     </div>
   );

@@ -3,8 +3,11 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import './RightSection.css';
 import SpecialInfo from './sections/SpecialInfo';
+import CreateSpecial from './sections/CreateSpecial';
 
-const RightSection = ({ displaySection, isCoupon, selectedData }) => {
+const RightSection = (props) => {
+  const { displaySection, setDisplaySection, isCoupon, selectedData } = props;
+
   switch (displaySection) {
     case 'choose':
       return (
@@ -19,7 +22,10 @@ const RightSection = ({ displaySection, isCoupon, selectedData }) => {
     case 'create':
       return (
         <div className='choose-RightSection-Special'>
-          {/* <CreateAccount setDisplaySection={displaySection} /> */}
+          <CreateSpecial
+            isCoupon={isCoupon}
+            setDisplaySection={setDisplaySection}
+          />
         </div>
       );
 
