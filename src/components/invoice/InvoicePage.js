@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './InvoicePage.css';
 import LeftSectionTop from './left_section/top/LeftSectionTop';

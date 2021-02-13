@@ -22,13 +22,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5]
-    // padding: theme.spacing(1, 1, 1)
   },
   content: {
     padding: '100px 50px'
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center'
   }
 }));
 
@@ -46,8 +42,6 @@ export default function AttributeModal(props) {
 
   const {
     attribute,
-    category,
-    discount,
     id,
     image,
     name,

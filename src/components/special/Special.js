@@ -15,7 +15,6 @@ const Special = () => {
   const data = isCoupon ? couponData : giftData;
 
   const selectedData = data.filter((item) => item.id === selectedSpecialId);
-  console.log(selectedData);
 
   return (
     <div className='container-Special'>

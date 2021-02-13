@@ -9,7 +9,7 @@ import { numberWithCommas } from '../../../utility/numberWithCommas';
 
 const InvoiceList = ({ invoiceSearch, selectedDate }) => {
   const invoiceList = useInvoiceList();
-  const { selectedInvoice, setSelectedInvoice } = useSelectedInvoice();
+  const { setSelectedInvoice } = useSelectedInvoice();
 
   const handleInvoiceClicked = (invoiceNumber) => {
     setSelectedInvoice(invoiceNumber);

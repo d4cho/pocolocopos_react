@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import productData from '../../../assets/data';
+
 import './ProductList.css';
 import { useCategory } from '../../../context/CategoryContext';
 import {

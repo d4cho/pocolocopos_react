@@ -12,7 +12,6 @@ const SpecialInfo = (props) => {
   };
 
   const {
-    id,
     name,
     type,
     number,

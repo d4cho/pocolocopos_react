@@ -6,7 +6,6 @@ import SearchInvoice from './sections/SearchInvoice';
 const RightSection = (props) => {
   const [invoiceSearch, setInvoiceSearch] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date());
-  console.log(invoiceSearch, selectedDate.length);
 
   const resetDate = () => {
     setSelectedDate(new Date());

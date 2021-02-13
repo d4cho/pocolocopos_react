@@ -20,7 +20,6 @@ export default function MaterialUIPickers(props) {
         InputProps={{ style: { fontSize: '1.3rem', marginLeft: '1rem' } }}
         margin='normal'
         id='date-picker-dialog'
-        // label='Date picker dialog'
         format='MM/dd/yyyy'
         value={props.selectedDate}
         onChange={handleDateChange}
