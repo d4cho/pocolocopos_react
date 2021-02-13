@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 
 import './AccountInfo.css';
 import AlertModal from '../../../utility/AlertModal';
+import PayToBalanceModal from './PayToBalanceModal';
 import { numberWithCommas } from '../../../utility/numberWithCommas';
 
 const AccountInfo = (props) => {
   const [showAlert, setShowAlert] = useState(false);
+  const [showPayToBalance, setShowPayToBalance] = useState(false);
 
   const closeAlert = () => {
     setShowAlert(false);
+  };
+
+  const closePayToBalance = () => {
+    setShowPayToBalance(false);
   };
 
   const {
@@ -25,7 +31,7 @@ const AccountInfo = (props) => {
     <div className='container-AccountInfo'>
       <div className='top-AccountInfo'>
         <div>profile</div>
-        <span>pay to balance</span>
+        <span onClick={() => setShowPayToBalance(true)}>pay to balance</span>
         <span onClick={() => setShowAlert(true)}>edit</span>
         <span onClick={() => setShowAlert(true)}>delete</span>
       </div>
@@ -68,6 +74,14 @@ const AccountInfo = (props) => {
         <AlertModal
           msg='This feature is not available in the TEST product'
           errorModalClosed={closeAlert}
+        />
+      )}
+      {showPayToBalance && (
+        <PayToBalanceModal
+          closePayToBalance={closePayToBalance}
+          name={name}
+          phone={phone}
+          owing={owing}
         />
       )}
     </div>
