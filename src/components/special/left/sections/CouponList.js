@@ -32,7 +32,7 @@ const CouponList = (props) => {
 
           // check if coupon or gift card is valid
           if (!item.valid) {
-            backgroundColor = 'pink';
+            backgroundColor = '#ffe4b3';
           }
 
           return (
@@ -44,7 +44,7 @@ const CouponList = (props) => {
               <div>{idx + 1}</div>
               <div>{item.name}</div>
               <div>{item.number}</div>
-              <div style={{ color: 'orange' }}>
+              <div style={{ color: 'OrangeRed' }}>
                 ${numberWithCommas(item.amount)}
               </div>
             </div>
@@ -56,7 +56,7 @@ const CouponList = (props) => {
 
         // check if coupon or gift card is valid
         if (!item.valid) {
-          backgroundColor = 'pink';
+          backgroundColor = '#ffe4b3';
         }
 
         return (
@@ -68,7 +68,7 @@ const CouponList = (props) => {
             <div>{idx + 1}</div>
             <div>{item.name}</div>
             <div>{item.number}</div>
-            <div style={{ color: 'orange' }}>
+            <div style={{ color: 'OrangeRed' }}>
               ${numberWithCommas(item.amount)}
             </div>
           </div>

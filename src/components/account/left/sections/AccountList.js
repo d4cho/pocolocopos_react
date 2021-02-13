@@ -48,7 +48,7 @@ const AccountList = (props) => {
             <div>
               {item.name} ({item.phone})
             </div>
-            <div style={{ color: 'orange' }}>
+            <div style={{ color: 'OrangeRed' }}>
               ${numberWithCommas(item.owing)}
             </div>
           </div>
