@@ -15,7 +15,8 @@ const LeftSection = (props) => {
     setDisplaySection,
     isCoupon,
     setIsCoupon,
-    data
+    data,
+    setSelectedSpecialId
   } = props;
 
   const handleCouponClicked = () => {
@@ -69,6 +70,7 @@ const LeftSection = (props) => {
         isCoupon={isCoupon}
         searchResult={searchResult}
         setDisplaySection={setDisplaySection}
+        setSelectedSpecialId={setSelectedSpecialId}
       />
     </div>
   );

@@ -1,0 +1,20 @@
+.choose-RightSection-Special {
+  margin: 2rem 2rem 2rem 1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid lightgray;
+}
+
+.info-RightSection-Special {
+  margin: 2rem 2rem 2rem 1rem;
+  display: flex;
+  border: 1px solid lightgray;
+}
+
+.icon-RightSection-Special {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+  color: lightgray;
+}

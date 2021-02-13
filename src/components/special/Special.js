@@ -4,13 +4,18 @@ import './Special.css';
 import LeftSection from './left/LeftSection';
 import { couponData } from '../../assets/coupon-data';
 import { giftData } from '../../assets/gift-data';
+import RightSection from './right/RightSection';
 
 const Special = () => {
   // display section can be 'choose', 'create', or 'info'
   const [displaySection, setDisplaySection] = useState('choose');
   const [isCoupon, setIsCoupon] = useState(true);
+  const [selectedSpecialId, setSelectedSpecialId] = useState(0);
 
   const data = isCoupon ? couponData : giftData;
+
+  const selectedData = data.filter((item) => item.id === selectedSpecialId);
+  console.log(selectedData);
 
   return (
     <div className='container-Special'>
@@ -20,8 +25,13 @@ const Special = () => {
         isCoupon={isCoupon}
         setIsCoupon={setIsCoupon}
         data={data}
+        setSelectedSpecialId={setSelectedSpecialId}
       />
-      <div>{displaySection}</div>
+      <RightSection
+        displaySection={displaySection}
+        isCoupon={isCoupon}
+        selectedData={selectedData}
+      />
     </div>
   );
 };

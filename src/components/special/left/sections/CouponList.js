@@ -4,7 +4,18 @@ import './CouponList.css';
 import { numberWithCommas } from '../../../utility/numberWithCommas';
 
 const CouponList = (props) => {
-  const { data, isCoupon, searchResult, setDisplaySection } = props;
+  const {
+    data,
+    isCoupon,
+    searchResult,
+    setDisplaySection,
+    setSelectedSpecialId
+  } = props;
+
+  const handleSpecialClicked = (specialId) => {
+    setDisplaySection('info');
+    setSelectedSpecialId(specialId);
+  };
 
   const renderList = () => {
     if (searchResult) {
@@ -29,7 +40,7 @@ const CouponList = (props) => {
               key={item.id}
               className='list-item-CouponList'
               style={{ background: backgroundColor }}
-              onClick={() => setDisplaySection('info')}>
+              onClick={() => handleSpecialClicked(item.id)}>
               <div>{idx + 1}</div>
               <div>{item.name}</div>
               <div>{item.number}</div>
@@ -53,7 +64,7 @@ const CouponList = (props) => {
             key={item.id}
             className='list-item-CouponList'
             style={{ background: backgroundColor }}
-            onClick={() => setDisplaySection('info')}>
+            onClick={() => handleSpecialClicked(item.id)}>
             <div>{idx + 1}</div>
             <div>{item.name}</div>
             <div>{item.number}</div>
