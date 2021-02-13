@@ -8,6 +8,7 @@ import {
 import ClearIcon from '@material-ui/icons/Clear';
 import CartItemModal from './CartItemModal';
 import AlertModal from '../../utility/AlertModal';
+import { numberWithCommas } from '../../utility/numberWithCommas';
 
 const InvoiceBoxItem = (props) => {
   const [openCartItemModal, setOpenCartItemModal] = useState(false);
@@ -17,10 +18,6 @@ const InvoiceBoxItem = (props) => {
   const productList = useProductList();
   const addProductQuantity = useProductQuantityAdd();
   const ProductListUpdate = useProductListUpdate();
-
-  const numberWithCommas = (x) => {
-    return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
 
   const updateProductQtyAndList = (productId, productName, qty, clearItem) => {
     addProductQuantity(productId, qty);

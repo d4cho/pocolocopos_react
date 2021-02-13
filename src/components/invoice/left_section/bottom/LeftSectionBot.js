@@ -4,6 +4,7 @@ import './LeftSectionBot.css';
 import { useReturnInvoice } from '../../../../context/InvoiceContext';
 import AlertModal from '../../../utility/AlertModal';
 import PaybackModal from './sections/PaybackModal';
+import { numberWithCommas } from '../../../utility/numberWithCommas';
 
 const LeftSectionBot = (props) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -11,11 +12,6 @@ const LeftSectionBot = (props) => {
   const { returnInvoice } = useReturnInvoice();
 
   const { products } = props.invoiceInfo;
-
-  // changes number to have commas & 2 decimal place
-  const numberWithCommas = (number) => {
-    return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
 
   // calculation for summary
   let subtotal;

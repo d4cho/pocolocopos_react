@@ -7,6 +7,7 @@ import {
 } from '../../../context/ProductContext';
 import { usePaymentMethod } from '../../../context/PaymentMethodContext';
 import AlertModal from '../../utility/AlertModal';
+import { numberWithCommas } from '../../utility/numberWithCommas';
 
 const CheckoutBox = (props) => {
   const [subtotal, setSubtotal] = useState(0);
@@ -17,11 +18,6 @@ const CheckoutBox = (props) => {
   const paymentMethod = usePaymentMethod();
   const roundingCents = useRoundingCents();
   const applyRoundingCents = useApplyRoundingCents();
-
-  // changes number to have commas
-  const numberWithCommas = (number) => {
-    return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
 
   useEffect(() => {
     if (productList.length > 0) {

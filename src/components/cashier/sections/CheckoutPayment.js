@@ -15,6 +15,7 @@ import { useProductListClear } from '../../../context/ProductContext';
 import { useApplyRoundingCents } from '../../../context/ProductContext';
 import AlertModal from '../../utility/AlertModal';
 import PaymentComplete from './PaymentComplete';
+import { numberWithCommas } from '../../utility/numberWithCommas';
 
 const CheckoutPayment = (props) => {
   const [multipaymentChecked, setMultipaymentChecked] = useState(false);
@@ -27,12 +28,6 @@ const CheckoutPayment = (props) => {
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
   const clearProductList = useProductListClear();
-
-  // changes number to have commas and rounds to 2 decimal places
-  const numberWithCommas = (number) => {
-    let roundedNumber = Math.round(number * 1e2) / 1e2;
-    return roundedNumber.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
 
   // close alert modal
   const errorModalClosed = () => {

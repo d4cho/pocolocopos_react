@@ -1,13 +1,9 @@
 import React from 'react';
 import './InvoiceInfo.css';
+import { numberWithCommas } from '../../../../utility/numberWithCommas';
 
 const InvoiceInfo = ({ invoiceInfo }) => {
   const { date, time, paymentMethod, totalPrice } = invoiceInfo;
-
-  // changes number to have commas & 2 decimal place
-  const numberWithCommas = (number) => {
-    return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
 
   return (
     <div className='container-InvoiceInfo'>
