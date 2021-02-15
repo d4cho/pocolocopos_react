@@ -16,7 +16,7 @@ const productData = [
     id: 1,
     name: 'Cake',
     category: 'bakery',
-    price: 19.99,
+    price: 39.99,
     discount: '',
     quantity: 0,
     image: cake
@@ -52,7 +52,7 @@ const productData = [
     id: 5,
     name: 'Martin Standard Series D-35',
     category: 'instrument',
-    price: 999.99,
+    price: 299.99,
     discount: '',
     quantity: 5,
     image: martinguitar
@@ -86,7 +86,7 @@ const productData = [
   },
   {
     id: 9,
-    name: 'Coca Cola Bottle',
+    name: 'Coca Cola Bottle 351ml',
     category: 'convenience',
     price: 2.49,
     discount: '',
