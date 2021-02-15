@@ -5,7 +5,7 @@
 
 .topbar-CouponList {
   display: grid;
-  grid-template-columns: 1fr 2fr 5fr 2fr;
+  grid-template-columns: 1fr 4fr 3fr 2fr;
   justify-items: center;
   align-items: center;
   border: 1px solid darkgray;
@@ -34,7 +34,7 @@
 
 .list-item-CouponList {
   display: grid;
-  grid-template-columns: 1fr 2fr 5fr 2fr;
+  grid-template-columns: 1fr 4fr 3fr 2fr;
   justify-items: center;
   align-items: center;
   border: 1px solid lightgray;
