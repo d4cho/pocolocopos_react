@@ -1,60 +1,60 @@
 export const couponData = [
   {
     id: 1,
-    name: 'Daniel',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0001',
-    amount: 1000,
+    amount: 10,
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: true
   },
   {
     id: 2,
-    name: 'David',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0002',
-    amount: 2000,
+    amount: 20,
     issueDate: '01/12/2020',
     expDate: '01/12/2021',
     valid: false
   },
   {
     id: 3,
-    name: 'Ken',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0003',
-    amount: 3000,
+    amount: 5,
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: true
   },
   {
     id: 4,
-    name: 'John',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0004',
-    amount: 3000,
+    amount: 15,
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: true
   },
   {
     id: 5,
-    name: 'Peter',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0005',
-    amount: 3000,
+    amount: 20,
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: true
   },
   {
     id: 6,
-    name: 'Katherine',
+    name: 'Grand Opening',
     type: 'Coupon',
     number: '0006',
-    amount: 500,
+    amount: 20,
     issueDate: '02/12/2021',
     expDate: '02/12/2022',
     valid: false
