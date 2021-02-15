@@ -23,6 +23,7 @@ const CheckoutPayment = (props) => {
   const [showPaymentComplete, setShowPaymentComplete] = useState(false);
   const [change, setChange] = useState(0);
   const [showDemoAlert, setShowDemoAlert] = useState(false);
+  const [showKeypadAlert, setKeypadAlert] = useState(false);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
@@ -33,10 +34,15 @@ const CheckoutPayment = (props) => {
   const errorModalClosed = () => {
     setShowAlert(false);
     setShowDemoAlert(false);
+    setKeypadAlert(false);
   };
 
   const handleCheckboxChange = () => {
     setShowDemoAlert(true);
+  };
+
+  const handleKeypadClicked = () => {
+    setKeypadAlert(true);
   };
 
   const handlePaymentMethodChange = (event) => {
@@ -200,9 +206,9 @@ const CheckoutPayment = (props) => {
               </div>
             </div>
             <div className='checkoutPayment-789'>
-              <div>7</div>
-              <div>8</div>
-              <div>9</div>
+              <div onClick={handleKeypadClicked}>7</div>
+              <div onClick={handleKeypadClicked}>8</div>
+              <div onClick={handleKeypadClicked}>9</div>
               <div
                 style={{ border: '1px solid red', cursor: 'pointer' }}
                 onClick={handleClearClicked}>
@@ -210,17 +216,17 @@ const CheckoutPayment = (props) => {
               </div>
             </div>
             <div className='checkoutPayment-456'>
-              <div>4</div>
-              <div>5</div>
-              <div>6</div>
-              <div>
+              <div onClick={handleKeypadClicked}>4</div>
+              <div onClick={handleKeypadClicked}>5</div>
+              <div onClick={handleKeypadClicked}>6</div>
+              <div onClick={handleKeypadClicked}>
                 <KeyboardBackspaceIcon />
               </div>
             </div>
             <div className='checkoutPayment-123'>
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
+              <div onClick={handleKeypadClicked}>1</div>
+              <div onClick={handleKeypadClicked}>2</div>
+              <div onClick={handleKeypadClicked}>3</div>
               <div
                 style={{ border: '1px solid black', cursor: 'pointer' }}
                 onClick={handleCouponOpen}>
@@ -228,8 +234,12 @@ const CheckoutPayment = (props) => {
               </div>
             </div>
             <div className='checkoutPayment-000'>
-              <span className='checkoutPayment-child-00'>00</span>
-              <div>0</div>
+              <span
+                className='checkoutPayment-child-00'
+                onClick={handleKeypadClicked}>
+                00
+              </span>
+              <div onClick={handleKeypadClicked}>0</div>
               <div
                 style={{ cursor: 'pointer', border: '1px solid red' }}
                 onClick={handleEAClicked}>
@@ -267,6 +277,12 @@ const CheckoutPayment = (props) => {
             <AlertModal
               errorModalClosed={errorModalClosed}
               msg='This feature is disabled in the DEMO version.'
+            />
+          )}
+          {showKeypadAlert && (
+            <AlertModal
+              errorModalClosed={errorModalClosed}
+              msg='Keypad is disabled in the DEMO version.'
             />
           )}
         </div>

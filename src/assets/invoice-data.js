@@ -66,7 +66,7 @@ export const invoiceData = [
     invoice: 6,
     date: '02/09/21',
     time: '05:46 PM',
-    totalPrice: 678,
+    totalPrice: 451.99,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -79,7 +79,7 @@ export const invoiceData = [
     invoice: 7,
     date: '02/09/21',
     time: '05:47 PM',
-    totalPrice: 678,
+    totalPrice: 785,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -92,7 +92,7 @@ export const invoiceData = [
     invoice: 8,
     date: '02/09/21',
     time: '05:48 PM',
-    totalPrice: 678,
+    totalPrice: 12.35,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -105,7 +105,7 @@ export const invoiceData = [
     invoice: 9,
     date: '02/09/21',
     time: '05:49 PM',
-    totalPrice: 678,
+    totalPrice: 54.5,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -118,7 +118,7 @@ export const invoiceData = [
     invoice: 10,
     date: '02/09/21',
     time: '05:50 PM',
-    totalPrice: 678,
+    totalPrice: 125,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -131,7 +131,7 @@ export const invoiceData = [
     invoice: 11,
     date: '02/09/21',
     time: '05:51 PM',
-    totalPrice: 678,
+    totalPrice: 47.85,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -144,7 +144,7 @@ export const invoiceData = [
     invoice: 12,
     date: '02/09/21',
     time: '05:52 PM',
-    totalPrice: 678,
+    totalPrice: 1235,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
@@ -157,7 +157,7 @@ export const invoiceData = [
     invoice: 13,
     date: '02/09/21',
     time: '05:53 PM',
-    totalPrice: 678,
+    totalPrice: 60.4,
     products: [
       { name: 'Example Item 1', price: 100 },
       { name: 'Example Item 2', price: 200 },
