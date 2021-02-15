@@ -199,7 +199,7 @@ export default function PayToBalanceModal(props) {
       {showAlert && (
         <AlertModal
           errorModalClosed={closeAlert}
-          msg='This feature is not available in the TEST product.'
+          msg='This feature is disabled in the DEMO version.'
         />
       )}
     </>

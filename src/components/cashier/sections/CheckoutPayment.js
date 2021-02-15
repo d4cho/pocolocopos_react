@@ -266,7 +266,7 @@ const CheckoutPayment = (props) => {
           {showDemoAlert && (
             <AlertModal
               errorModalClosed={errorModalClosed}
-              msg='This feature is disabled in DEMO version.'
+              msg='This feature is disabled in the DEMO version.'
             />
           )}
         </div>

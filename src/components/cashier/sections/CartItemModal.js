@@ -221,7 +221,7 @@ export default function CartItemModal(props) {
       {error && (
         <AlertModal
           errorModalClosed={errorModalClosed}
-          msg='This feature is not available on the TEST product.'
+          msg='This feature is disabled in the DEMO version.'
         />
       )}
       <Modal open={open} onClose={handleClose}>

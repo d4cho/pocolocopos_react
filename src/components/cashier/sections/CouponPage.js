@@ -139,7 +139,7 @@ const CouponPage = (props) => {
       {openAlert && (
         <AlertModal
           errorModalClosed={alertModalClosed}
-          msg='This feature is not available on the TEST product.'
+          msg='This feature is disabled in the DEMO version.'
         />
       )}
     </div>

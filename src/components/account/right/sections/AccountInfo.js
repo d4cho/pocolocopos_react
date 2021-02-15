@@ -72,7 +72,7 @@ const AccountInfo = (props) => {
       <div className='line-AccountInfo'></div>
       {showAlert && (
         <AlertModal
-          msg='This feature is not available in the TEST product'
+          msg='This feature is disabled in the DEMO version.'
           errorModalClosed={closeAlert}
         />
       )}
