@@ -7,8 +7,8 @@ import galaxynote10 from './images/galaxynote10.jpg';
 import kiwi from './images/kiwi.jpg';
 import martinguitar from './images/martinguitar.jpg';
 import milk from './images/milk.jpg';
-import nikeaf1 from './images/nikeaf1.jpg';
-import samsungtv from './images/samsungtv.png';
+import nike from './images/nike.jpg';
+import samsungtv from './images/samsungtv.jpg';
 import strawberry from './images/strawberry.jpg';
 
 const productData = [
@@ -77,12 +77,12 @@ const productData = [
   },
   {
     id: 8,
-    name: 'Nike - Air Force 1',
+    name: 'Nike - Air MAX 2019',
     category: 'clothes',
-    price: 129.99,
+    price: 215.99,
     discount: '',
     quantity: 5,
-    image: nikeaf1
+    image: nike
   },
   {
     id: 9,

@@ -12,6 +12,7 @@ import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import Search from '../../search/Search';
 import AlertModal from '../../utility/AlertModal';
 import AttributeModal from './AttributeModal';
+import { numberWithCommas } from '../../utility/numberWithCommas';
 
 const ProductList = () => {
   const [searchResult, setSearchResult] = useState('');
@@ -67,7 +68,9 @@ const ProductList = () => {
           <span style={{ color: 'red', fontWeight: 'bold' }}>OUT OF STOCK</span>
           <div style={{ textAlign: 'center' }}>{product.name}</div>
           <div style={{ color: 'grey' }}>{product.category.toUpperCase()}</div>
-          <div style={{ color: 'orange' }}>${product.price}</div>
+          <div style={{ color: 'orange' }}>
+            ${numberWithCommas(product.price)}
+          </div>
         </div>
       );
     }
@@ -94,7 +97,9 @@ const ProductList = () => {
         />
         <div style={{ textAlign: 'center' }}>{product.name}</div>
         <div style={{ color: 'grey' }}>{product.category.toUpperCase()}</div>
-        <div style={{ color: 'orange' }}>${product.price}</div>
+        <div style={{ color: 'orange' }}>
+          ${numberWithCommas(product.price)}
+        </div>
       </div>
     );
   };
