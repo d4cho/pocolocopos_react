@@ -18,11 +18,11 @@ import PaymentComplete from './PaymentComplete';
 import { numberWithCommas } from '../../utility/numberWithCommas';
 
 const CheckoutPayment = (props) => {
-  const [multipaymentChecked, setMultipaymentChecked] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [showPaymentComplete, setShowPaymentComplete] = useState(false);
   const [change, setChange] = useState(0);
+  const [showDemoAlert, setShowDemoAlert] = useState(false);
 
   const paymentMethod = usePaymentMethod();
   const changePaymentMethod = useChangePaymentMethod();
@@ -32,10 +32,11 @@ const CheckoutPayment = (props) => {
   // close alert modal
   const errorModalClosed = () => {
     setShowAlert(false);
+    setShowDemoAlert(false);
   };
 
-  const handleCheckboxChange = (event) => {
-    setMultipaymentChecked(event.target.checked);
+  const handleCheckboxChange = () => {
+    setShowDemoAlert(true);
   };
 
   const handlePaymentMethodChange = (event) => {
@@ -93,7 +94,6 @@ const CheckoutPayment = (props) => {
 
   // reset all state when payment finished
   const reset = () => {
-    setMultipaymentChecked(false);
     setPaymentAmount(0);
     setShowAlert(false);
     setShowPaymentComplete(false);
@@ -126,11 +126,7 @@ const CheckoutPayment = (props) => {
             <div style={{ fontSize: '28px' }}>CHECK-OUTS</div>
             <FormControlLabel
               control={
-                <Checkbox
-                  checked={multipaymentChecked}
-                  onChange={handleCheckboxChange}
-                  color='default'
-                />
+                <Checkbox onChange={handleCheckboxChange} color='default' />
               }
               label='MULTI-PAYMENT'
             />
@@ -265,6 +261,12 @@ const CheckoutPayment = (props) => {
                   ? 'Enter payment amount.'
                   : 'The payment amount must be either exact or greater than the total price.'
               }
+            />
+          )}
+          {showDemoAlert && (
+            <AlertModal
+              errorModalClosed={errorModalClosed}
+              msg='This feature is disabled in DEMO version.'
             />
           )}
         </div>
