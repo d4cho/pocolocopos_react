@@ -37,8 +37,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: steelblue;
-  color: white;
   border: 1px solid lightgray;
   cursor: pointer;
 }

@@ -6,6 +6,16 @@ import {
 } from '../../../context/CategoryContext';
 import Search from '../../search/Search';
 
+const categoryBackgroundColors = {
+  all: 'white',
+  bakery: 'MistyRose',
+  grocery: 'LightPink',
+  instrument: 'LightBlue',
+  clothes: 'LightYellow',
+  convenience: 'PaleTurquoise',
+  samsung: 'PeachPuff'
+};
+
 const CategoryList = (props) => {
   const [searchResult, setSearchResult] = useState('');
 
@@ -22,7 +32,10 @@ const CategoryList = (props) => {
       .map((category) => {
         const categorySelectedStyle = {
           backgroundColor:
-            category === selectedCategory ? 'orange' : 'steelblue'
+            category === selectedCategory
+              ? ' rgb(45, 85, 118)'
+              : categoryBackgroundColors[category],
+          color: category === selectedCategory ? 'white' : 'black'
         };
 
         return (
