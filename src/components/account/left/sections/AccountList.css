@@ -10,7 +10,7 @@
   align-items: center;
   border: 1px solid darkgray;
   height: 5vh;
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-weight: bold;
   background-color: darkgray;
 }
@@ -39,6 +39,6 @@
   align-items: center;
   border: 1px solid lightgray;
   height: 5vh;
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   cursor: pointer;
 }

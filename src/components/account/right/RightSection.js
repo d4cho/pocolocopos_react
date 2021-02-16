@@ -11,7 +11,7 @@ const RightSection = (props) => {
       return (
         <div className='choose-RightSection-Account'>
           <div className='icon-RightSection-Account'>
-            <ArrowBackIcon style={{ fontSize: '7rem' }} />
+            <ArrowBackIcon style={{ fontSize: '7vw' }} />
             <span>Choose an Account.</span>
           </div>
         </div>

@@ -13,12 +13,12 @@
   text-transform: uppercase;
   width: 80%;
   margin-bottom: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.5vw;
 }
 
 .top-CreateAccount span {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 .item-CreateAccount {
@@ -28,13 +28,13 @@
 }
 
 .item-CreateAccount span {
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   margin-bottom: 0.5rem;
   margin-top: 1.5rem;
 }
 
 .item-CreateAccount input {
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   padding: 0.5rem 2rem;
   border: 1px solid lightgray;
 }
@@ -47,7 +47,7 @@
   color: white;
   background-color: orange;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   border-radius: 50px;
   cursor: pointer;
 }
