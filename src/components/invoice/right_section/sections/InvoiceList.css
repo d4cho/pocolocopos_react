@@ -8,7 +8,7 @@
 
 .topbar-InvoiceList {
   display: grid;
-  grid-template-columns: 1fr 1fr 5fr 2fr;
+  grid-template-columns: 1fr 2fr 5fr 2fr;
   justify-items: center;
   align-items: center;
   padding: 1rem 0;
@@ -16,7 +16,7 @@
 }
 
 .topbar-InvoiceList span {
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   font-weight: bold;
 }
 
@@ -40,10 +40,10 @@
 
 .list-item-InvoiceList {
   display: grid;
-  grid-template-columns: 1fr 1fr 5fr 2fr;
+  grid-template-columns: 1fr 2fr 5fr 2fr;
   justify-items: center;
   align-items: center;
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   font-weight: bold;
   padding: 1rem 0;
   cursor: pointer;
