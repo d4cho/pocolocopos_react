@@ -20,7 +20,7 @@ const BUTTON_STYLE = {
     textAlign: 'center',
     textDecoration: 'none',
     display: 'inline-block',
-    fontSize: '24px',
+    fontSize: '1.5vw',
     cursor: 'pointer'
   },
   notSelected: {
@@ -30,7 +30,7 @@ const BUTTON_STYLE = {
     textAlign: 'center',
     textDecoration: 'none',
     display: 'inline-block',
-    fontSize: '24px',
+    fontSize: '1.5vw',
     cursor: 'pointer'
   }
 };
@@ -40,7 +40,7 @@ const INPUT_STYLE = {
   boxSizing: 'border-box',
   border: '1px solid lightgray',
   textAlign: ' center',
-  fontSize: '24px',
+  fontSize: '1.5vw',
   width: '70%'
 };
 
@@ -118,7 +118,7 @@ const CouponPage = (props) => {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '30px 0 125px',
-          fontSize: '20px'
+          fontSize: '1.2vw'
         }}>
         <span>* ONLY ONE COUPON CAN BE APPLIED.</span>
         <span>* MULTIPLE GIFT CARDS CAN BE APPLIED.</span>

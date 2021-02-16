@@ -13,7 +13,7 @@ const PaymentComplete = (props) => {
       <CheckCircleOutlineIcon
         fontSize='inherit'
         color='inherit'
-        style={{ fontSize: '12rem', color: 'rgb(45, 85, 118)' }}
+        style={{ fontSize: '12vw', color: 'rgb(45, 85, 118)' }}
       />
       <span className='heading-paymentComplete'>Payment Complete</span>
       <span className='subheading-paymentComplete'>Invoice #23</span>
