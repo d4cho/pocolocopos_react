@@ -35,7 +35,7 @@ const LeftSection = ({ invoiceInfo }) => {
       ) : (
         <div className='icon-container-LeftSectionTop'>
           <div>
-            <ReceiptIcon style={{ color: 'lightgray', fontSize: '6rem' }} />
+            <ReceiptIcon style={{ color: 'lightgray', fontSize: '6vw' }} />
           </div>
           <span>Select an Invoice</span>
         </div>

@@ -17,7 +17,7 @@ export default function MaterialUIPickers(props) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <KeyboardDatePicker
-        InputProps={{ style: { fontSize: '1.3rem', marginLeft: '1rem' } }}
+        InputProps={{ style: { fontSize: '1vw', marginLeft: '1rem' } }}
         margin='normal'
         id='date-picker-dialog'
         format='MM/dd/yyyy'

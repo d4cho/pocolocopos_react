@@ -8,7 +8,7 @@
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   border: 1px solid lightgray;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   padding: 1rem;
 }
 
@@ -32,7 +32,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid darkgray;
-  font-size: 2rem;
+  font-size: 2vw;
   background-color: lightgray;
   cursor: pointer;
 }
