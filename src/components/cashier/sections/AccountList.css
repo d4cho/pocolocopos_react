@@ -1,0 +1,46 @@
+.container-cashier-accountList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+}
+
+.heading-cashier-accountList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-cashier-accountList {
+  display: grid;
+  grid-template-columns: 1fr 4fr 3fr;
+  background-color: lightgray;
+  justify-items: center;
+  align-items: center;
+  height: 3vw;
+  font-size: 1.2vw;
+}
+
+.list-cashier-accountList {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 0.5fr;
+  justify-items: center;
+  align-items: center;
+  height: 4vw;
+  border: 1px solid lightgray;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.list-container-cashier-accountList {
+  height: 40rem;
+  border: 1px solid lightgray;
+}
+
+.create-cashier-accountList {
+  align-self: center;
+  padding-top: 2rem;
+  font-size: 1.3vw;
+  text-decoration: underline;
+  cursor: pointer;
+}

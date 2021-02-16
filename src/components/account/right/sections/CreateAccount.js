@@ -11,11 +11,19 @@ const CreateAccount = (props) => {
     setShowAlert(false);
   };
 
+  const handleCancelClicked = () => {
+    if (props.setDisplaySection) {
+      props.setDisplaySection('choose');
+    } else {
+      props.setShowCreateAccount(false);
+    }
+  };
+
   return (
     <div className='container-CreateAccount'>
       <div className='top-CreateAccount'>
         <div>create account</div>
-        <span onClick={() => props.setDisplaySection('choose')}>
+        <span onClick={handleCancelClicked}>
           <SubdirectoryArrowLeftIcon />
           cancel
         </span>

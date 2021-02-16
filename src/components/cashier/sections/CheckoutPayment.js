@@ -16,6 +16,7 @@ import { useApplyRoundingCents } from '../../../context/ProductContext';
 import AlertModal from '../../utility/AlertModal';
 import PaymentComplete from './PaymentComplete';
 import { numberWithCommas } from '../../utility/numberWithCommas';
+import AccountList from './AccountList';
 
 const CheckoutPayment = (props) => {
   const [paymentAmount, setPaymentAmount] = useState(0);
@@ -25,7 +26,11 @@ const CheckoutPayment = (props) => {
   const [showDemoAlert, setShowDemoAlert] = useState(false);
   const [showKeypadAlert, setKeypadAlert] = useState(false);
 
+  const [showAccountSection, setShowAccountSection] = useState(false);
+  console.log(showAccountSection);
+
   const paymentMethod = usePaymentMethod();
+  console.log(paymentMethod);
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
   const clearProductList = useProductListClear();
@@ -91,6 +96,8 @@ const CheckoutPayment = (props) => {
   const handlePayClicked = () => {
     if (paymentAmount === 0 || paymentAmount < props.total) {
       setShowAlert(true);
+    } else if (paymentMethod === 'toAccount') {
+      setShowAccountSection(true);
     } else {
       calculateChange();
       setShowPaymentComplete(true);
@@ -125,6 +132,11 @@ const CheckoutPayment = (props) => {
           total={numberWithCommas(props.total)}
           subtotal={numberWithCommas(props.subtotal)}
           tax={numberWithCommas(props.tax)}
+        />
+      ) : showAccountSection ? (
+        <AccountList
+          setShowAccountSection={setShowAccountSection}
+          setShowPaymentComplete={setShowPaymentComplete}
         />
       ) : (
         <div className='checkoutPayment-sub-container'>
