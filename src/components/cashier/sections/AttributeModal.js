@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5]
   },
   content: {
-    padding: '100px 50px'
+    padding: '25px 50px'
   }
 }));
 
