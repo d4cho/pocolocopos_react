@@ -12,7 +12,7 @@
 }
 
 .search-container-LeftSection-Special span {
-  font-size: 3rem;
+  font-size: 3vw;
   text-transform: uppercase;
   padding-right: 2rem;
 }
@@ -21,7 +21,7 @@
   width: 20vw;
   box-sizing: border-box;
   border: 1px solid lightgray;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   background-color: white;
   margin-right: 1rem;
 
@@ -48,7 +48,7 @@
 }
 
 .btn1-LeftSection-Special {
-  font-size: 2rem;
+  font-size: 2vw;
   padding: 0.5rem 1.5rem;
   border: 1px solid lightgray;
   background-color: darkgray;
@@ -56,7 +56,7 @@
 }
 
 .btn2-LeftSection-Special {
-  font-size: 2rem;
+  font-size: 2vw;
   text-transform: uppercase;
   font-stretch: condensed;
   padding: 0.5rem 0rem;

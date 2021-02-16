@@ -13,7 +13,7 @@ const RightSection = (props) => {
       return (
         <div className='choose-RightSection-Special'>
           <div className='icon-RightSection-Special'>
-            <ArrowBackIcon style={{ fontSize: '7rem' }} />
+            <ArrowBackIcon style={{ fontSize: '7vw' }} />
             <span>Choose a {isCoupon ? 'Coupon' : 'Gift Card'}.</span>
           </div>
         </div>
