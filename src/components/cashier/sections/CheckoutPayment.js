@@ -27,10 +27,8 @@ const CheckoutPayment = (props) => {
   const [showKeypadAlert, setKeypadAlert] = useState(false);
 
   const [showAccountSection, setShowAccountSection] = useState(false);
-  console.log(showAccountSection);
 
   const paymentMethod = usePaymentMethod();
-  console.log(paymentMethod);
   const changePaymentMethod = useChangePaymentMethod();
   const applyRoundingCents = useApplyRoundingCents();
   const clearProductList = useProductListClear();

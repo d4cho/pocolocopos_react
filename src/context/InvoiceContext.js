@@ -18,7 +18,7 @@ export const useReturnInvoice = () => {
 };
 
 export const InvoiceListProvider = ({ children }) => {
-  const [invoiceList, setInvoiceList] = useState(invoiceData);
+  const [invoiceList] = useState(invoiceData);
   const [selectedInvoice, setSelectedInvoice] = useState('');
   const [returnInvoice, setReturnInvoice] = useState([]);
 

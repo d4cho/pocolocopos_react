@@ -84,6 +84,11 @@ const InvoiceBoxItem = (props) => {
             <span style={{ color: 'red' }}>
               {item.discount && item.discount}
             </span>
+            {item.productDiscount && (
+              <span style={{ color: 'red' }}>
+                &nbsp;({item.productDiscount} D/C)
+              </span>
+            )}
           </div>
           <div>{qty}</div>
           <div>${numberWithCommas(productPrice)}</div>

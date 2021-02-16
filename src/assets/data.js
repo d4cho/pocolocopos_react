@@ -53,7 +53,7 @@ const productData = [
     name: 'Martin Standard Series D-35',
     category: 'instrument',
     price: 299.99,
-    discount: '',
+    discount: '10%',
     quantity: 5,
     image: martinguitar
   },

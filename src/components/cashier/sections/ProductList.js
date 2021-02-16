@@ -8,6 +8,7 @@ import {
   useProductListUpdate
 } from '../../../context/ProductContext';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 
 import Search from '../../search/Search';
 import AlertModal from '../../utility/AlertModal';
@@ -29,9 +30,22 @@ const ProductList = () => {
     setSearchResult(result);
   };
 
-  const productClickedHandler = (productId, productName, productPrice) => {
+  const productClickedHandler = (
+    productId,
+    productName,
+    productPrice,
+    productDiscount
+  ) => {
     subtractProductQuantity(productId);
-    updateProductList(productId, productName, productPrice, null, 1);
+    updateProductList(
+      productId,
+      productName,
+      productPrice,
+      null,
+      1,
+      null,
+      productDiscount
+    );
   };
 
   const errorModalClosed = () => {
@@ -60,6 +74,13 @@ const ProductList = () => {
               style={{ alignSelf: 'flex-end', paddingRight: '4px' }}
             />
           )}
+          {product.discount && (
+            <LoyaltyIcon
+              color='primary'
+              fontSize='large'
+              style={{ position: 'absolute', top: '10px', left: '10px' }}
+            />
+          )}
           <img
             className='image-product'
             src={product.image}
@@ -82,12 +103,24 @@ const ProductList = () => {
           product.attribute
             ? () => productWithAttributeClicked(product)
             : () =>
-                productClickedHandler(product.id, product.name, product.price)
+                productClickedHandler(
+                  product.id,
+                  product.name,
+                  product.price,
+                  product.discount
+                )
         }>
         {product.attribute && (
           <AddToPhotosIcon
             htmlColor='red'
             style={{ alignSelf: 'flex-end', padding: '2px 4px 0 0' }}
+          />
+        )}
+        {product.discount && (
+          <LoyaltyIcon
+            color='primary'
+            fontSize='large'
+            style={{ position: 'absolute', top: '10px', left: '10px' }}
           />
         )}
         <img

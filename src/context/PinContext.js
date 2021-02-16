@@ -7,7 +7,7 @@ export const usePin = () => {
 };
 
 export const PinProvider = ({ children }) => {
-  const [pin, setPin] = useState('0000');
+  const [pin] = useState('0000');
 
   return <PinContext.Provider value={pin}>{children}</PinContext.Provider>;
 };

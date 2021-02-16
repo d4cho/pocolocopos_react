@@ -89,7 +89,8 @@ export const ProductProvider = ({ children }) => {
     productPrice,
     clearItem,
     quantity,
-    attributeName
+    attributeName,
+    productDiscount
   ) => {
     // index of product in array
     let indexInArray = productList.findIndex(
@@ -113,7 +114,8 @@ export const ProductProvider = ({ children }) => {
         productName,
         qty: parsedQuantity,
         productPrice,
-        attributeName
+        attributeName,
+        productDiscount
       };
       setProductList([...productList, listItem]);
     }
